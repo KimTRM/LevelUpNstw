@@ -12,11 +12,16 @@ config_version=5
 
 config/name="LEVEL UP NSTW"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/inspector_tabs/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
+"res://addons/": "blue",
 "res://assets/": "yellow",
 "res://scenes/": "green",
 "res://scripts/": "teal"
