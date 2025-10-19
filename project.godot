@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="LEVEL UP NSTW"
+run/main_scene="uid://c1p3rkja6i332"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://assets/icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [dotnet]
 
@@ -27,6 +33,7 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 folder_colors={
 "res://addons/": "blue",
 "res://assets/": "yellow",
+"res://resources/": "purple",
 "res://scenes/": "green",
 "res://scripts/": "teal"
 }
@@ -54,7 +61,13 @@ down={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_5="Interactable"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
