@@ -3,16 +3,17 @@
 [ext_resource type="Script" uid="uid://ygjousnfm1f4" path="res://scripts/enemies/base_enemy.gd" id="1_xyabd"]
 [ext_resource type="Texture2D" uid="uid://b2dddjsfx2c1f" path="res://assets/icon.svg" id="2_ob6f1"]
 [ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_ob6f1"]
-[ext_resource type="PackedScene" uid="uid://cq0giqel8hq1k" path="res://scenes/components/DetectionAreaComponent.tscn" id="4_gimt1"]
+[ext_resource type="PackedScene" uid="uid://cq0giqel8hq1k" path="res://scenes/components/AgroAreaComponent.tscn" id="4_gimt1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyabd"]
-size = Vector2(26, 24)
+size = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kmloy"]
 radius = 155.59563
 
 [node name="BaseEnemy" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_xyabd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

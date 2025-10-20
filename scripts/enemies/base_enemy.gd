@@ -12,7 +12,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		_direction = Vector2.ZERO
 
-	velocity = velocity_component.get_velocity(_direction.normalized())
+	velocity = velocity_component.get_velocity(_direction)
 	velocity_component.accelerate_to_velocity(velocity, _delta)
 	velocity_component.move(self)
 
