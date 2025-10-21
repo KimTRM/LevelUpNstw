@@ -182,15 +182,19 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmlin"]
-height = 52.0
+radius = 9.0
+height = 44.0
 
 [node name="BasePlayer" type="CharacterBody2D" groups=["Player"]]
-collision_mask = 16
+y_sort_enabled = true
+collision_mask = 18
 motion_mode = 1
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture_filter = 1
+position = Vector2(0, -9)
 texture = ExtResource("2_gmlin")
 hframes = 6
 vframes = 5
@@ -221,7 +225,7 @@ libraries = {
 autoplay = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_gmlin")
 
 [node name="VelocityComponent" type="Node" parent="."]

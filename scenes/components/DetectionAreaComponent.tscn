@@ -1,4 +1,0 @@
-[gd_scene format=3 uid="uid://cq0giqel8hq1k"]
-
-[node name="DetectionAreaComponent" type="Area2D"]
-collision_layer = 0

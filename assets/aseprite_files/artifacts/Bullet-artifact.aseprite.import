@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c0fxw0ndnvis7"
+path="res://.godot/imported/Bullet-artifact.aseprite-f813db819e4260fc8ce0d60227cb61b4.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/artifacts/Bullet-artifact.aseprite"
+dest_files=["res://.godot/imported/Bullet-artifact.aseprite-f813db819e4260fc8ce0d60227cb61b4.res"]
+
+[params]
+
