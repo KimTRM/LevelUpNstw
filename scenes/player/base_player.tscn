@@ -186,12 +186,15 @@ radius = 9.0
 height = 44.0
 
 [node name="BasePlayer" type="CharacterBody2D" groups=["Player"]]
+y_sort_enabled = true
 collision_mask = 18
 motion_mode = 1
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture_filter = 1
+position = Vector2(0, -9)
 texture = ExtResource("2_gmlin")
 hframes = 6
 vframes = 5

@@ -5,8 +5,11 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="BaseEnemy" parent="." instance=ExtResource("3_rarhs")]
-position = Vector2(287, 257)
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="BasePlayer" parent="." instance=ExtResource("2_rvslj")]
+[node name="BaseEnemy" parent="Node2D" instance=ExtResource("3_rarhs")]
+position = Vector2(493, 338)
+
+[node name="BasePlayer" parent="Node2D" instance=ExtResource("2_rvslj")]
 position = Vector2(544, 349)
