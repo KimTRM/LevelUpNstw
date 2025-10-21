@@ -1,102 +1,33 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnhutqnywq11c"]
+[gd_scene load_steps=7 format=3 uid="uid://bnhutqnywq11c"]
 
 [ext_resource type="Script" uid="uid://ygjousnfm1f4" path="res://scripts/enemies/base_enemy.gd" id="1_xyabd"]
-[ext_resource type="Texture2D" uid="uid://1ftkhkvus6ms" path="res://assets/sprite_sheets/Shadow sprite.png" id="2_gimt1"]
+[ext_resource type="Texture2D" uid="uid://b2dddjsfx2c1f" path="res://assets/icon.svg" id="2_ob6f1"]
 [ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_ob6f1"]
-[ext_resource type="PackedScene" uid="uid://cq0giqel8hq1k" path="res://scenes/components/AgroAreaComponent.tscn" id="4_gimt1"]
+[ext_resource type="PackedScene" uid="uid://cq0giqel8hq1k" path="res://scenes/components/DetectionAreaComponent.tscn" id="4_gimt1"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gimt1"]
-radius = 6.0
-height = 22.0
-
-[sub_resource type="Animation" id="Animation_kmloy"]
-length = 0.75
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-
-[sub_resource type="Animation" id="Animation_gimt1"]
-length = 0.001
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_o7k23"]
-_data = {
-&"Idle": SubResource("Animation_kmloy"),
-&"RESET": SubResource("Animation_gimt1")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyabd"]
+size = Vector2(26, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kmloy"]
 radius = 155.59563
 
 [node name="BaseEnemy" type="CharacterBody2D"]
-y_sort_enabled = true
-collision_layer = 2
-motion_mode = 1
+collision_layer = 0
 script = ExtResource("1_xyabd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(0, -3)
-texture = ExtResource("2_gimt1")
-hframes = 3
-vframes = 2
-metadata/_aseprite_wizard_config_ = {
-"i_mode": -1,
-"keep_anim_length": false,
-"layer": "",
-"o_ex_p": "",
-"o_folder": "res://assets/sprite_sheets",
-"o_name": "",
-"only_visible": false,
-"player": "AnimationPlayer",
-"slice": "",
-"source": "res://assets/aseprite_files/enemies/Shadow sprite.aseprite"
-}
-metadata/_aseprite_wizard_interface_config_ = {
-"animation_section": false,
-"layer_section": false,
-"output_section": false
-}
-metadata/_aseprite_wizard_source_file_hash_ = "8d833b2045f845b86223a456a0311c85"
+scale = Vector2(0.24999994, 0.24999994)
+texture = ExtResource("2_ob6f1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 0.0026305418
-shape = SubResource("CapsuleShape2D_gimt1")
+shape = SubResource("RectangleShape2D_xyabd")
 debug_color = Color(0, 0.70196074, 0.17876008, 0.41960785)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_o7k23")
-}
-autoplay = "Idle"
 
 [node name="VelocityComponent" type="Node" parent="."]
 script = ExtResource("3_ob6f1")
 metadata/_custom_type_script = "uid://c68gohftincf6"
 
 [node name="DetectionAreaComponent" parent="." instance=ExtResource("4_gimt1")]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionAreaComponent"]
 shape = SubResource("CircleShape2D_kmloy")

@@ -11,7 +11,7 @@ func move(character: CharacterBody2D) -> void:
 
 
 func get_velocity(direction: Vector2) -> Vector2:
-	return direction.normalized() * max_speed
+	return direction * max_speed
 
 
 func accelerate_to_velocity(target_velocity: Vector2, delta: float) -> void:

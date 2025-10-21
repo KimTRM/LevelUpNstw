@@ -1,4 +1,5 @@
-class_name BasePlayer extends CharacterBody2D
+class_name BasePlayer
+extends CharacterBody2D
 
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
