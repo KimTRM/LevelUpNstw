@@ -227,6 +227,7 @@ autoplay = "idle_down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_gmlin")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="VelocityComponent" type="Node" parent="."]
 script = ExtResource("3_gmlin")
