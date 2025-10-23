@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1p3rkja6i332"]
+[gd_scene load_steps=3 format=3 uid="uid://c1p3rkja6i332"]
 
 [ext_resource type="PackedScene" uid="uid://ygs67n5rvyjg" path="res://scenes/player/base_player.tscn" id="2_rvslj"]
 [ext_resource type="PackedScene" uid="uid://ctut3i5rxtike" path="res://scenes/enemies/shadow_sprite/shadow_sprite.tscn" id="3_0bbpv"]
-[ext_resource type="PackedScene" uid="uid://b78gi0kqledx4" path="res://scenes/enemies/shadow_sprite/lighning_attack.tscn" id="3_rarhs"]
 
 [node name="Main" type="Node2D"]
 
@@ -13,13 +12,4 @@ y_sort_enabled = true
 position = Vector2(544, 349)
 
 [node name="ShadowSprite" parent="Node2D" instance=ExtResource("3_0bbpv")]
-position = Vector2(812, 146)
-
-[node name="LighningAttack" parent="Node2D" instance=ExtResource("3_rarhs")]
-visible = false
-position = Vector2(535, 359)
-
-[node name="LighningAttack2" parent="Node2D" instance=ExtResource("3_rarhs")]
-visible = false
-position = Vector2(596, 344)
-scale = Vector2(2, 2)
+position = Vector2(790, 254)
