@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b43iw1kumaf0v"
+path="res://.godot/imported/wind_icon.aseprite-e9d0de7b768c306d47408dd0cc77bd91.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/elements/wind_icon.aseprite"
+dest_files=["res://.godot/imported/wind_icon.aseprite-e9d0de7b768c306d47408dd0cc77bd91.res"]
+
+[params]
+
