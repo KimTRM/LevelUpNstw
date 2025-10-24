@@ -111,11 +111,13 @@ script = ExtResource("3_m5hp6")
 metadata/_custom_type_script = "uid://c68gohftincf6"
 
 [node name="AgroAreaComponent" parent="." instance=ExtResource("4_5b3pr")]
+collision_mask = 5
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AgroAreaComponent"]
 shape = SubResource("CircleShape2D_f4qck")
 
 [node name="AttackAreaComponent" parent="." instance=ExtResource("5_eii7y")]
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackAreaComponent"]
 shape = SubResource("CircleShape2D_atops")

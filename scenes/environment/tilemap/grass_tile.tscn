@@ -347,7 +347,6 @@ texture_region_size = Vector2i(32, 32)
 12:3/0/terrain_set = 0
 12:3/0/terrain = 0
 12:3/0/terrains_peering_bit/right_side = 0
-12:3/0/terrains_peering_bit/bottom_side = 0
 12:3/0/terrains_peering_bit/left_side = 0
 12:3/0/terrains_peering_bit/top_left_corner = 0
 12:3/0/terrains_peering_bit/top_side = 0
@@ -361,5 +360,5 @@ terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
 sources/0 = SubResource("TileSetAtlasSource_jgjvn")
 
 [node name="GrassTile" type="TileMapLayer"]
-tile_map_data = PackedByteArray("AAD5//3/AAABAAMAAAD6//3/AAADAAIAAAD6//z/AAABAAAAAAD7//z/AAACAAMAAAD8//z/AAACAAMAAAD9//z/AAACAAMAAAD+//z/AAADAAAAAAD+//3/AAABAAIAAAD///3/AAACAAMAAAAAAP3/AAACAAMAAAABAP3/AAADAAIAAAABAPz/AAAAAAAAAAD7//v/AAABAAMAAAD8//v/AAACAAMAAAD9//v/AAACAAMAAAD+//v/AAACAAMAAAD///v/AAACAAIAAAD///r/AAABAAAAAAAAAPr/AAACAAAAAAABAPr/AAADAAAAAAABAPv/AAADAAIAAAAAAPv/AAACAAIAAAAEAPz/AAABAAIAAAAGAPz/AAANAAMAAAAFAPv/AAAMAAAAAAAFAPz/AAALAAMAAAAGAPv/AAANAAAAAAAEAPv/AAAKAAAAAAA=")
+tile_map_data = PackedByteArray("AAD8//3/AAABAAMAAAD9//3/AAACAAMAAAD+//3/AAAKAAIAAAD+//7/AAAKAAMAAAD///7/AAALAAMAAAD///3/AAAHAAEAAAD///z/AAANAAAAAAAAAP7/AAANAAMAAAD+//z/AAAKAAAAAAAAAP3/AAANAAAAAAA=")
 tile_set = SubResource("TileSet_78ene")
