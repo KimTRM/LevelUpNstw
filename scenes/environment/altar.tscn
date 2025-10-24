@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbhkrmfmi6adw"]
+[gd_scene load_steps=9 format=3 uid="uid://cbhkrmfmi6adw"]
 
 [ext_resource type="Texture2D" uid="uid://cn8ipxr0k73gx" path="res://assets/environment/Altar.png" id="1_3lkgs"]
 [ext_resource type="Script" uid="uid://74r2jy2b60bo" path="res://scripts/environment/altar.gd" id="1_uc05o"]
@@ -87,11 +87,69 @@ tracks/1/keys = {
 "values": [7, 8, 9, 10]
 }
 
+[sub_resource type="Animation" id="Animation_2wsor"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_w0wa0"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2wsor"]
 _data = {
 &"Idle": SubResource("Animation_uc05o"),
 &"Interacted": SubResource("Animation_wuh0k"),
-&"Interacted(clicked)": SubResource("Animation_n5p0c")
+&"Interacted idle": SubResource("Animation_2wsor"),
+&"Interacted(clicked)": SubResource("Animation_n5p0c"),
+&"interacted": SubResource("Animation_w0wa0")
 }
 
 [node name="Altar" type="StaticBody2D" groups=["Altar"]]
@@ -121,7 +179,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": false
 }
-metadata/_aseprite_wizard_source_file_hash_ = "0053054603b53be0f9c67f2a1a594d56"
+metadata/_aseprite_wizard_source_file_hash_ = "d1989c3f2c5d70264fe3fb3578ad7d2a"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
