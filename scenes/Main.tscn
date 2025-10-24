@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1p3rkja6i332"]
 
 [ext_resource type="PackedScene" uid="uid://ygs67n5rvyjg" path="res://scenes/player/base_player.tscn" id="2_rvslj"]
-[ext_resource type="PackedScene" uid="uid://bnhutqnywq11c" path="res://scenes/enemies/BaseEnemy.tscn" id="3_rarhs"]
+[ext_resource type="PackedScene" uid="uid://ctut3i5rxtike" path="res://scenes/enemies/shadow_sprite/shadow_sprite.tscn" id="3_0bbpv"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Node2D" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="BaseEnemy" parent="Node2D" instance=ExtResource("3_rarhs")]
-position = Vector2(493, 338)
-
 [node name="BasePlayer" parent="Node2D" instance=ExtResource("2_rvslj")]
 position = Vector2(544, 349)
+
+[node name="ShadowSprite" parent="Node2D" instance=ExtResource("3_0bbpv")]
+position = Vector2(790, 254)

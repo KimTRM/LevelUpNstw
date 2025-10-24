@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://br1dd37kqsmh5"
+path="res://.godot/imported/grass_sprite.aseprite-ade7c83b2fbe131cb7efae34c4e3453d.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/tilemaps/grass_sprite.aseprite"
+dest_files=["res://.godot/imported/grass_sprite.aseprite-ade7c83b2fbe131cb7efae34c4e3453d.res"]
+
+[params]
+

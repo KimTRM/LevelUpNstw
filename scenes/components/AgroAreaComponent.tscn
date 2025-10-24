@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq0giqel8hq1k"]
-
-[ext_resource type="Script" uid="uid://cwrqk85c16mvd" path="res://scripts/components/agro_area_component.gd" id="1_55pud"]
-
-[node name="AgroAreaComponent" type="Area2D"]
-collision_layer = 0
-script = ExtResource("1_55pud")

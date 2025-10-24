@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://p7b4u1cg2gul"
+path="res://.godot/imported/fire_icon.aseprite-5da5e9a0da2c5b6b99b8c5238ff8c7f3.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/elements/fire_icon.aseprite"
+dest_files=["res://.godot/imported/fire_icon.aseprite-5da5e9a0da2c5b6b99b8c5238ff8c7f3.res"]
+
+[params]
+
