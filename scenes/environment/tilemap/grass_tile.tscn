@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://3rr1ia230r8w"]
+[gd_scene load_steps=4 format=3 uid="uid://3rr1ia230r8w"]
 
 [ext_resource type="Texture2D" uid="uid://bfih5yddlyw3" path="res://assets/tilemap/grass-tiles plate.png" id="1_ijqcu"]
 
@@ -360,5 +360,4 @@ terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
 sources/0 = SubResource("TileSetAtlasSource_jgjvn")
 
 [node name="GrassTile" type="TileMapLayer"]
-tile_map_data = PackedByteArray("AAD8//3/AAABAAMAAAD9//3/AAACAAMAAAD+//3/AAAKAAIAAAD+//7/AAAKAAMAAAD///7/AAALAAMAAAD///3/AAAHAAEAAAD///z/AAANAAAAAAAAAP7/AAANAAMAAAD+//z/AAAKAAAAAAAAAP3/AAANAAAAAAA=")
 tile_set = SubResource("TileSet_78ene")
