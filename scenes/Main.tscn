@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://c1p3rkja6i332"]
+[gd_scene load_steps=4 format=3 uid="uid://c1p3rkja6i332"]
 
 [ext_resource type="PackedScene" uid="uid://ygs67n5rvyjg" path="res://scenes/player/base_player.tscn" id="2_rvslj"]
-[ext_resource type="PackedScene" uid="uid://ctut3i5rxtike" path="res://scenes/enemies/shadow_sprite/shadow_sprite.tscn" id="3_0bbpv"]
-[ext_resource type="PackedScene" uid="uid://3rr1ia230r8w" path="res://scenes/environment/tilemap/grass_tile.tscn" id="3_rarhs"]
-[ext_resource type="PackedScene" uid="uid://cbhkrmfmi6adw" path="res://scenes/environment/altar.tscn" id="3_vcsgt"]
+[ext_resource type="Script" uid="uid://b2s3ns7qmsjf8" path="res://scenes/components/spawner.gd" id="3_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://bnhutqnywq11c" path="res://scenes/enemies/BaseEnemy.tscn" id="3_rarhs"]
 
 [node name="Main" type="Node2D"]
 
@@ -14,13 +13,9 @@ tile_map_data = PackedByteArray("AAD+//3/AAAKAAAAAAD+//7/AAAKAAEAAAD///7/AAALAAI
 y_sort_enabled = true
 
 [node name="BasePlayer" parent="Node2D" instance=ExtResource("2_rvslj")]
-position = Vector2(596, 325)
+position = Vector2(544, 349)
 
-[node name="ShadowSprite" parent="Node2D" instance=ExtResource("3_0bbpv")]
-position = Vector2(1162, 610)
-
-[node name="Altar" parent="Node2D" instance=ExtResource("3_vcsgt")]
-position = Vector2(642, 335)
-
-[node name="ShadowSprite2" parent="Node2D" instance=ExtResource("3_0bbpv")]
-position = Vector2(190, 121)
+[node name="Spawner" type="Node" parent="."]
+script = ExtResource("3_0bbpv")
+to_spawn = ExtResource("3_rarhs")
+metadata/_custom_type_script = "uid://b2s3ns7qmsjf8"
