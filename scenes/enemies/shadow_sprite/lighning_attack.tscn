@@ -44,10 +44,12 @@ script = ExtResource("1_ns2bs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(5, -17)
+position = Vector2(6, -54)
+scale = Vector2(2, 2)
 texture = ExtResource("1_s7xyr")
 hframes = 4
 vframes = 3
+frame = 6
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -75,5 +77,5 @@ libraries = {
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 9)
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_s7xyr")

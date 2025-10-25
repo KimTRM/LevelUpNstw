@@ -24,7 +24,6 @@ func _ready():
 	attack_area_component.attack_area_exited.connect(_on_attack_area_exited)
 	timer.timeout.connect(func(): _attack())
 
-	# Setup States
 	state_machine.add_states(normal_state)
 	state_machine.add_states(chase_state)
 	state_machine.add_states(attack_state, _enter_attack_state, _exit_attack_state)
@@ -36,7 +35,6 @@ func _process(delta: float) -> void:
 
 
 func normal_state() -> void:
-	# print("change to normal state")
 	_target = get_tree().get_first_node_in_group("Altar")
 	_direction = (_target.global_position - global_position).normalized()
 
@@ -44,17 +42,8 @@ func normal_state() -> void:
 	velocity_component.accelerate_to_velocity(velocity, _delta)
 	velocity_component.move(self)
 
-	if (attack_area_component.get_overlapping_bodies().size() > 1):
-		print("change to attack state from normal state")
-		state_machine.change_state(attack_state)
-	
-	if (agro_area_component.get_overlapping_bodies().size() > 1):
-		print("change to chase state from normal state")
-		state_machine.change_state(chase_state)
-
 	
 func chase_state() -> void:
-	# print("change to chase state")
 	_target = get_tree().get_first_node_in_group("Player")
 	_direction = (_target.global_position - global_position).normalized()
 
@@ -62,15 +51,19 @@ func chase_state() -> void:
 	velocity_component.accelerate_to_velocity(velocity, _delta)
 	velocity_component.move(self)
 
-	if (attack_area_component.get_overlapping_bodies().size() > 1):
-		state_machine.change_state(attack_state)
-
 
 func _enter_attack_state() -> void:
+	var bodies = attack_area_component.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("Player"):
+			_target = body
+			timer.start()
+			return
+		elif body.is_in_group("Altar"):
+			_target = body
 	timer.start()
 
 func attack_state() -> void:
-	# print("in attack state")
 	_direction = Vector2.ZERO
 
 	velocity = velocity_component.get_velocity(_direction)
@@ -80,11 +73,6 @@ func attack_state() -> void:
 func _exit_attack_state() -> void:
 	timer.stop()
 
-func _attack() -> void:
-	var lightning_attack_instance = lightning_attack_scene.instantiate()
-	lightning_attack_instance.global_position = _target.global_position
-	lightning_attack_instance.scale = Vector2(2, 2)
-	get_parent().add_child(lightning_attack_instance)
 
 func _on_agro_area_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
@@ -92,12 +80,28 @@ func _on_agro_area_entered(body: Node) -> void:
 
 func _on_agro_area_exited(body: Node) -> void:
 	if body.is_in_group("Player"):
-		state_machine.change_state(normal_state)
+		if attack_area_component.get_overlapping_bodies().size() > 0:
+			state_machine.change_state(attack_state)
+		else:
+			state_machine.change_state(normal_state)
+
 
 func _on_attack_area_entered(body: Node) -> void:
-	if body.is_in_group("Player") || body.is_in_group("Altar"):
+	if body.is_in_group("Player"):
+		_target = body
+		state_machine.change_state(attack_state)
+	elif body.is_in_group("Altar"):
+		_target = body
 		state_machine.change_state(attack_state)
 
 func _on_attack_area_exited(body: Node) -> void:
 	if body.is_in_group("Player"):
-		state_machine.change_state(chase_state)
+		if agro_area_component.get_overlapping_bodies().size() > 0:
+			state_machine.change_state(chase_state)
+		else:
+			state_machine.change_state(normal_state)
+
+func _attack() -> void:
+	var lightning_attack_instance = lightning_attack_scene.instantiate()
+	lightning_attack_instance.global_position = _target.global_position
+	get_parent().add_child(lightning_attack_instance)
