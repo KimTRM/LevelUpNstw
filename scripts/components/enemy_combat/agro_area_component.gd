@@ -1,4 +1,4 @@
-class_name AgroAreaComponent extends Area2D
+extends Area2D
 
 signal agro_area_entered(player: BasePlayer)
 signal agro_area_exited(player: BasePlayer)

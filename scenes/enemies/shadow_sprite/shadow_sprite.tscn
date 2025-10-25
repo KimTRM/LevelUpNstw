@@ -1,0 +1,126 @@
+[gd_scene load_steps=13 format=3 uid="uid://ctut3i5rxtike"]
+
+[ext_resource type="Script" uid="uid://cxj7ksj4h3vwa" path="res://scripts/enemies/shadow_sprite/shadow_sprite.gd" id="1_466dq"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="2_f4qck"]
+[ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_m5hp6"]
+[ext_resource type="PackedScene" uid="uid://cq0giqel8hq1k" path="res://scenes/components/enemy_combat/AgroAreaComponent.tscn" id="4_5b3pr"]
+[ext_resource type="PackedScene" uid="uid://c0tkiwa7aiiyo" path="res://scenes/components/enemy_combat/AttackAreaComponent.tscn" id="5_eii7y"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_466dq"]
+load_path = "res://.godot/imported/Shadow sprite.png-b410e733278d675834b944020d79f7c9.ctex"
+
+[sub_resource type="Animation" id="Animation_kmloy"]
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_gimt1"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o7k23"]
+_data = {
+&"Idle": SubResource("Animation_kmloy"),
+&"RESET": SubResource("Animation_gimt1")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_466dq"]
+radius = 6.9999757
+height = 17.999937
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f4qck"]
+radius = 247.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_atops"]
+radius = 154.26276
+
+[node name="ShadowSprite" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_466dq")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(-1, -3)
+texture = SubResource("CompressedTexture2D_466dq")
+hframes = 3
+vframes = 2
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/sprite_sheets",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://assets/aseprite_files/enemies/Shadow sprite.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": false
+}
+metadata/_aseprite_wizard_source_file_hash_ = "8d833b2045f845b86223a456a0311c85"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_o7k23")
+}
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.0026305418
+shape = SubResource("CapsuleShape2D_466dq")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_f4qck")
+
+[node name="VelocityComponent" type="Node" parent="."]
+script = ExtResource("3_m5hp6")
+metadata/_custom_type_script = "uid://c68gohftincf6"
+
+[node name="AgroAreaComponent" parent="." instance=ExtResource("4_5b3pr")]
+collision_mask = 5
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AgroAreaComponent"]
+shape = SubResource("CircleShape2D_f4qck")
+
+[node name="AttackAreaComponent" parent="." instance=ExtResource("5_eii7y")]
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackAreaComponent"]
+shape = SubResource("CircleShape2D_atops")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
