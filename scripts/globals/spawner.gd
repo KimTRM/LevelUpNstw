@@ -5,6 +5,7 @@ extends Node
 @export var spawn_points: Array[EnemySpawnPoint] = []
 
 @export var indicator_duration: float = 1.5
+@export var spawn_appear_duration: float = 0.35
 
 var _spawned_count: int = 0
 var _timer: Timer
@@ -88,4 +89,36 @@ func show_spawn_indicator(pos: Vector2) -> void:
 func spawn_enemy(enemy_to_spawn: PackedScene, pos: Vector2) -> void:
 	var instance = enemy_to_spawn.instantiate()
 	instance.global_position = pos
+
+	# Prepare visual tween (if the root is a CanvasItem, which CharacterBody2D is)
+	var original_scale := Vector2.ONE
+	var original_alpha := 1.0
+	var can_tween_visual := instance is CanvasItem
+	if can_tween_visual:
+		var canvas := instance as CanvasItem
+		original_scale = canvas.scale
+		original_alpha = canvas.modulate.a
+		canvas.scale = Vector2.ZERO
+		canvas.modulate.a = 0.0
+
+	# Temporarily disable collisions during the appear animation
+	var had_collision := instance is CollisionObject2D
+	var original_layer := 0
+	var original_mask := 0
+	if had_collision:
+		original_layer = instance.collision_layer
+		original_mask = instance.collision_mask
+		instance.collision_layer = 0
+		instance.collision_mask = 0
+
 	get_parent().add_child(instance)
+
+	if can_tween_visual:
+		var canvas := instance as CanvasItem
+		var tween := canvas.create_tween().set_parallel(true)
+		tween.tween_property(canvas, "scale", original_scale, spawn_appear_duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		tween.tween_property(canvas, "modulate:a", original_alpha, spawn_appear_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween.finished.connect(func():
+			if had_collision and is_instance_valid(instance):
+				instance.collision_layer = original_layer
+				instance.collision_mask = original_mask)
