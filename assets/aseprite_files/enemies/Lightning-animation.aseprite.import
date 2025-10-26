@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bq050kuut188t"
+path="res://.godot/imported/Lightning-animation.aseprite-f975463bf28929f63ffdff7c2a78726b.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/enemies/Lightning-animation.aseprite"
+dest_files=["res://.godot/imported/Lightning-animation.aseprite-f975463bf28929f63ffdff7c2a78726b.res"]
+
+[params]
+

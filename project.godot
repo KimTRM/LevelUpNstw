@@ -15,6 +15,10 @@ run/main_scene="uid://c1p3rkja6i332"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+Spawner="*res://scripts/globals/spawner.gd"
+
 [debug]
 
 shapes/collision/shape_color=Color(1, 1, 1, 0.41960785)
