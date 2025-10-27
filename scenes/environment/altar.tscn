@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbhkrmfmi6adw"]
+[gd_scene load_steps=9 format=3 uid="uid://cbhkrmfmi6adw"]
 
 [ext_resource type="Texture2D" uid="uid://cn8ipxr0k73gx" path="res://assets/environment/Altar.png" id="1_3lkgs"]
-[ext_resource type="Script" uid="uid://74r2jy2b60bo" path="res://scripts/environment/altar.gd" id="1_uc05o"]
+[ext_resource type="Script" uid="uid://74r2jy2b60bo" path="res://scripts/environment/altar/altar.gd" id="1_uc05o"]
+[ext_resource type="Script" uid="uid://cu48dsqtvdwmf" path="res://scripts/components/interaction/interactable_area.gd" id="3_wuh0k"]
 
 [sub_resource type="Animation" id="Animation_uc05o"]
 length = 0.8
@@ -93,6 +94,9 @@ _data = {
 &"interacted": SubResource("Animation_n5p0c")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5p0c"]
+radius = 38.209946
+
 [node name="Altar" type="StaticBody2D" groups=["Altar"]]
 collision_layer = 4
 script = ExtResource("1_uc05o")
@@ -131,3 +135,12 @@ autoplay = "Idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-8, -17.988796, -9, 4.0112047, -24, 6.0112047, -24, 9.011205, 24, 9.011205, 24, 6.0112047, 9, 4.0112047, 8, -17.988796)
+
+[node name="InteractableArea" type="Area2D" parent="."]
+script = ExtResource("3_wuh0k")
+show_debug_area = true
+require_hold = true
+metadata/_custom_type_script = "uid://cu48dsqtvdwmf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+shape = SubResource("CircleShape2D_n5p0c")
