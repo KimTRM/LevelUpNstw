@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://c1p3rkja6i332"]
 
-[ext_resource type="PackedScene" uid="uid://ygs67n5rvyjg" path="res://scenes/player/base_player.tscn" id="2_rvslj"]
+[ext_resource type="PackedScene" uid="uid://ygs67n5rvyjg" path="res://scenes/players/base_player.tscn" id="2_rvslj"]
 [ext_resource type="PackedScene" uid="uid://ctut3i5rxtike" path="res://scenes/enemies/shadow_sprite/shadow_sprite.tscn" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://3rr1ia230r8w" path="res://scenes/environment/tilemap/grass_tile.tscn" id="3_rarhs"]
 [ext_resource type="PackedScene" uid="uid://cbhkrmfmi6adw" path="res://scenes/environment/altar.tscn" id="3_vcsgt"]
