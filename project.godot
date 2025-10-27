@@ -25,6 +25,10 @@ shapes/collision/shape_color=Color(1, 1, 1, 0.41960785)
 
 [display]
 
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
@@ -45,6 +49,10 @@ folder_colors={
 "res://scenes/": "green",
 "res://scripts/": "teal"
 }
+
+[gui]
+
+theme/custom_font="uid://dl8hgajj002mg"
 
 [input]
 
@@ -74,6 +82,7 @@ down={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemy"
 2d_physics/layer_5="Interactable"
+2d_physics/layer_6="Environment"
 
 [rendering]
 
