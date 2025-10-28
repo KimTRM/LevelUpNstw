@@ -18,6 +18,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Spawner="*res://scripts/globals/spawner.gd"
+UiManager="*res://scripts/globals/ui_manager.gd"
 
 [debug]
 

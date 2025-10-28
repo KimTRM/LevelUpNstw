@@ -116,9 +116,11 @@ func _is_valid_interactor(body: Node) -> bool:
 func _show_prompt(_show: bool) -> void:
 	if _show:
 		var text := hold_prompt_text if require_hold else prompt_text
-		print("[Prompt ON] %s" % text)
+		var interaction: Interaction = UiManager.add_ui("interaction_prompt", load("uid://dcpv3ggsk0hyf"))
+		interaction.set_button_text(text)
+		UiManager.show_ui("interaction_prompt")
 	else:
-		print("[Prompt OFF]")
+		UiManager.hide_ui("interaction_prompt")
 
 
 func _draw() -> void:

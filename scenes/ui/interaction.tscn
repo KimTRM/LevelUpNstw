@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcpv3ggsk0hyf"]
+[gd_scene load_steps=3 format=3 uid="uid://dcpv3ggsk0hyf"]
 
 [ext_resource type="PackedScene" uid="uid://dmcaagi31ij5x" path="res://scenes/ui/rock_button.tscn" id="1_t8yqb"]
+[ext_resource type="Script" uid="uid://dr57njry3whqy" path="res://scripts/ui/interaction.gd" id="1_v0db6"]
 
 [node name="Interaction" type="MarginContainer"]
 anchors_preset = 15
@@ -8,7 +9,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 120
+theme_override_constants/margin_left = 160
+script = ExtResource("1_v0db6")
 
 [node name="RockButton" parent="." instance=ExtResource("1_t8yqb")]
+unique_name_in_owner = true
 layout_mode = 2
