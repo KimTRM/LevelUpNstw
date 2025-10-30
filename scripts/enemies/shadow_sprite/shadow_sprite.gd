@@ -7,6 +7,8 @@ class_name ShadowSprite extends CharacterBody2D
 @onready var agro_area_component: Area2D = $AgroAreaComponent
 @onready var attack_area_component: AttackAreaComponent = $AttackAreaComponent
 @onready var timer: Timer = $Timer
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var health_bar: HealthBar = $HealthBar
 
 var _target: Node2D = null
 var _direction: Vector2 = Vector2.ZERO
@@ -23,6 +25,14 @@ func _ready():
 	attack_area_component.attack_area_entered.connect(_on_attack_area_entered)
 	attack_area_component.attack_area_exited.connect(_on_attack_area_exited)
 	timer.timeout.connect(func(): _attack())
+	
+	# Connect health component to health bar
+	if health_component and health_bar:
+		health_bar.set_max_health(health_component.max_health)
+		health_component.health_changed.connect(_on_health_changed)
+	# Connect death
+	if health_component:
+		health_component.died.connect(on_death)
 
 	state_machine.add_states(normal_state)
 	state_machine.add_states(chase_state)
@@ -100,8 +110,31 @@ func _on_attack_area_exited(body: Node) -> void:
 			state_machine.change_state(chase_state)
 		else:
 			state_machine.change_state(normal_state)
-
+			
 func _attack() -> void:
 	var lightning_attack_instance = lightning_attack_scene.instantiate()
 	lightning_attack_instance.global_position = _target.global_position
 	get_parent().add_child(lightning_attack_instance)
+
+func _on_health_changed(current_health: int, max_health: int) -> void:
+	if health_bar:
+		health_bar.set_health(current_health)
+		
+func on_death():
+	if animation_player and animation_player.has_animation("death"):
+		animation_player.play("death")
+		animation_player.animation_finished.connect(_on_death_animation_finished)
+	else:
+		# Fade out
+		var tween := create_tween()
+		tween.tween_property(self, "modulate:a", 0.0, 0.4)
+		tween.finished.connect(queue_free)
+	if health_bar and is_instance_valid(health_bar):
+		health_bar.queue_free()
+
+func _on_death_animation_finished(anim_name):
+	if anim_name == "death":
+		if health_bar and is_instance_valid(health_bar):
+			health_bar.queue_free()
+		queue_free()
+		
