@@ -116,7 +116,7 @@ func _attack() -> void:
 	lightning_attack_instance.global_position = _target.global_position
 	get_parent().add_child(lightning_attack_instance)
 
-func _on_health_changed(current_health: int, max_health: int) -> void:
+func _on_health_changed(current_health: int, _max_health: int) -> void:
 	if health_bar:
 		health_bar.set_health(current_health)
 		
@@ -137,4 +137,3 @@ func _on_death_animation_finished(anim_name):
 		if health_bar and is_instance_valid(health_bar):
 			health_bar.queue_free()
 		queue_free()
-		

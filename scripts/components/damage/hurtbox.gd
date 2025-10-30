@@ -1,6 +1,6 @@
 class_name Hurtbox extends Area2D
 
-@onready var owner_stats: Stats = owner.stats
+@export var owner_stats: Stats
 
 func _ready() -> void:
 	# Disable all by default

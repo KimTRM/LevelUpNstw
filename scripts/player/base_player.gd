@@ -16,7 +16,6 @@ var _flame_strike_cooldown_time: float = 1.5
 var _purifying_blaze_scene: PackedScene
 
 func _ready() -> void:
-	stats = Stats.new(self, 100, 10, Stats.Faction.PLAYER)
 	# si scene kang fire ball
 	_purifying_blaze_scene = preload("res://scenes/players/apoy_bagani/purifying_blaze.tscn")
 
@@ -117,7 +116,7 @@ func shoot_flame_projectile():
 	var fireball = _purifying_blaze_scene.instantiate()
 	get_tree().current_scene.add_child(fireball)
 	fireball.global_position = global_position
-	fireball.scale = Vector2(1, 1)  # dai pag hirion 
+	fireball.scale = Vector2(1, 1) # dai pag hirion
 	fireball.damage = stats.damage
 	
 	var shot_dir = _direction

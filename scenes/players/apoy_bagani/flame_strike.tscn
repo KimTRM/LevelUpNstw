@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwb6ilcsanu23"]
+[gd_scene load_steps=8 format=3 uid="uid://cwb6ilcsanu23"]
 
-[ext_resource type="Script" uid="uid://c4uupg5j6kuka" path="res://scripts/player/flame_strike.gd" id="1_pl7qg"]
+[ext_resource type="Script" uid="uid://c4uupg5j6kuka" path="res://scripts/player/apoy_bagani/flame_strike.gd" id="1_pl7qg"]
 [ext_resource type="Texture2D" uid="uid://cpil5qk15d0ya" path="res://assets/sprite_sheets/players/fire_bagani/flame_strike.png" id="1_q6dfy"]
-[ext_resource type="PackedScene" uid="uid://c1p3rkja6i332" path="res://scenes/Main.tscn" id="2_awdv6"]
-[ext_resource type="Script" uid="uid://c6idq7beq234q" path="res://scripts/components/hitbox.gd" id="4_b6fdo"]
+[ext_resource type="Script" uid="uid://c6idq7beq234q" path="res://scripts/components/damage/hitbox.gd" id="3_awdv6"]
 
 [sub_resource type="Animation" id="Animation_pl7qg"]
 length = 0.4
@@ -35,7 +34,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_awdv6"]
 length = 0.65
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -68,16 +66,19 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q6dfy"]
+radius = 20.024984
 
-[node name="FlameStrike" type="Area2D"]
+[node name="FlameStrike" type="Node2D"]
 script = ExtResource("1_pl7qg")
-purifying_blaze_scene = ExtResource("2_awdv6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture_filter = 1
+scale = Vector2(2, 2)
 texture = ExtResource("1_q6dfy")
 hframes = 5
 vframes = 4
+frame = 16
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -100,9 +101,12 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 &"": SubResource("AnimationLibrary_b6fdo")
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_q6dfy")
+autoplay = "shooting"
 
 [node name="Hitbox" type="Area2D" parent="."]
-script = ExtResource("4_b6fdo")
+script = ExtResource("3_awdv6")
+metadata/_custom_type_script = "uid://c6idq7beq234q"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_q6dfy")

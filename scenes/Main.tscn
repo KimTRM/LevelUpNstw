@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=4 uid="uid://c1p3rkja6i332"]
 
-[ext_resource type="PackedScene" uid="uid://ygs67n5rvyjg" path="res://scenes/players/base_player.tscn" id="2_rvslj"]
 [ext_resource type="PackedScene" uid="uid://ctut3i5rxtike" path="res://scenes/enemies/shadow_sprite/shadow_sprite.tscn" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://3rr1ia230r8w" path="res://scenes/environment/tilemap/grass_tile.tscn" id="3_rarhs"]
 [ext_resource type="PackedScene" uid="uid://cbhkrmfmi6adw" path="res://scenes/environment/altar.tscn" id="3_vcsgt"]
-[ext_resource type="Script" uid="uid://cl5xigy5kgeqm" path="res://scripts/components/enemy_spwan_point.gd" id="4_rarhs"]
+[ext_resource type="Script" path="res://scripts/components/enemy_spwan_point.gd" id="4_rarhs"]
+[ext_resource type="PackedScene" uid="uid://cs8ghcnp1yxkt" path="res://scenes/players/apoy_bagani/apoy_bagani.tscn" id="5_vcsgt"]
 
 [node name="Main" type="Node2D"]
 
@@ -14,11 +14,11 @@ tile_map_data = PackedByteArray("AAD+//3/AAAKAAAAAAD+//7/AAAKAAEAAAD///7/AAALAAI
 [node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="BasePlayer" parent="Entities" instance=ExtResource("2_rvslj")]
-position = Vector2(598, 356)
-
 [node name="Altar" parent="Entities" instance=ExtResource("3_vcsgt")]
 position = Vector2(642, 335)
+
+[node name="ApoyBagani" parent="Entities" instance=ExtResource("5_vcsgt")]
+position = Vector2(574, 324)
 
 [node name="SpwanPoints" type="Node" parent="."]
 
@@ -27,25 +27,21 @@ position = Vector2(313, 196)
 script = ExtResource("4_rarhs")
 enemy_to_spawn = ExtResource("3_0bbpv")
 count_per_wave = 2
-metadata/_custom_type_script = "uid://cl5xigy5kgeqm"
 
 [node name="EnemySpawnPoint2" type="Marker2D" parent="SpwanPoints"]
 position = Vector2(913, 204)
 script = ExtResource("4_rarhs")
 enemy_to_spawn = ExtResource("3_0bbpv")
 count_per_wave = 2
-metadata/_custom_type_script = "uid://cl5xigy5kgeqm"
 
 [node name="EnemySpawnPoint3" type="Marker2D" parent="SpwanPoints"]
 position = Vector2(916, 522)
 script = ExtResource("4_rarhs")
 enemy_to_spawn = ExtResource("3_0bbpv")
 count_per_wave = 2
-metadata/_custom_type_script = "uid://cl5xigy5kgeqm"
 
 [node name="EnemySpawnPoint4" type="Marker2D" parent="SpwanPoints"]
 position = Vector2(299, 487)
 script = ExtResource("4_rarhs")
 enemy_to_spawn = ExtResource("3_0bbpv")
 count_per_wave = 2
-metadata/_custom_type_script = "uid://cl5xigy5kgeqm"
