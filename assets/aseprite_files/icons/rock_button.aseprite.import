@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://df525d5hgwwtt"
+path="res://.godot/imported/rock_button.aseprite-a6cbe38267702fcb88155221120e909c.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/icons/rock_button.aseprite"
+dest_files=["res://.godot/imported/rock_button.aseprite-a6cbe38267702fcb88155221120e909c.res"]
+
+[params]
+

@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcpv3ggsk0hyf"]
+
+[ext_resource type="PackedScene" uid="uid://dmcaagi31ij5x" path="res://scenes/ui/rock_button.tscn" id="1_t8yqb"]
+[ext_resource type="Script" uid="uid://dr57njry3whqy" path="res://scripts/ui/interaction.gd" id="1_v0db6"]
+
+[node name="Interaction" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_v0db6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 360
+
+[node name="RockButton" parent="MarginContainer" instance=ExtResource("1_t8yqb")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+show_percentage = false

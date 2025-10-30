@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://ctut3i5rxtike"]
 
 [ext_resource type="Script" uid="uid://cxj7ksj4h3vwa" path="res://scripts/enemies/shadow_sprite/shadow_sprite.gd" id="1_466dq"]
-[ext_resource type="Script" uid="uid://7nsq2rbewrws" path="res://scripts/components/health_component.gd" id="2_f4qck"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="2_f4qck"]
 [ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_m5hp6"]
 [ext_resource type="PackedScene" uid="uid://cq0giqel8hq1k" path="res://scenes/components/enemy_combat/AgroAreaComponent.tscn" id="4_5b3pr"]
 [ext_resource type="PackedScene" uid="uid://c0tkiwa7aiiyo" path="res://scenes/components/enemy_combat/AttackAreaComponent.tscn" id="5_eii7y"]
