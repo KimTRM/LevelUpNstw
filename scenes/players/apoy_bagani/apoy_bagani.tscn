@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://cs8ghcnp1yxkt"]
 
 [ext_resource type="Script" uid="uid://r8g0behr1ym4" path="res://scripts/player/apoy_bagani/apoy_bagani.gd" id="1_1dpkx"]
-[ext_resource type="Script" uid="uid://bkrqcx7573o04" path="res://scripts/components/stats.gd" id="2_fgkt0"]
+[ext_resource type="Script" path="res://scripts/components/stats.gd" id="2_fgkt0"]
 [ext_resource type="Texture2D" uid="uid://bo8prncexggb1" path="res://assets/sprite_sheets/Character-Male.png" id="2_hupx2"]
 [ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_w76u6"]
 
@@ -241,4 +241,3 @@ max_speed = 200.0
 metadata/_custom_type_script = "uid://c68gohftincf6"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)

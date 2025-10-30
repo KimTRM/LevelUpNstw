@@ -86,10 +86,12 @@ func _exit_attack_state() -> void:
 
 func _on_agro_area_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
+		print("Player entered agro area")
 		state_machine.change_state(chase_state)
 
 func _on_agro_area_exited(body: Node) -> void:
 	if body.is_in_group("Player"):
+		print("Player exited agro area")
 		if attack_area_component.get_overlapping_bodies().size() > 0:
 			state_machine.change_state(attack_state)
 		else:
