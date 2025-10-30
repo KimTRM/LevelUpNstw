@@ -51,3 +51,6 @@ func add_ui(ui_name: String, scene: PackedScene) -> Node:
 	add_child(instance)
 	ui_screens[ui_name] = instance
 	return instance
+
+func has_ui(ui_name: String) -> bool:
+	return ui_screens.has(ui_name)

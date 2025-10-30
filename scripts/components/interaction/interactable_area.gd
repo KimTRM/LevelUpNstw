@@ -6,9 +6,8 @@ signal hold_progress(interactor, area, progress) # Optional: 0..1 progress while
 signal hold_canceled(interactor, area) # Optional: when hold is released before completion
 
 
-@export var prompt_text: String = "Press E to interact"
-@export var hold_prompt_text: String = "Hold E to interact"
-@export var interact_action: String = "ui_accept"
+@export var prompt_text: String = "Press F to interact"
+@export var hold_prompt_text: String = "Hold F to interact"
 @export var player_group: String = "Player"
 @export var single_use: bool = false
 @export var show_debug_area: bool = false
@@ -58,22 +57,22 @@ func _physics_process(delta: float) -> void:
 
 	if not require_hold:
 		# Tap-to-interact
-		if Input.is_action_just_pressed(interact_action):
+		if Input.is_action_just_pressed("interact"):
 			_perform_interaction(current_interactor)
 		return
 
 	# Hold-to-interact
-	if Input.is_action_just_pressed(interact_action) and not _is_holding:
+	if Input.is_action_just_pressed("interact") and not _is_holding:
 		_start_hold()
 
 	if _is_holding:
-		if Input.is_action_pressed(interact_action):
+		if Input.is_action_pressed("interact"):
 			_hold_elapsed += delta
 			var progress: float = clamp(_hold_elapsed / hold_duration, 0.0, 1.0)
 			hold_progress.emit(current_interactor, self, progress)
 			if _hold_elapsed >= hold_duration:
 				_complete_hold()
-		elif Input.is_action_just_released(interact_action):
+		elif Input.is_action_just_released("interact"):
 			_cancel_hold_if_any()
 
 
@@ -97,7 +96,7 @@ func _cancel_hold_if_any() -> void:
 
 
 func _perform_interaction(interactor: Node) -> void:
-	emit_signal("interacted", interactor, self)
+	interacted.emit(interactor, self)
 
 	if single_use:
 		used = true
@@ -114,13 +113,28 @@ func _is_valid_interactor(body: Node) -> bool:
 
 
 func _show_prompt(_show: bool) -> void:
+	var key := "interaction_prompt"
 	if _show:
-		var text := hold_prompt_text if require_hold else prompt_text
-		var interaction: Interaction = UiManager.add_ui("interaction_prompt", load("uid://dcpv3ggsk0hyf"))
-		interaction.set_button_text(text)
-		UiManager.show_ui("interaction_prompt")
+		var _text := hold_prompt_text if require_hold else prompt_text
+		
+		# Check if UI already exists
+		if not UiManager.has_ui(key):
+			var scene: PackedScene = load("uid://dcpv3ggsk0hyf")
+			UiManager.add_ui(key, scene)
+		
+		# Bind this interactable area to the UI
+		var interaction: Interaction = UiManager.ui_screens.get(key) as Interaction
+		if interaction:
+			interaction.bind_to_interactable(self)
+			interaction.set_button_text(_text)
+		
+		UiManager.show_ui(key)
 	else:
-		UiManager.hide_ui("interaction_prompt")
+		# Unbind when hiding
+		var interaction: Interaction = UiManager.ui_screens.get(key) as Interaction
+		if interaction:
+			interaction.unbind_from_interactable()
+		UiManager.hide_ui(key)
 
 
 func _draw() -> void:
