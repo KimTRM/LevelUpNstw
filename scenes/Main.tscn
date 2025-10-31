@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bo8prncexggb1" path="res://assets/sprite_sheets/Character-Male.png" id="5_jlsqs"]
 [ext_resource type="Script" uid="uid://bkrqcx7573o04" path="res://scripts/components/stats.gd" id="6_q8u5g"]
 
-[sub_resource type="Resource" id="Resource_jlsqs"]
+[sub_resource type="Resource" id="Resource_q8u5g"]
 resource_local_to_scene = true
 script = ExtResource("6_q8u5g")
 elemental_affinity = 1
@@ -18,12 +18,12 @@ max_health = 1000
 base_attack = 100
 metadata/_custom_type_script = "uid://bkrqcx7573o04"
 
-[sub_resource type="Resource" id="Resource_q8u5g"]
+[sub_resource type="Resource" id="Resource_lhr70"]
 resource_local_to_scene = true
 script = ExtResource("4_nxtc6")
 player_name = "ApoyBagani"
 sprite = ExtResource("5_jlsqs")
-stats = SubResource("Resource_jlsqs")
+stats = SubResource("Resource_q8u5g")
 metadata/_custom_type_script = "uid://5qpvnor6pvek"
 
 [node name="Main" type="Node2D"]
@@ -43,7 +43,7 @@ position = Vector2(642, 335)
 
 [node name="Player" parent="Entities" instance=ExtResource("3_c01mt")]
 position = Vector2(488, 292)
-player_resource = SubResource("Resource_q8u5g")
+player_resource = SubResource("Resource_lhr70")
 
 [node name="SpwanPoints" type="Node" parent="."]
 

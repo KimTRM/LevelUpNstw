@@ -7,6 +7,8 @@ extends Node
 @export var indicator_duration: float = 1.5
 @export var spawn_appear_duration: float = 0.35
 
+var rift_scene: PackedScene = preload("uid://jpay2ha6ca6y")
+
 var _spawned_count: int = 0
 var _timer: Timer
 var _is_wave_running: bool = false
@@ -63,28 +65,24 @@ func spawn_wave() -> void:
 		spawn_enemy(enemy_scenes[i], spawn_positions[i])
 
 func show_spawn_indicator(pos: Vector2) -> void:
-	var indicator := Sprite2D.new()
-	indicator.texture = preload("uid://cqvojvyd2q7wf")
+	var indicator := rift_scene.instantiate()
 	indicator.global_position = pos
-	indicator.scale = Vector2.ZERO
-	indicator.modulate.a = 0.0
 	
 	get_parent().add_child(indicator)
 
-	# Animate: scale 0 -> 1 and fade 0 -> 1 over indicator_duration
-	var tween := indicator.create_tween().set_parallel(true)
-	tween.tween_property(indicator, "scale", Vector2.ONE, indicator_duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.tween_property(indicator, "modulate:a", 1.0, indicator_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	var indicator_animation_player := indicator.get_node_or_null("AnimationPlayer") as AnimationPlayer
+	indicator_animation_player.speed_scale = 1.5
+	indicator_animation_player.play("opening")
+	await indicator_animation_player.animation_finished
 
-	# After spawn, fade out quickly and free (doesn't block spawning)
-	tween.chain().set_parallel(true)
-	tween.tween_property(indicator, "scale", Vector2.ZERO, 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
-	tween.tween_property(indicator, "modulate:a", 0.0, 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-	tween.finished.connect(
-		func():
-			if is_instance_valid(indicator):
-				indicator.queue_free()
-	)
+	indicator_animation_player.speed_scale = 1.0
+	indicator_animation_player.play("Idle")
+	await indicator_animation_player.animation_finished
+
+	indicator_animation_player.speed_scale = 1.5
+	indicator_animation_player.play_backwards("opening")
+	await indicator_animation_player.animation_finished
+	indicator.queue_free()
 
 func spawn_enemy(enemy_to_spawn: PackedScene, pos: Vector2) -> void:
 	var instance = enemy_to_spawn.instantiate()
