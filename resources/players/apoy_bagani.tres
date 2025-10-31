@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ApoyBagani" load_steps=5 format=3 uid="uid://b35at8uw3aue5"]
+
+[ext_resource type="Script" uid="uid://r8g0behr1ym4" path="res://scripts/player/apoy_bagani/apoy_bagani.gd" id="1_bpu12"]
+[ext_resource type="Texture2D" uid="uid://bo8prncexggb1" path="res://assets/sprite_sheets/Character-Male.png" id="2_bpu12"]
+[ext_resource type="Script" uid="uid://bkrqcx7573o04" path="res://scripts/components/stats.gd" id="3_ltgu8"]
+
+[sub_resource type="Resource" id="Resource_ltgu8"]
+resource_local_to_scene = true
+script = ExtResource("3_ltgu8")
+elemental_affinity = 1
+max_health = 1000
+base_attack = 100
+metadata/_custom_type_script = "uid://bkrqcx7573o04"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_bpu12")
+player_name = "ApoyBagani"
+sprite = ExtResource("2_bpu12")
+stats = SubResource("Resource_ltgu8")
+metadata/_custom_type_script = "uid://5qpvnor6pvek"

@@ -1,10 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctut3i5rxtike"]
+[gd_scene load_steps=16 format=3 uid="uid://ctut3i5rxtike"]
 
 [ext_resource type="Script" uid="uid://cxj7ksj4h3vwa" path="res://scripts/enemies/shadow_sprite/shadow_sprite.gd" id="1_466dq"]
-[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="2_f4qck"]
+[ext_resource type="Script" uid="uid://7nsq2rbewrws" path="res://scripts/components/health/health_component.gd" id="2_f4qck"]
+[ext_resource type="Script" uid="uid://ckdkjuya1ymc0" path="res://scripts/components/damage/hurtbox_component.gd" id="2_m5hp6"]
 [ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_m5hp6"]
 [ext_resource type="PackedScene" uid="uid://cq0giqel8hq1k" path="res://scenes/components/enemy_combat/AgroAreaComponent.tscn" id="4_5b3pr"]
 [ext_resource type="PackedScene" uid="uid://c0tkiwa7aiiyo" path="res://scenes/components/enemy_combat/AttackAreaComponent.tscn" id="5_eii7y"]
+[ext_resource type="PackedScene" uid="uid://cjsu4tkodakpe" path="res://scenes/ui/health_bar.tscn" id="6_health_bar"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_466dq"]
+radius = 6.9999757
+height = 17.999937
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_466dq"]
 load_path = "res://.godot/imported/Shadow sprite.png-b410e733278d675834b944020d79f7c9.ctex"
@@ -46,9 +52,8 @@ _data = {
 &"RESET": SubResource("Animation_gimt1")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_466dq"]
-radius = 6.9999757
-height = 17.999937
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5hp6"]
+radius = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4qck"]
 radius = 247.0
@@ -62,6 +67,10 @@ collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_466dq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.0026305418
+shape = SubResource("CapsuleShape2D_466dq")
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -99,28 +108,34 @@ libraries = {
 }
 autoplay = "Idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 0.0026305418
-shape = SubResource("CapsuleShape2D_466dq")
-
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("2_f4qck")
-
 [node name="VelocityComponent" type="Node" parent="."]
 script = ExtResource("3_m5hp6")
 metadata/_custom_type_script = "uid://c68gohftincf6"
 
-[node name="AgroAreaComponent" parent="." instance=ExtResource("4_5b3pr")]
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_f4qck")
+metadata/_custom_type_script = "uid://7nsq2rbewrws"
+
+[node name="HealthBar" parent="." instance=ExtResource("6_health_bar")]
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("2_m5hp6")
+metadata/_custom_type_script = "uid://ckdkjuya1ymc0"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_m5hp6")
+
+[node name="AgroAreaComponent" parent="." groups=["Enemy"] instance=ExtResource("4_5b3pr")]
 collision_mask = 5
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AgroAreaComponent"]
 shape = SubResource("CircleShape2D_f4qck")
 
 [node name="AttackAreaComponent" parent="." instance=ExtResource("5_eii7y")]
+collision_layer = 1
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackAreaComponent"]
 shape = SubResource("CircleShape2D_atops")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.5

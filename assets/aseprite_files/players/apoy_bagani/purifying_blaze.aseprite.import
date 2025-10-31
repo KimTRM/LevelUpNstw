@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ceky1g2htaj5m"
+path="res://.godot/imported/purifying_blaze.aseprite-962d0388f33b01e48f67fc7f6cf8dbbb.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/players/apoy_bagani/purifying_blaze.aseprite"
+dest_files=["res://.godot/imported/purifying_blaze.aseprite-962d0388f33b01e48f67fc7f6cf8dbbb.res"]
+
+[params]
+

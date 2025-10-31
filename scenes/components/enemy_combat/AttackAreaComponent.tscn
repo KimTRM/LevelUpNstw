@@ -4,4 +4,5 @@
 
 [node name="AttackAreaComponent" type="Area2D"]
 modulate = Color(1, 0, 0, 0.3137255)
+collision_layer = 0
 script = ExtResource("1_mkbu2")

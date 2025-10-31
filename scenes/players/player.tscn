@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://ygs67n5rvyjg"]
 
-[ext_resource type="Script" uid="uid://bqw5xni4swlac" path="res://scripts/player/base_player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://bo8prncexggb1" path="res://assets/sprite_sheets/Character-Male.png" id="2_gmlin"]
-[ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_gmlin"]
+[ext_resource type="Script" uid="uid://bqw5xni4swlac" path="res://scripts/player/player.gd" id="1_kc87p"]
+[ext_resource type="Texture2D" uid="uid://bo8prncexggb1" path="res://assets/sprite_sheets/Character-Male.png" id="2_edvpf"]
+[ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_olb2f"]
 
 [sub_resource type="Animation" id="Animation_lvxji"]
 length = 0.98
@@ -185,17 +185,17 @@ _data = {
 radius = 7.0
 height = 24.0
 
-[node name="BasePlayer" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
 collision_mask = 38
 motion_mode = 1
-script = ExtResource("1_g2els")
+script = ExtResource("1_kc87p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, -9)
-texture = ExtResource("2_gmlin")
+texture = ExtResource("2_edvpf")
 hframes = 6
 vframes = 5
 frame = 1
@@ -230,7 +230,7 @@ shape = SubResource("CapsuleShape2D_gmlin")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="VelocityComponent" type="Node" parent="."]
-script = ExtResource("3_gmlin")
+script = ExtResource("3_olb2f")
 max_speed = 200.0
 metadata/_custom_type_script = "uid://c68gohftincf6"
 

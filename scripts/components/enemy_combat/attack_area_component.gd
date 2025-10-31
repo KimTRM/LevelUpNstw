@@ -8,9 +8,9 @@ func _ready() -> void:
 	body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body: Node) -> void:
-	if body is BasePlayer || body is Altar:
+	if body.is_in_group("Player") || body.is_in_group("Altar"):
 		attack_area_entered.emit(body)
 
 func _on_body_exited(body: Node) -> void:
-	if body is BasePlayer || body is Altar:
+	if body.is_in_group("Player") || body.is_in_group("Altar"):
 		attack_area_exited.emit(body)
