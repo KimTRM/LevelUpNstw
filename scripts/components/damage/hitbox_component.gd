@@ -33,7 +33,7 @@ func _ready() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is HurtboxComponent:
 		var hurtbox: HurtboxComponent = area
-		var hit_damage = attacker_stats.damage if attacker_stats else damage
+		var hit_damage = attacker_stats.base_attack if attacker_stats else damage
 		hurtbox.receive_hit(hit_damage)
 
 

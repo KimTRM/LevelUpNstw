@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://c1p3rkja6i332"]
+[gd_scene load_steps=7 format=4 uid="uid://c1p3rkja6i332"]
 
 [ext_resource type="PackedScene" uid="uid://ctut3i5rxtike" path="res://scenes/enemies/shadow_sprite/shadow_sprite.tscn" id="3_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://ygs67n5rvyjg" path="res://scenes/players/player.tscn" id="3_c01mt"]
 [ext_resource type="PackedScene" uid="uid://3rr1ia230r8w" path="res://scenes/environment/tilemap/grass_tile.tscn" id="3_rarhs"]
 [ext_resource type="PackedScene" uid="uid://cbhkrmfmi6adw" path="res://scenes/environment/altar.tscn" id="3_vcsgt"]
+[ext_resource type="Resource" uid="uid://b35at8uw3aue5" path="res://resources/players/apoy_bagani.tres" id="4_c01mt"]
 [ext_resource type="Script" path="res://scripts/components/enemy_spwan_point.gd" id="4_rarhs"]
-[ext_resource type="PackedScene" uid="uid://cs8ghcnp1yxkt" path="res://scenes/players/apoy_bagani/apoy_bagani.tscn" id="5_vcsgt"]
 
 [node name="Main" type="Node2D"]
 
@@ -17,8 +18,9 @@ y_sort_enabled = true
 [node name="Altar" parent="Entities" instance=ExtResource("3_vcsgt")]
 position = Vector2(642, 335)
 
-[node name="ApoyBagani" parent="Entities" instance=ExtResource("5_vcsgt")]
-position = Vector2(574, 324)
+[node name="Player" parent="Entities" instance=ExtResource("3_c01mt")]
+position = Vector2(488, 292)
+player_resource = ExtResource("4_c01mt")
 
 [node name="SpwanPoints" type="Node" parent="."]
 

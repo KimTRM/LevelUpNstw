@@ -1,21 +1,31 @@
-class_name Stats
-extends Resource
+class_name Stats extends Resource
 
 enum Faction {
 	PLAYER,
 	ENEMY
 }
 
+enum ElementalAffinity {
+	NONE,
+	APOY,
+	TUBIG,
+	LUPA,
+	HANGIN
+}
+
+@export var elemental_affinity: ElementalAffinity = ElementalAffinity.NONE
 @export var max_health: int = 100
-@export var damage: int = 10
+@export var base_attack: int = 10
+@export var base_defense: int = 10
+@export var base_movement_speed: float = 200.0
 @export var faction: Faction = Faction.PLAYER
 
-var current_health: int = 100
+var current_health: int = max_health
 
-func _init(_max_health: int = 100, _damage: int = 10, _faction: Faction = Faction.PLAYER) -> void:
+func _init(_max_health: int = 100, _base_attack: int = 10, _faction: Faction = Faction.PLAYER) -> void:
 	max_health = _max_health
 	current_health = _max_health
-	damage = _damage
+	base_attack = _base_attack
 	faction = _faction
 
 func take_damage(amount: int) -> void:

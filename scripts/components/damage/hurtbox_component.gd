@@ -19,4 +19,3 @@ func _on_area_entered(area: Area2D) -> void:
 func receive_hit(damage: int) -> void:
 	if health_component:
 		health_component.take_damage(damage)
-		print("Hurtbox received ", damage, " damage.")
