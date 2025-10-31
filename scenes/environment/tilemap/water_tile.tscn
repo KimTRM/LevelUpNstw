@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://3rr1ia230r8w"]
+[gd_scene load_steps=20 format=3 uid="uid://c34se0ysg86q5"]
 
-[ext_resource type="Texture2D" uid="uid://3m6u5hf1tqds" path="res://assets/tilemap/grass-tiles.png" id="1_lbsgd"]
+[ext_resource type="Texture2D" uid="uid://cunk57oi1m63d" path="res://assets/tilemap/water_tiles.png" id="1_jjnnh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lbsgd"]
 vertices = PackedVector2Array(8, 16, -8, 16, -8, -8, 8, -8)
@@ -99,32 +99,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(8, -8, 8, 8, -16, 8, -1
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jgjvn"]
-texture = ExtResource("1_lbsgd")
+texture = ExtResource("1_jjnnh")
 texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/terrain_set = 0
-0:0/0/terrain = 0
-0:0/0/terrains_peering_bit/bottom_side = 0
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_lbsgd")
-1:0/0 = 0
-1:0/0/terrain_set = 0
-1:0/0/terrain = 0
-1:0/0/terrains_peering_bit/right_side = 0
-1:0/0/terrains_peering_bit/bottom_side = 0
-1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_rfvs8")
-2:0/0 = 0
-2:0/0/terrain_set = 0
-2:0/0/terrain = 0
-2:0/0/terrains_peering_bit/right_side = 0
-2:0/0/terrains_peering_bit/bottom_side = 0
-2:0/0/terrains_peering_bit/left_side = 0
-2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_a5dw2")
-3:0/0 = 0
-3:0/0/terrain_set = 0
-3:0/0/terrain = 0
-3:0/0/terrains_peering_bit/bottom_side = 0
-3:0/0/terrains_peering_bit/left_side = 0
-3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_gj0d8")
 5:0/0 = 0
 5:0/0/terrain_set = 0
 5:0/0/terrain = 0
@@ -170,12 +146,6 @@ texture_region_size = Vector2i(32, 32)
 11:0/0/terrains_peering_bit/bottom_left_corner = 0
 11:0/0/terrains_peering_bit/left_side = 0
 11:0/0/terrains_peering_bit/top_side = 0
-0:1/0 = 0
-0:1/0/terrain_set = 0
-0:1/0/terrain = 0
-0:1/0/terrains_peering_bit/bottom_side = 0
-0:1/0/terrains_peering_bit/top_side = 0
-0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_uktrc")
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/terrain = 0
@@ -249,11 +219,6 @@ texture_region_size = Vector2i(32, 32)
 11:1/0/terrains_peering_bit/left_side = 0
 11:1/0/terrains_peering_bit/top_side = 0
 11:1/0/terrains_peering_bit/top_right_corner = 0
-0:2/0 = 0
-0:2/0/terrain_set = 0
-0:2/0/terrain = 0
-0:2/0/terrains_peering_bit/top_side = 0
-0:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_2s2w8")
 1:2/0 = 0
 1:2/0/terrain_set = 0
 1:2/0/terrain = 0
@@ -445,14 +410,49 @@ texture_region_size = Vector2i(32, 32)
 12:3/0/terrains_peering_bit/top_left_corner = 0
 12:3/0/terrains_peering_bit/top_side = 0
 12:3/0/terrains_peering_bit/top_right_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/top_side = 0
+0:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_2s2w8")
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_uktrc")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_lbsgd")
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/right_side = 0
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/left_side = 0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_a5dw2")
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_rfvs8")
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/terrains_peering_bit/bottom_side = 0
+3:0/0/terrains_peering_bit/left_side = 0
+3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_gj0d8")
 
 [sub_resource type="TileSet" id="TileSet_78ene"]
 tile_size = Vector2i(32, 32)
 terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "Grass"
+terrain_set_0/terrain_0/name = "Water"
 terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_jgjvn")
 
-[node name="GrassTile" type="TileMapLayer"]
+[node name="WaterTile" type="TileMapLayer"]
 tile_set = SubResource("TileSet_78ene")
