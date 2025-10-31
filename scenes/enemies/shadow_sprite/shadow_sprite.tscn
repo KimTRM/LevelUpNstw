@@ -127,7 +127,7 @@ metadata/_custom_type_script = "uid://ckdkjuya1ymc0"
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_m5hp6")
 
-[node name="AgroAreaComponent" parent="." instance=ExtResource("4_5b3pr")]
+[node name="AgroAreaComponent" parent="." groups=["Enemy"] instance=ExtResource("4_5b3pr")]
 collision_mask = 5
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AgroAreaComponent"]

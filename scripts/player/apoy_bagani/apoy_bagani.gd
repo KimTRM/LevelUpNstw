@@ -21,13 +21,22 @@ func cast_basic_attack() -> void:
 	hitbox_instance.global_position = player.global_position + forward * 16
 	hitbox_instance.global_position = player.global_position + forward * 16
 
-	
 func cast_skill() -> void:
 	var projectile = flame_strike_scene.instantiate()
-
-	var direction = (player.get_global_mouse_position() - player.global_position).normalized()
+	var direction: Vector2
+	
+	if player.auto_target_skill:
+		var nearest_enemy = player.find_nearest_enemy()
+		if nearest_enemy:
+			direction = (nearest_enemy.global_position - player.global_position).normalized()
+		else:
+			direction = (player.get_global_mouse_position() - player.global_position).normalized()
+	else:
+		direction = (player.get_global_mouse_position() - player.global_position).normalized()
+	
 	projectile.cast(player.global_position, direction)
 	player.get_parent().add_child(projectile)
+
 
 func cast_burst() -> void:
 	var purifying_blaze = purifying_blaze_scene.instantiate()

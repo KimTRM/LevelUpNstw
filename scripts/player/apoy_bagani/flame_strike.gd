@@ -4,7 +4,7 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var speed: float = 300.0
-@export var max_distance: float = 500.0
+@export var max_distance: float = 100.0
 @export var pierce_count: int = 1 # How many enemies it can hit before destroying
 @export var damage: int = 10
 
@@ -23,7 +23,6 @@ func _ready() -> void:
 	lifetime_timer.start()
 
 	hitbox.area_entered.connect(_on_hitbox_area_entered)
-	hitbox.body_entered.connect(_on_hitbox_body_entered)
 
 func _physics_process(delta: float) -> void:
 	if not is_active:
@@ -51,29 +50,9 @@ func cast(from_position: Vector2, target_direction: Vector2) -> void:
 	rotation = direction.angle()
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	# Check if it's an enemy
-	if area.get_parent().is_in_group("Enemy"):
-		var enemy = area.get_parent()
-		
-		# Don't hit the same enemy twice
-		if hit_enemies.has(enemy):
-			return
-		
-		hit_enemies.append(enemy)
-		
-		# Deal damage if enemy has health component
-		var health_component = enemy.get_node_or_null("HealthComponent")
-		if health_component and health_component.has_method("take_damage"):
-			health_component.take_damage(damage)
-		
-		# Check pierce count
-		if hit_enemies.size() >= pierce_count:
-			_disperse()
-
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	# Destroy on collision with walls/obstacles
-	if body.is_in_group("Wall") or body is TileMap:
+	if area is HurtboxComponent:
 		_disperse()
+
 
 func _disperse() -> void:
 	animation_player.play("strike")
