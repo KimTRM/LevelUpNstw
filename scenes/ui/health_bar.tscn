@@ -1,11 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://cjsu4tkodakpe"]
 
-[ext_resource type="Script" path="res://scripts/components/health/health_bar.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/ui/health_bar.gd" id="1_1vcc2"]
 
 [node name="HealthBar" type="Node2D"]
-script = ExtResource("1")
+script = ExtResource("1_1vcc2")
 
 [node name="BarBackground" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(10, 0)
 mouse_filter = 2
 color = Color(0.2, 0.2, 0.2, 1)
 

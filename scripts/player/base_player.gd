@@ -59,7 +59,7 @@ func _update_attack() -> void:
 		# dai ini pag iroon
 		var rect := RectangleShape2D.new()
 		rect.size = Vector2(24, 12)
-		var hb := Hitbox.new(stats, 0.12, rect)
+		var hb := HitboxComponent.new(stats, 0.12, rect)
 		add_child(hb)
 		# kapag sain ka naharap doon din ma direct ang casting nya
 		var forward := Vector2.ZERO

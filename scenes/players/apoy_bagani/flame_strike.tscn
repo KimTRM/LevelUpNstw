@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4uupg5j6kuka" path="res://scripts/player/apoy_bagani/flame_strike.gd" id="1_pl7qg"]
 [ext_resource type="Texture2D" uid="uid://cpil5qk15d0ya" path="res://assets/sprite_sheets/players/fire_bagani/flame_strike.png" id="1_q6dfy"]
-[ext_resource type="Script" uid="uid://c6idq7beq234q" path="res://scripts/components/damage/hitbox.gd" id="3_awdv6"]
+[ext_resource type="Script" uid="uid://c6idq7beq234q" path="res://scripts/components/damage/hitbox_component.gd" id="3_awdv6"]
 
 [sub_resource type="Animation" id="Animation_pl7qg"]
 length = 0.4
@@ -78,7 +78,6 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_q6dfy")
 hframes = 5
 vframes = 4
-frame = 16
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -103,10 +102,10 @@ libraries = {
 }
 autoplay = "shooting"
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="HitboxComponent" type="Area2D" parent="."]
 script = ExtResource("3_awdv6")
 metadata/_custom_type_script = "uid://c6idq7beq234q"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(1, -1)
 shape = SubResource("CircleShape2D_q6dfy")

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var hitbox: Hitbox = $Hitbox
+@onready var hitbox: HitboxComponent = $HitboxComponent
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var speed: float = 300.0
@@ -42,7 +42,11 @@ func cast(from_position: Vector2, target_direction: Vector2) -> void:
 	global_position = from_position
 	direction = target_direction.normalized()
 	is_active = true
-	
+
+	scale = Vector2.ZERO
+
+	var tween := create_tween()
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.25)
 	# Rotate sprite to face direction
 	rotation = direction.angle()
 

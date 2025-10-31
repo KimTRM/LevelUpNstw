@@ -28,10 +28,10 @@ func _physics_process(_delta: float) -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("skill"):
 		var projectile = flame_strike_scene.instantiate()
-		get_parent().add_child(projectile)
 	
 		var direction = (get_global_mouse_position() - global_position).normalized()
 		projectile.cast(global_position, direction)
+		get_parent().add_child(projectile)
 		
 	if Input.is_action_just_pressed("burst"):
 		var purifying_blaze = _purifying_blaze_scene.instantiate()
@@ -59,7 +59,7 @@ func update_animation():
 func _cast_basic_attack() -> void:
 	var rect := RectangleShape2D.new()
 	rect.size = Vector2(24, 12)
-	var hitbox_instance: Hitbox = Hitbox.new(stats, 0.12, rect)
+	var hitbox_instance: HitboxComponent = HitboxComponent.new(stats, 0.12, rect)
 	add_child(hitbox_instance)
 		
 	var forward := Vector2.ZERO

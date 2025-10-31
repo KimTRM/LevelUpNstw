@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://0ybpa4my4rst" path="res://assets/sprite_sheets/players/fire_bagani/purifying_blaze.png" id="1_14ivb"]
 [ext_resource type="Script" uid="uid://2tjmnql2pwcg" path="res://scripts/player/apoy_bagani/purifying_blaze.gd" id="1_mtfct"]
-[ext_resource type="Script" uid="uid://c6idq7beq234q" path="res://scripts/components/damage/hitbox.gd" id="3_unfe4"]
+[ext_resource type="Script" uid="uid://c6idq7beq234q" path="res://scripts/components/damage/hitbox_component.gd" id="3_unfe4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_unfe4"]
 atlas = ExtResource("1_14ivb")
@@ -191,8 +191,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_14ivb"]
-radius = 59.005917
-height = 165.99684
+radius = 52.992462
+height = 157.9998
 
 [node name="PurifyingBlaze" type="Node2D"]
 y_sort_enabled = true
@@ -200,7 +200,6 @@ script = ExtResource("1_mtfct")
 
 [node name="InnerRing" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_pbkhr")
 animation = &"Ignite"
@@ -224,7 +223,6 @@ metadata/_aseprite_wizard_source_file_hash_ = "c080778d3c64da0a7896408437436c7c"
 
 [node name="MiddleRing" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nrou7")
@@ -271,12 +269,12 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "c080778d3c64da0a7896408437436c7c"
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="HitboxComponent" type="Area2D" parent="."]
 script = ExtResource("3_unfe4")
 metadata/_custom_type_script = "uid://c6idq7beq234q"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(2.3841754e-07, -6.985195e-10)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-1.9999999, 5.9604645e-08)
 rotation = 1.5693015
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("CapsuleShape2D_14ivb")
