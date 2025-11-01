@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cbhkrmfmi6adw"]
 
-[ext_resource type="Texture2D" uid="uid://cn8ipxr0k73gx" path="res://assets/environment/Altar.png" id="1_3lkgs"]
 [ext_resource type="Script" uid="uid://74r2jy2b60bo" path="res://scripts/environment/altar/altar.gd" id="1_uc05o"]
+[ext_resource type="Texture2D" uid="uid://bidry6h4jmebj" path="res://assets/environment/Altar(new).png" id="2_wuh0k"]
 [ext_resource type="Script" uid="uid://cu48dsqtvdwmf" path="res://scripts/components/interaction/interactable_area.gd" id="3_wuh0k"]
 
 [sub_resource type="Animation" id="Animation_uc05o"]
@@ -104,9 +104,10 @@ script = ExtResource("1_uc05o")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -24)
-texture = ExtResource("1_3lkgs")
+texture = ExtResource("2_wuh0k")
 hframes = 4
 vframes = 3
+frame = 11
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -117,7 +118,7 @@ metadata/_aseprite_wizard_config_ = {
 "only_visible": false,
 "player": "AnimationPlayer",
 "slice": "",
-"source": "res://assets/aseprite_files/environment/structure/Altar.aseprite"
+"source": "res://assets/aseprite_files/environment/structure/Altar(new).aseprite"
 }
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
@@ -125,7 +126,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "slice_section": false
 }
-metadata/_aseprite_wizard_source_file_hash_ = "d1989c3f2c5d70264fe3fb3578ad7d2a"
+metadata/_aseprite_wizard_source_file_hash_ = "8a13cb1659810110c86764d3cff34ba7"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbvu4oeqdwy7a"
-path="res://.godot/imported/Lightning-animation.png-d79da33d54274ca42a6e6b926df8096d.ctex"
+uid="uid://3m6u5hf1tqds"
+path="res://.godot/imported/grass-tiles.png-c00ee6fccbca0335a233087dd6f7621e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite_sheets/Lightning-animation.png"
-dest_files=["res://.godot/imported/Lightning-animation.png-d79da33d54274ca42a6e6b926df8096d.ctex"]
+source_file="res://assets/tilemap/grass-tiles.png"
+dest_files=["res://.godot/imported/grass-tiles.png-c00ee6fccbca0335a233087dd6f7621e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1ftkhkvus6ms"
-path="res://.godot/imported/Shadow sprite.png-b410e733278d675834b944020d79f7c9.ctex"
+uid="uid://dryvtpgving2g"
+path="res://.godot/imported/stone_barrier.png-8e8ef499f21e9a15d81c53fe04cdc479.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite_sheets/Shadow sprite.png"
-dest_files=["res://.godot/imported/Shadow sprite.png-b410e733278d675834b944020d79f7c9.ctex"]
+source_file="res://assets/environment/stone_barrier.png"
+dest_files=["res://.godot/imported/stone_barrier.png-8e8ef499f21e9a15d81c53fe04cdc479.ctex"]
 
 [params]
 
