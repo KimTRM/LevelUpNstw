@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://djvw53ldg5ohq"
+path="res://.godot/imported/interactionbar.aseprite-5b2e8ea4506e51b3a910b8b74fb7f277.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/ui/interaction_ui/interactionbar.aseprite"
+dest_files=["res://.godot/imported/interactionbar.aseprite-5b2e8ea4506e51b3a910b8b74fb7f277.res"]
+
+[params]
+

@@ -1,7 +1,87 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcpv3ggsk0hyf"]
+[gd_scene load_steps=16 format=3 uid="uid://dcpv3ggsk0hyf"]
 
-[ext_resource type="PackedScene" uid="uid://dmcaagi31ij5x" path="res://scenes/ui/rock_button.tscn" id="1_t8yqb"]
 [ext_resource type="Script" uid="uid://dr57njry3whqy" path="res://scripts/ui/interaction.gd" id="1_v0db6"]
+[ext_resource type="Texture2D" uid="uid://c023bcr0805c" path="res://assets/ui/interaction_ui/button_label.png" id="2_v0db6"]
+[ext_resource type="Texture2D" uid="uid://chfk8mgc44c5i" path="res://assets/ui/interaction_ui/interaction_label.png" id="3_16tp8"]
+[ext_resource type="Texture2D" uid="uid://cdibdt257454h" path="res://assets/ui/bar_ui/bar_container.png" id="4_jaso2"]
+[ext_resource type="Texture2D" uid="uid://dyng41pjyjq8d" path="res://assets/ui/bar_ui/bar_fill.png" id="5_0ofhw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16tp8"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+texture = ExtResource("2_v0db6")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v0db6"]
+load_path = "res://.godot/imported/button_label.png-40e6970fd5a056522a398c2e9f65976d.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_afvmg"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+texture = SubResource("CompressedTexture2D_v0db6")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.7661154, 0.7661154, 0.7661154, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jaso2"]
+texture = ExtResource("3_16tp8")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_16tp8"]
+load_path = "res://.godot/imported/interaction_label.png-2f720927abd6b2fcf23525e67528bc17.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ofhw"]
+texture = SubResource("CompressedTexture2D_16tp8")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.7009443, 0.7009443, 0.7009443, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f5wsw"]
+load_path = "res://.godot/imported/interaction_label.png-2f720927abd6b2fcf23525e67528bc17.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l52nw"]
+texture = SubResource("CompressedTexture2D_f5wsw")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.88559586, 0.88559586, 0.88559586, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f5wsw"]
+texture = ExtResource("4_jaso2")
+texture_margin_left = 11.0
+texture_margin_top = 11.0
+texture_margin_right = 11.0
+texture_margin_bottom = 11.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxyqr"]
+texture = ExtResource("5_0ofhw")
+texture_margin_left = 11.0
+texture_margin_top = 11.0
+texture_margin_right = 11.0
+texture_margin_bottom = 11.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
 [node name="Interaction" type="MarginContainer"]
 anchors_preset = 15
@@ -15,14 +95,59 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 16
 script = ExtResource("1_v0db6")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 360
 
-[node name="RockButton" parent="MarginContainer" instance=ExtResource("1_t8yqb")]
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = -20.0
+offset_right = 59.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Control"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -18.0
+offset_right = 146.0
+offset_bottom = 18.0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Control/Control/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(15, 10)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.17414427, 0.17414427, 0.17414427, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_16tp8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_afvmg")
+text = "F"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control/Control/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_jaso2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0ofhw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l52nw")
+text = "Interact"
+alignment = 0
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
@@ -30,4 +155,7 @@ custom_minimum_size = Vector2(350, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxTexture_f5wsw")
+theme_override_styles/fill = SubResource("StyleBoxTexture_nxyqr")
+value = 10.82
 show_percentage = false

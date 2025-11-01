@@ -139,6 +139,8 @@ polygon = PackedVector2Array(-8, -17.988796, -9, 4.0112047, -24, 6.0112047, -24,
 
 [node name="InteractableArea" type="Area2D" parent="."]
 script = ExtResource("3_wuh0k")
+prompt_text = "Press to interact"
+hold_prompt_text = "Hold to interact"
 single_use = true
 require_hold = true
 metadata/_custom_type_script = "uid://cu48dsqtvdwmf"
