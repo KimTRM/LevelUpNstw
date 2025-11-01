@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cfm7ql6r3vfb3" path="res://scripts/enemies/shadow_sprite/lighning_attack.gd" id="1_ns2bs"]
 [ext_resource type="Texture2D" uid="uid://dbvu4oeqdwy7a" path="res://assets/sprite_sheets/enemies/shadow_sprite/Lightning-animation.png" id="1_s7xyr"]
+[ext_resource type="Texture2D" uid="uid://dbvu4oeqdwy7a" path="res://assets/sprite_sheets/shadow_sprite/Lightning-animation.png" id="1_s7xyr"]
 
 [sub_resource type="Animation" id="Animation_ns2bs"]
 length = 1.12

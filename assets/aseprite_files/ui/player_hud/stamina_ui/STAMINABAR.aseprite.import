@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bft31rhj4d044"
+path="res://.godot/imported/STAMINABAR.aseprite-a90b5552a788ae303b46d942337b4605.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/ui/player_hud/stamina_ui/STAMINABAR.aseprite"
+dest_files=["res://.godot/imported/STAMINABAR.aseprite-a90b5552a788ae303b46d942337b4605.res"]
+
+[params]
+

@@ -1,10 +1,12 @@
 [gd_scene load_steps=12 format=4 uid="uid://c1p3rkja6i332"]
+[gd_scene load_steps=12 format=4 uid="uid://c1p3rkja6i332"]
 
 [ext_resource type="PackedScene" uid="uid://c34se0ysg86q5" path="res://scenes/environment/tilemap/water_tile.tscn" id="1_q8u5g"]
 [ext_resource type="PackedScene" uid="uid://ctut3i5rxtike" path="res://scenes/enemies/shadow_sprite/shadow_sprite.tscn" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://ygs67n5rvyjg" path="res://scenes/players/player.tscn" id="3_c01mt"]
 [ext_resource type="PackedScene" uid="uid://3rr1ia230r8w" path="res://scenes/environment/tilemap/grass_tile.tscn" id="3_rarhs"]
 [ext_resource type="PackedScene" uid="uid://cbhkrmfmi6adw" path="res://scenes/environment/altar.tscn" id="3_vcsgt"]
+[ext_resource type="Script" uid="uid://r8g0behr1ym4" path="res://scripts/player/apoy_bagani/apoy_bagani.gd" id="4_nxtc6"]
 [ext_resource type="Script" uid="uid://r8g0behr1ym4" path="res://scripts/player/apoy_bagani/apoy_bagani.gd" id="4_nxtc6"]
 [ext_resource type="Script" path="res://scripts/components/enemy_spwan_point.gd" id="4_rarhs"]
 [ext_resource type="Texture2D" uid="uid://bo8prncexggb1" path="res://assets/sprite_sheets/Character-Male.png" id="5_jlsqs"]
@@ -25,6 +27,25 @@ player_name = "ApoyBagani"
 sprite = ExtResource("5_jlsqs")
 stats = SubResource("Resource_q8u5g")
 metadata/_custom_type_script = "uid://5qpvnor6pvek"
+[ext_resource type="Texture2D" uid="uid://bo8prncexggb1" path="res://assets/sprite_sheets/Character-Male.png" id="5_jlsqs"]
+[ext_resource type="Script" uid="uid://bkrqcx7573o04" path="res://scripts/components/stats.gd" id="6_q8u5g"]
+[ext_resource type="PackedScene" uid="uid://ki4bk2as56ye" path="res://scenes/ui/player_hud/player_hud.tscn" id="9_q8u5g"]
+
+[sub_resource type="Resource" id="Resource_jlsqs"]
+resource_local_to_scene = true
+script = ExtResource("6_q8u5g")
+elemental_affinity = 1
+max_health = 1000
+base_attack = 100
+metadata/_custom_type_script = "uid://bkrqcx7573o04"
+
+[sub_resource type="Resource" id="Resource_q8u5g"]
+resource_local_to_scene = true
+script = ExtResource("4_nxtc6")
+player_name = "ApoyBagani"
+sprite = ExtResource("5_jlsqs")
+stats = SubResource("Resource_jlsqs")
+metadata/_custom_type_script = "uid://5qpvnor6pvek"
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -44,6 +65,7 @@ position = Vector2(642, 335)
 [node name="Player" parent="Entities" instance=ExtResource("3_c01mt")]
 position = Vector2(488, 292)
 player_resource = SubResource("Resource_lhr70")
+player_resource = SubResource("Resource_q8u5g")
 
 [node name="SpwanPoints" type="Node" parent="."]
 
@@ -70,3 +92,7 @@ position = Vector2(299, 487)
 script = ExtResource("4_rarhs")
 enemy_to_spawn = ExtResource("3_0bbpv")
 count_per_wave = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerHud" parent="CanvasLayer" instance=ExtResource("9_q8u5g")]
