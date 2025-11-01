@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0dsy32u605y5"
-path="res://.godot/imported/Shadow sprite.png-d0ca9d064dcda2c9ddfbae9616b4071a.ctex"
+uid="uid://xipq24es0lu4"
+path="res://.godot/imported/healing_ring.png-009aa67bd84be7ba712935e65e7a07e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite_sheets/enemies/shadow_sprite/Shadow sprite.png"
-dest_files=["res://.godot/imported/Shadow sprite.png-d0ca9d064dcda2c9ddfbae9616b4071a.ctex"]
+source_file="res://assets/sprite_sheets/players/tubig_bagani/healing_ring.png"
+dest_files=["res://.godot/imported/healing_ring.png-009aa67bd84be7ba712935e65e7a07e1.ctex"]
 
 [params]
 

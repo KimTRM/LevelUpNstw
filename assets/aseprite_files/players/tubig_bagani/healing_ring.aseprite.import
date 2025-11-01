@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cdnb2bod8l0ex"
+path="res://.godot/imported/healing_ring.aseprite-5cfda78048ac04d879219a84aa7afd9a.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/players/tubig_bagani/healing_ring.aseprite"
+dest_files=["res://.godot/imported/healing_ring.aseprite-5cfda78048ac04d879219a84aa7afd9a.res"]
+
+[params]
+

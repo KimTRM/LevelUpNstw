@@ -51,9 +51,9 @@ func _update_animation():
 		sprite.flip_h = input_direction.x < 0
 
 	if input_direction != Vector2.ZERO:
-		animation_player.play("walk_" + animation_direction)
+		animation_player.play("walk")
 	else:
-		animation_player.play("idle_" + animation_direction)
+		animation_player.play("idle")
 
 func find_nearest_enemy() -> Node2D:
 	var enemies = get_tree().get_nodes_in_group("Enemy")

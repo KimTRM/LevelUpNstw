@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ki4bk2as56ye"]
+[gd_scene load_steps=40 format=3 uid="uid://ki4bk2as56ye"]
 
 [ext_resource type="Script" uid="uid://b5ohv10sgywnt" path="res://scripts/ui/player_hud/player_hud.gd" id="1_d3tj2"]
 [ext_resource type="Texture2D" uid="uid://cqifdbei3k6xk" path="res://assets/ui/player_hud/health_bar/health_bar.png" id="1_saegx"]
@@ -139,6 +139,13 @@ texture_margin_top = 22.0
 texture_margin_right = 22.0
 texture_margin_bottom = 22.0
 modulate_color = Color(0.880165, 0.880165, 0.880165, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_h1x2m"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_x4jlu"]
+events = [SubResource("InputEventKey_h1x2m")]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d3tj2"]
 load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
@@ -329,6 +336,7 @@ focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_5si8t")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_1nuv2")
 theme_override_styles/hover = SubResource("StyleBoxTexture_36ai7")
+shortcut = SubResource("Shortcut_x4jlu")
 text = "Resume"
 
 [node name="SettingsButton" type="Button" parent="PauseMenu/VBoxContainer"]

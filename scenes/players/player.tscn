@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://ygs67n5rvyjg"]
+[gd_scene load_steps=10 format=3 uid="uid://ygs67n5rvyjg"]
 
 [ext_resource type="Script" uid="uid://bqw5xni4swlac" path="res://scripts/player/player.gd" id="1_kc87p"]
-[ext_resource type="Texture2D" uid="uid://bo8prncexggb1" path="res://assets/sprite_sheets/Character-Male.png" id="2_edvpf"]
+[ext_resource type="Texture2D" uid="uid://cblhepy8rdwp2" path="res://assets/sprite_sheets/bagani_apoy.png" id="2_kc87p"]
 [ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_olb2f"]
 
-[sub_resource type="Animation" id="Animation_lvxji"]
-length = 0.98
+[sub_resource type="Animation" id="Animation_kc87p"]
+length = 1.35
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -26,14 +26,14 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.14, 0.28, 0.42, 0.56, 0.7, 0.84),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 2, 2, 3, 4, 5, 6]
+"values": [0, 1, 2, 3, 0, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_qek5x"]
-length = 1.08
+[sub_resource type="Animation" id="Animation_olb2f"]
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -54,14 +54,14 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.14, 0.28, 0.42, 0.56, 0.7, 0.84, 0.98),
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [20, 20, 20, 21, 22, 23, 24, 20]
+"values": [12, 13, 14, 15, 16, 17, 18, 19]
 }
 
-[sub_resource type="Animation" id="Animation_75vfm"]
-length = 1.08
+[sub_resource type="Animation" id="Animation_sguum"]
+length = 1.35
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -82,14 +82,14 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.14, 0.28, 0.42, 0.56, 0.7, 0.84, 0.98),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [11, 12, 12, 13, 13, 14, 14, 15]
+"values": [0, 1, 2, 3, 0, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_p47bc"]
-length = 0.8
+[sub_resource type="Animation" id="Animation_edvpf"]
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -110,75 +110,18 @@ tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [7, 8, 9, 10]
+"values": [8, 9, 10, 11]
 }
 
-[sub_resource type="Animation" id="Animation_5gtgg"]
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [25, 20, 25, 26]
-}
-
-[sub_resource type="Animation" id="Animation_0owmy"]
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [16, 17, 18, 19]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h17s1"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sguum"]
 _data = {
-&"idle_down": SubResource("Animation_lvxji"),
-&"idle_side": SubResource("Animation_qek5x"),
-&"idle_up": SubResource("Animation_75vfm"),
-&"walk_down": SubResource("Animation_p47bc"),
-&"walk_side": SubResource("Animation_5gtgg"),
-&"walk_up": SubResource("Animation_0owmy")
+&"Idle": SubResource("Animation_kc87p"),
+&"Run": SubResource("Animation_olb2f"),
+&"idle": SubResource("Animation_sguum"),
+&"walk": SubResource("Animation_edvpf")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmlin"]
@@ -195,10 +138,9 @@ script = ExtResource("1_kc87p")
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, -9)
-texture = ExtResource("2_edvpf")
-hframes = 6
-vframes = 5
-frame = 1
+texture = ExtResource("2_kc87p")
+hframes = 5
+vframes = 4
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
 "layer_section": true,
@@ -214,15 +156,15 @@ metadata/_aseprite_wizard_config_ = {
 "only_visible": true,
 "player": "AnimationPlayer",
 "slice": "",
-"source": "res://assets/aseprite_files/Character-Male.aseprite"
+"source": "res://assets/aseprite_files/players/apoy_bagani/bagani_apoy.aseprite"
 }
-metadata/_aseprite_wizard_source_file_hash_ = "ce117a974f5f951e7c76016bfc7c042b"
+metadata/_aseprite_wizard_source_file_hash_ = "6d2306dff5cf1e2ec7a87373e58a0086"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_h17s1")
+&"": SubResource("AnimationLibrary_sguum")
 }
-autoplay = "idle_down"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
