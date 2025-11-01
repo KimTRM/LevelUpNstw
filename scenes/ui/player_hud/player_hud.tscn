@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://ki4bk2as56ye"]
+[gd_scene load_steps=38 format=3 uid="uid://ki4bk2as56ye"]
 
+[ext_resource type="Script" uid="uid://b5ohv10sgywnt" path="res://scripts/ui/player_hud/player_hud.gd" id="1_d3tj2"]
 [ext_resource type="Texture2D" uid="uid://cqifdbei3k6xk" path="res://assets/ui/player_hud/health_bar/health_bar.png" id="1_saegx"]
 [ext_resource type="Texture2D" uid="uid://ch56mwnh7esqd" path="res://assets/ui/player_hud/health_bar/health_bar_fill.png" id="2_adh7x"]
 [ext_resource type="Texture2D" uid="uid://by24yfb28s37f" path="res://assets/ui/player_hud/health_bar/heart_icon.png" id="2_rjvwv"]
@@ -7,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dyng41pjyjq8d" path="res://assets/ui/bar_ui/bar_fill.png" id="5_4hd2l"]
 [ext_resource type="Texture2D" uid="uid://qswshyeqcup8" path="res://assets/ui/player_hud/stamina_bar/stamina_icon.png" id="6_4hd2l"]
 [ext_resource type="Texture2D" uid="uid://q3f47630ixqk" path="res://assets/ui/player_hud/stamina_bar/bar_container.png" id="7_a3g8j"]
+[ext_resource type="Texture2D" uid="uid://bpyy6waagbaxx" path="res://assets/ui/ui_container.png" id="8_ks5s1"]
+[ext_resource type="Texture2D" uid="uid://bplfbdx1awawf" path="res://assets/ui/menu_button.png" id="9_q40u4"]
+[ext_resource type="Script" uid="uid://dtqagmk0v7ipj" path="res://scripts/ui/player_hud/pause_menu.gd" id="10_h1x2m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rjvwv"]
 texture = ExtResource("1_saegx")
@@ -84,6 +88,129 @@ keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_ks5s1"]
 events = [SubResource("InputEventKey_a3g8j")]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h1x2m"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+texture = ExtResource("8_ks5s1")
+texture_margin_left = 50.0
+texture_margin_top = 50.0
+texture_margin_right = 50.0
+texture_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5si8t"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("9_q40u4")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q40u4"]
+load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1nuv2"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_q40u4")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.69008243, 0.69008243, 0.69008243, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m752x"]
+load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36ai7"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_m752x")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.880165, 0.880165, 0.880165, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d3tj2"]
+load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m752x"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_d3tj2")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.69008243, 0.69008243, 0.69008243, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_36ai7"]
+load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0vnqv"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_36ai7")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.880165, 0.880165, 0.880165, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_limek"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("9_q40u4")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_et8k5"]
+load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tp8bv"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_et8k5")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.69008243, 0.69008243, 0.69008243, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y88v2"]
+load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tnimi"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_y88v2")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.880165, 0.880165, 0.880165, 1)
+
 [node name="PlayerHud" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,6 +221,7 @@ theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
+script = ExtResource("1_d3tj2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -109,6 +237,7 @@ layout_mode = 2
 size_flags_vertical = 0
 
 [node name="HealthBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 20)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -145,6 +274,7 @@ layout_mode = 2
 theme_override_constants/margin_top = 10
 
 [node name="StaminaBar" type="ProgressBar" parent="VBoxContainer/MarginContainer/HBoxContainer2/MarginContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -165,6 +295,7 @@ texture = ExtResource("6_4hd2l")
 expand_mode = 1
 
 [node name="MenuButton" type="Button" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -175,3 +306,55 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_d3tj2")
 theme_override_styles/hover = SubResource("StyleBoxTexture_x4jlu")
 shortcut = SubResource("Shortcut_ks5s1")
 text = "Menu"
+
+[node name="PauseMenu" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_h1x2m")
+script = ExtResource("10_h1x2m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_5si8t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1nuv2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_36ai7")
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_5si8t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_m752x")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0vnqv")
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_limek")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tp8bv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tnimi")
+text = "Exit
+"
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/SettingsButton" to="PauseMenu" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ExitButton" to="PauseMenu" method="_on_exit_button_pressed"]

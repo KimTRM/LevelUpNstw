@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfkk06scwrngv"
-path="res://.godot/imported/small_icon.png-e41904d54dbef25c4ec8ccb86278cbe5.ctex"
+uid="uid://bvjg5c0jsmm6y"
+path="res://.godot/imported/return_button.png-9ec2eb17f9444de6b552169e7e0b6541.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/tiltle_card/small_icon.png"
-dest_files=["res://.godot/imported/small_icon.png-e41904d54dbef25c4ec8ccb86278cbe5.ctex"]
+source_file="res://assets/ui/return_button.png"
+dest_files=["res://.godot/imported/return_button.png-9ec2eb17f9444de6b552169e7e0b6541.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
