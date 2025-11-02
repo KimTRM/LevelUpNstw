@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="LupaBagani" load_steps=6 format=3 uid="uid://cvewnom5v1rl7"]
+
+[ext_resource type="PackedScene" uid="uid://b8sbokcx1bndo" path="res://scenes/players/lupa_bagani/earthquake_strike.tscn" id="1_34s0f"]
+[ext_resource type="Script" uid="uid://c3qfiim5a3k5" path="res://scripts/players/lupa_bagani/lupa_bagani.gd" id="1_pv3y4"]
+[ext_resource type="Script" uid="uid://bkrqcx7573o04" path="res://scripts/components/stats.gd" id="2_c3jwm"]
+[ext_resource type="PackedScene" uid="uid://bs1o4uwrouo1b" path="res://scenes/players/lupa_bagani/stone_barrier.tscn" id="4_i2mha"]
+
+[sub_resource type="Resource" id="Resource_3sg8i"]
+script = ExtResource("2_c3jwm")
+max_health = 1000
+base_attack = 100
+base_defense = 100
+metadata/_custom_type_script = "uid://bkrqcx7573o04"
+
+[resource]
+script = ExtResource("1_pv3y4")
+stone_barrier_scene = ExtResource("4_i2mha")
+earthquake_strike_scene = ExtResource("1_34s0f")
+player_name = "LupaBagani"
+stats = SubResource("Resource_3sg8i")
+metadata/_custom_type_script = "uid://c3qfiim5a3k5"

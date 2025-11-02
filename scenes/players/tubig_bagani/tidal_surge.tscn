@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cscw014s2d4d0"]
+
+[ext_resource type="Script" uid="uid://b7e1t4di076pl" path="res://scripts/players/tubig_bagani/tidal_surge.gd" id="1_iv2f6"]
+
+[node name="TidalSurge" type="Node2D"]
+script = ExtResource("1_iv2f6")
