@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ygs67n5rvyjg"]
 
-[ext_resource type="Script" uid="uid://bqw5xni4swlac" path="res://scripts/player/player.gd" id="1_kc87p"]
+[ext_resource type="Script" uid="uid://bqw5xni4swlac" path="res://scripts/players/player.gd" id="1_kc87p"]
 [ext_resource type="Texture2D" uid="uid://cblhepy8rdwp2" path="res://assets/sprite_sheets/bagani_apoy.png" id="2_kc87p"]
 [ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_olb2f"]
 

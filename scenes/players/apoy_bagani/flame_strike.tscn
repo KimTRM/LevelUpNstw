@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cwb6ilcsanu23"]
 
-[ext_resource type="Script" uid="uid://c4uupg5j6kuka" path="res://scripts/player/apoy_bagani/flame_strike.gd" id="1_pl7qg"]
+[ext_resource type="Script" uid="uid://c4uupg5j6kuka" path="res://scripts/players/apoy_bagani/flame_strike.gd" id="1_pl7qg"]
 [ext_resource type="Texture2D" uid="uid://cpil5qk15d0ya" path="res://assets/sprite_sheets/players/fire_bagani/flame_strike.png" id="1_q6dfy"]
 [ext_resource type="Script" uid="uid://c6idq7beq234q" path="res://scripts/components/damage/hitbox_component.gd" id="3_awdv6"]
 

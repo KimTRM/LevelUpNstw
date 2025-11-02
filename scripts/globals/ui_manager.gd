@@ -2,6 +2,12 @@ extends CanvasLayer
 
 var ui_screens: Dictionary = {}
 
+func _ready() -> void:
+	var player_hud_scene: PackedScene = load("uid://ki4bk2as56ye")
+	var player_hud_instance = player_hud_scene.instantiate()
+	add_child(player_hud_instance)
+	ui_screens["player_hud"] = player_hud_instance
+
 # Register a UI node by name
 func register_ui(ui_name: String, node: Node) -> void:
 	if node:

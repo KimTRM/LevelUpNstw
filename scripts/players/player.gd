@@ -8,6 +8,7 @@ class_name Player extends CharacterBody2D
 @export var auto_target_skill: bool = true
 @export var attack_range: float = 300.0
 
+var can_play_animation: bool = true
 var animation_direction: String = "down"
 var input_direction: Vector2
 var stats: Stats
@@ -19,6 +20,8 @@ func _ready() -> void:
 		velocity_component.max_speed = stats.base_movement_speed
 
 func _input(_event: InputEvent) -> void:
+	input_direction = Input.get_vector("left", "right", "up", "down")
+	
 	if Input.is_action_just_pressed("basic_attack"):
 		player_resource.cast_basic_attack()
 		
@@ -33,13 +36,14 @@ func _input(_event: InputEvent) -> void:
 		print("Auto Target Skill: %s" % auto_target_skill)
 		
 func _physics_process(_delta: float) -> void:
-	input_direction = Input.get_vector("left", "right", "up", "down")
-	
+	velocity_component.max_speed = stats.base_movement_speed
 	velocity = velocity_component.get_velocity(input_direction)
 	velocity_component.accelerate_to_velocity(velocity, _delta)
 	velocity_component.move(self)
 	
-	_update_animation()
+	if can_play_animation:
+		_update_animation()
+
 
 func _update_animation():
 	if input_direction == Vector2.DOWN:
@@ -55,7 +59,33 @@ func _update_animation():
 	else:
 		animation_player.play("idle")
 
-func find_nearest_enemy() -> Node2D:
+func hide_player() -> void:
+	can_play_animation = false
+	animation_player.stop()
+	sprite.hide()
+
+func show_player() -> void:
+	can_play_animation = true
+	animation_player.play()
+	sprite.show()
+
+
+func get_target_direction() -> Vector2:
+	var direction: Vector2
+
+	if auto_target_skill:
+		var nearest_enemy = _find_nearest_enemy()
+		if nearest_enemy:
+			direction = (nearest_enemy.global_position - global_position).normalized()
+		else:
+			direction = (get_global_mouse_position() - global_position).normalized()
+	else:
+		direction = (get_global_mouse_position() - global_position).normalized()
+
+	return direction
+
+
+func _find_nearest_enemy() -> Node2D:
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	var nearest_enemy: Node2D = null
 	var nearest_distance: float = attack_range

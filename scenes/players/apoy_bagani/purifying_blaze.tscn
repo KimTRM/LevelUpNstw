@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://dicv1bk7u0vgs"]
 
 [ext_resource type="Texture2D" uid="uid://0ybpa4my4rst" path="res://assets/sprite_sheets/players/fire_bagani/purifying_blaze.png" id="1_14ivb"]
-[ext_resource type="Script" uid="uid://2tjmnql2pwcg" path="res://scripts/player/apoy_bagani/purifying_blaze.gd" id="1_mtfct"]
+[ext_resource type="Script" uid="uid://2tjmnql2pwcg" path="res://scripts/players/apoy_bagani/purifying_blaze.gd" id="1_mtfct"]
 [ext_resource type="Script" uid="uid://c6idq7beq234q" path="res://scripts/components/damage/hitbox_component.gd" id="3_unfe4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_unfe4"]

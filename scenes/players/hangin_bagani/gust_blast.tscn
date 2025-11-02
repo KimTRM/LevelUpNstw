@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://crexpafhthv7v"]
+
+[ext_resource type="Script" uid="uid://wl7vdyny6via" path="res://scripts/players/hangin_bagani/gust_blast.gd" id="1_ma4dw"]
+[ext_resource type="Texture2D" uid="uid://c5yax17we1wke" path="res://assets/sprite_sheets/players/hangin_bagani/gust_blast.png" id="1_siiy0"]
+[ext_resource type="Script" uid="uid://c6idq7beq234q" path="res://scripts/components/damage/hitbox_component.gd" id="3_u6xii"]
+
+[sub_resource type="Animation" id="Animation_mwucx"]
+length = 1.024
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.064, 0.128, 0.192, 0.256, 0.32, 0.384, 0.448, 0.512, 0.576, 0.64, 0.704, 0.768, 0.832, 0.896, 0.96),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ma4dw"]
+_data = {
+&"default": SubResource("Animation_mwucx")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j2scp"]
+radius = 20.0
+height = 76.0
+
+[node name="GustBlast" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ma4dw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(32, -1)
+scale = Vector2(2, 2)
+texture = ExtResource("1_siiy0")
+offset = Vector2(0, -7.97)
+hframes = 4
+vframes = 4
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/sprite_sheets/players/hangin_bagani",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://assets/aseprite_files/players/hangin_bagani/gust_blast.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "9219758fd27666e792a4c11063d8d7b8"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_ma4dw")
+}
+autoplay = "default"
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_mask = 3
+script = ExtResource("3_u6xii")
+metadata/_custom_type_script = "uid://c6idq7beq234q"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(61, -1)
+shape = SubResource("CapsuleShape2D_j2scp")
