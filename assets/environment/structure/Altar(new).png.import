@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dryvtpgving2g"
-path="res://.godot/imported/stone_barrier.png-8e8ef499f21e9a15d81c53fe04cdc479.ctex"
+uid="uid://bidry6h4jmebj"
+path="res://.godot/imported/Altar(new).png-71b4443d5f17642eb36e320fe76f1484.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/stone_barrier.png"
-dest_files=["res://.godot/imported/stone_barrier.png-8e8ef499f21e9a15d81c53fe04cdc479.ctex"]
+source_file="res://assets/environment/structure/Altar(new).png"
+dest_files=["res://.godot/imported/Altar(new).png-71b4443d5f17642eb36e320fe76f1484.ctex"]
 
 [params]
 

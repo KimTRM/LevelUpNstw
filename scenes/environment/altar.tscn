@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cbhkrmfmi6adw"]
 
 [ext_resource type="Script" uid="uid://74r2jy2b60bo" path="res://scripts/environment/altar/altar.gd" id="1_uc05o"]
-[ext_resource type="Texture2D" uid="uid://bidry6h4jmebj" path="res://assets/environment/Altar(new).png" id="2_wuh0k"]
+[ext_resource type="Texture2D" uid="uid://bidry6h4jmebj" path="res://assets/environment/structure/Altar(new).png" id="2_wuh0k"]
 [ext_resource type="Script" uid="uid://cu48dsqtvdwmf" path="res://scripts/components/interaction/interactable_area.gd" id="3_wuh0k"]
 
 [sub_resource type="Animation" id="Animation_uc05o"]

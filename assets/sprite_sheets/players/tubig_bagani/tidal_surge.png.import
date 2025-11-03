@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn8ipxr0k73gx"
-path="res://.godot/imported/Altar.png-3096514c2e35ced3fca7a5913748d275.ctex"
+uid="uid://p6wwfh5f3i73"
+path="res://.godot/imported/tidal_surge.png-d78efb101e52406cb930712d6ce58277.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/Altar.png"
-dest_files=["res://.godot/imported/Altar.png-3096514c2e35ced3fca7a5913748d275.ctex"]
+source_file="res://assets/sprite_sheets/players/tubig_bagani/tidal_surge.png"
+dest_files=["res://.godot/imported/tidal_surge.png-d78efb101e52406cb930712d6ce58277.ctex"]
 
 [params]
 

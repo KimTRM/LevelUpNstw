@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3m6u5hf1tqds"
-path="res://.godot/imported/grass-tiles.png-c00ee6fccbca0335a233087dd6f7621e.ctex"
+uid="uid://dryvtpgving2g"
+path="res://.godot/imported/stone_barrier.png-92912e7885d8b13ee97b7db5207036d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilemap/grass-tiles.png"
-dest_files=["res://.godot/imported/grass-tiles.png-c00ee6fccbca0335a233087dd6f7621e.ctex"]
+source_file="res://assets/environment/tilemaps/stone_barrier.png"
+dest_files=["res://.godot/imported/stone_barrier.png-92912e7885d8b13ee97b7db5207036d6.ctex"]
 
 [params]
 

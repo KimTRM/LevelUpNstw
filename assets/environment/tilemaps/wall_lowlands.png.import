@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://beldlpkyqs6nx"
-path="res://.godot/imported/wall_lowlands.png-8ea4f8a252f5f76e95d39709bdb691d8.ctex"
+path="res://.godot/imported/wall_lowlands.png-55d9b10a87071bcb31d25ab2e553ed92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/wall_lowlands.png"
-dest_files=["res://.godot/imported/wall_lowlands.png-8ea4f8a252f5f76e95d39709bdb691d8.ctex"]
+source_file="res://assets/environment/tilemaps/wall_lowlands.png"
+dest_files=["res://.godot/imported/wall_lowlands.png-55d9b10a87071bcb31d25ab2e553ed92.ctex"]
 
 [params]
 

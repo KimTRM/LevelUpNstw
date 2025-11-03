@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bidry6h4jmebj"
-path="res://.godot/imported/Altar(new).png-31edfecb84da0d56c3af6c5533415dd8.ctex"
+uid="uid://cunk57oi1m63d"
+path="res://.godot/imported/water_tiles.png-607b0d19a76809da0a9e00fc67c86663.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/Altar(new).png"
-dest_files=["res://.godot/imported/Altar(new).png-31edfecb84da0d56c3af6c5533415dd8.ctex"]
+source_file="res://assets/environment/tilemaps/water_tiles.png"
+dest_files=["res://.godot/imported/water_tiles.png-607b0d19a76809da0a9e00fc67c86663.ctex"]
 
 [params]
 

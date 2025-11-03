@@ -5,10 +5,20 @@ func cast_basic_attack() -> void:
 
 func cast_skill() -> void:
 	var healing_ring_scene: PackedScene = load("uid://qxvwxrf0halb")
-	var healing_ring_instance = healing_ring_scene.instantiate()
-
-	player.add_child(healing_ring_instance)
-	healing_ring_instance.cast()
-
+	var player_instances = player.get_tree().get_nodes_in_group("Player") as Array[Player]
+	
+	for p in player_instances:
+		if is_instance_valid(p):
+			print("Casting Healing Ring on all players..." + str(player_instances.size()))
+			var healing_ring_instance = healing_ring_scene.instantiate()
+			p.add_child(healing_ring_instance)
+			healing_ring_instance.cast()
+	
+	
 func cast_burst() -> void:
-	pass
+	var tidal_surge_scene: PackedScene = load("uid://cscw014s2d4d0")
+	var tidal_surge_instance = tidal_surge_scene.instantiate()
+
+	var nearest_enemy = player._find_nearest_enemy()
+	player.get_parent().add_child(tidal_surge_instance)
+	tidal_surge_instance.cast(nearest_enemy.global_position if nearest_enemy else player.get_global_mouse_position())

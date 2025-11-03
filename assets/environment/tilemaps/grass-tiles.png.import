@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cunk57oi1m63d"
-path="res://.godot/imported/water_tiles.png-96e9d8c517cca4292f7aa04104518b9a.ctex"
+uid="uid://3m6u5hf1tqds"
+path="res://.godot/imported/grass-tiles.png-b46b50dbe8318921dfe70ef6fc9e5019.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilemap/water_tiles.png"
-dest_files=["res://.godot/imported/water_tiles.png-96e9d8c517cca4292f7aa04104518b9a.ctex"]
+source_file="res://assets/environment/tilemaps/grass-tiles.png"
+dest_files=["res://.godot/imported/grass-tiles.png-b46b50dbe8318921dfe70ef6fc9e5019.ctex"]
 
 [params]
 

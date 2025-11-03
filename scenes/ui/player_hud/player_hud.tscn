@@ -250,7 +250,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme_override_styles/background = SubResource("StyleBoxTexture_rjvwv")
 theme_override_styles/fill = SubResource("StyleBoxTexture_rb7sb")
-value = 50.0
+value = 100.0
 fill_mode = 1
 show_percentage = false
 
@@ -287,7 +287,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme_override_styles/background = SubResource("StyleBoxTexture_a3g8j")
 theme_override_styles/fill = SubResource("StyleBoxTexture_ks5s1")
-value = 50.0
+value = 100.0
 fill_mode = 1
 show_percentage = false
 
