@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0ybpa4my4rst"
-path="res://.godot/imported/purifying_blaze.png-3f66ae831fad9eb72fb30fa620f33d3d.ctex"
+uid="uid://bauewp30qwjq1"
+path="res://.godot/imported/purifying_blaze_top.png-394c6d26ac21b54a30e75a4f86ba3c05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite_sheets/players/fire_bagani/purifying_blaze.png"
-dest_files=["res://.godot/imported/purifying_blaze.png-3f66ae831fad9eb72fb30fa620f33d3d.ctex"]
+source_file="res://assets/sprite_sheets/players/apoy_bagani/purifying_blaze_top.png"
+dest_files=["res://.godot/imported/purifying_blaze_top.png-394c6d26ac21b54a30e75a4f86ba3c05.ctex"]
 
 [params]
 

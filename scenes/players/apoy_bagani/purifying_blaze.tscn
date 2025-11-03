@@ -1,8 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://dicv1bk7u0vgs"]
+[gd_scene load_steps=47 format=3 uid="uid://dicv1bk7u0vgs"]
 
-[ext_resource type="Texture2D" uid="uid://0ybpa4my4rst" path="res://assets/sprite_sheets/players/fire_bagani/purifying_blaze.png" id="1_14ivb"]
+[ext_resource type="Texture2D" uid="uid://0ybpa4my4rst" path="res://assets/sprite_sheets/players/apoy_bagani/purifying_blaze.png" id="1_14ivb"]
 [ext_resource type="Script" uid="uid://2tjmnql2pwcg" path="res://scripts/players/apoy_bagani/purifying_blaze.gd" id="1_mtfct"]
 [ext_resource type="Script" uid="uid://c6idq7beq234q" path="res://scripts/components/damage/hitbox_component.gd" id="3_unfe4"]
+[ext_resource type="Texture2D" uid="uid://bauewp30qwjq1" path="res://assets/sprite_sheets/players/apoy_bagani/purifying_blaze_top.png" id="4_5cj4l"]
+[ext_resource type="Texture2D" uid="uid://c774xtwrd7a3y" path="res://assets/sprite_sheets/players/apoy_bagani/purifying_blaze_bottom.png" id="5_qmm70"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_unfe4"]
 atlas = ExtResource("1_14ivb")
@@ -190,6 +192,130 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw6rd"]
+atlas = ExtResource("4_5cj4l")
+region = Rect2(0, 0, 173, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlpst"]
+atlas = ExtResource("4_5cj4l")
+region = Rect2(173, 0, 173, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ccr"]
+atlas = ExtResource("4_5cj4l")
+region = Rect2(346, 0, 173, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jffad"]
+atlas = ExtResource("4_5cj4l")
+region = Rect2(0, 63, 173, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tncxj"]
+atlas = ExtResource("4_5cj4l")
+region = Rect2(173, 63, 173, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hy3q"]
+atlas = ExtResource("4_5cj4l")
+region = Rect2(346, 63, 173, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkj55"]
+atlas = ExtResource("4_5cj4l")
+region = Rect2(0, 126, 173, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fmfi5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uw6rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlpst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4ccr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jffad")
+}],
+"loop": true,
+"name": &"Ignite",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tncxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hy3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkj55")
+}],
+"loop": true,
+"name": &"blazing",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmfi5"]
+atlas = ExtResource("5_qmm70")
+region = Rect2(0, 0, 173, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv0eu"]
+atlas = ExtResource("5_qmm70")
+region = Rect2(173, 0, 173, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybylm"]
+atlas = ExtResource("5_qmm70")
+region = Rect2(346, 0, 173, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afncb"]
+atlas = ExtResource("5_qmm70")
+region = Rect2(0, 63, 173, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmmfi"]
+atlas = ExtResource("5_qmm70")
+region = Rect2(173, 63, 173, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjakn"]
+atlas = ExtResource("5_qmm70")
+region = Rect2(346, 63, 173, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j2pi"]
+atlas = ExtResource("5_qmm70")
+region = Rect2(0, 126, 173, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1b62w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmfi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv0eu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybylm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afncb")
+}],
+"loop": true,
+"name": &"Ignite",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmmfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjakn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j2pi")
+}],
+"loop": true,
+"name": &"blazing",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_14ivb"]
 radius = 52.992462
 height = 157.9998
@@ -251,8 +377,6 @@ texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_uw6rd")
 animation = &"blazing"
-frame = 1
-frame_progress = 0.2101729
 speed_scale = 1.5
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
@@ -268,6 +392,135 @@ metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true
 }
 metadata/_aseprite_wizard_source_file_hash_ = "c080778d3c64da0a7896408437436c7c"
+
+[node name="Top" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="TopInnerRing" type="AnimatedSprite2D" parent="Top"]
+texture_filter = 1
+position = Vector2(0, -49.5)
+sprite_frames = SubResource("SpriteFrames_fmfi5")
+animation = &"blazing"
+offset = Vector2(0, 18)
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/sprite_sheets/players/apoy_bagani/",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://assets/aseprite_files/players/apoy_bagani/purifying_blaze_top.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "5ea672359f085c0052f1aa9655df8a73"
+
+[node name="TopMiddleRing" type="AnimatedSprite2D" parent="Top"]
+texture_filter = 1
+position = Vector2(0, -74.255)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_fmfi5")
+animation = &"blazing"
+offset = Vector2(0, 18)
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/sprite_sheets/players/apoy_bagani/",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://assets/aseprite_files/players/apoy_bagani/purifying_blaze_top.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "5ea672359f085c0052f1aa9655df8a73"
+
+[node name="TopOuterRing" type="AnimatedSprite2D" parent="Top"]
+texture_filter = 1
+position = Vector2(0, -99.285)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fmfi5")
+animation = &"blazing"
+offset = Vector2(0, 18)
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/sprite_sheets/players/apoy_bagani/",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://assets/aseprite_files/players/apoy_bagani/purifying_blaze_top.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "5ea672359f085c0052f1aa9655df8a73"
+
+[node name="Bottom" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="BottomInnerRing" type="AnimatedSprite2D" parent="Bottom"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1b62w")
+animation = &"blazing"
+offset = Vector2(0, 31.5)
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/sprite_sheets/players/apoy_bagani/",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://assets/aseprite_files/players/apoy_bagani/purifying_blaze_bottom.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "eb4fa0896b0a84cadb9c56110b252466"
+
+[node name="BottomMiddleRing" type="AnimatedSprite2D" parent="Bottom"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_1b62w")
+animation = &"blazing"
+offset = Vector2(0, 31.5)
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/sprite_sheets/players/apoy_bagani/",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://assets/aseprite_files/players/apoy_bagani/purifying_blaze_bottom.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "eb4fa0896b0a84cadb9c56110b252466"
+
+[node name="BottomOuterRing" type="AnimatedSprite2D" parent="Bottom"]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1b62w")
+animation = &"blazing"
+offset = Vector2(0, 31.5)
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/sprite_sheets/players/apoy_bagani/",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://assets/aseprite_files/players/apoy_bagani/purifying_blaze_bottom.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "eb4fa0896b0a84cadb9c56110b252466"
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 script = ExtResource("3_unfe4")

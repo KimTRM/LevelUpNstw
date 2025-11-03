@@ -177,3 +177,14 @@ max_speed = 200.0
 metadata/_custom_type_script = "uid://c68gohftincf6"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -12)
+limit_enabled = false
+position_smoothing_speed = 0.8
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 0.8
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.02
+drag_top_margin = 0.02
+drag_right_margin = 0.02
+drag_bottom_margin = 0.02
