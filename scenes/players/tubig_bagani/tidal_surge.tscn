@@ -41,16 +41,17 @@ radius = 65.0
 
 [node name="TidalSurge" type="Node2D"]
 y_sort_enabled = true
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_iv2f6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(2.5, 2.5)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_5rwgy")
-offset = Vector2(0, -14.46)
+offset = Vector2(0, -12)
 hframes = 4
 vframes = 4
-frame = 13
+frame = 6
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,

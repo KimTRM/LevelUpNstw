@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ygs67n5rvyjg"]
+[gd_scene load_steps=11 format=3 uid="uid://ygs67n5rvyjg"]
 
 [ext_resource type="Script" uid="uid://bqw5xni4swlac" path="res://scripts/players/player.gd" id="1_kc87p"]
 [ext_resource type="Texture2D" uid="uid://cblhepy8rdwp2" path="res://assets/sprite_sheets/bagani_apoy.png" id="2_kc87p"]
+[ext_resource type="Script" uid="uid://bsiiwmlcn0xu8" path="res://scripts/components/input_controller.gd" id="3_edvpf"]
 [ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_olb2f"]
 
 [sub_resource type="Animation" id="Animation_kc87p"]
@@ -128,11 +129,12 @@ _data = {
 radius = 7.0
 height = 24.0
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input") groups=["Player"]]
 y_sort_enabled = true
 collision_mask = 38
 motion_mode = 1
 script = ExtResource("1_kc87p")
+input = NodePath("InputController")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -170,6 +172,10 @@ autoplay = "Idle"
 position = Vector2(0, 12)
 shape = SubResource("CapsuleShape2D_gmlin")
 debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="InputController" type="Node" parent="."]
+script = ExtResource("3_edvpf")
+metadata/_custom_type_script = "uid://bsiiwmlcn0xu8"
 
 [node name="VelocityComponent" type="Node" parent="."]
 script = ExtResource("3_olb2f")

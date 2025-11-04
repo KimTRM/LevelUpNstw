@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3rr1ia230r8w" path="res://scenes/environment/tilemap/grass_tile.tscn" id="3_rarhs"]
 [ext_resource type="PackedScene" uid="uid://cbhkrmfmi6adw" path="res://scenes/environment/altar.tscn" id="3_vcsgt"]
 [ext_resource type="Script" path="res://scripts/components/enemy_spwan_point.gd" id="4_rarhs"]
-[ext_resource type="Resource" uid="uid://b35at8uw3aue5" path="res://resources/players/apoy_bagani.tres" id="6_jlsqs"]
+[ext_resource type="Resource" uid="uid://b35at8uw3aue5" path="res://resources/players/apoy_bagani.tres" id="5_nxtc6"]
 
 [node name="Main" type="Node2D"]
 
@@ -24,7 +24,7 @@ position = Vector2(643, 321)
 
 [node name="Player" parent="Map" instance=ExtResource("3_c01mt")]
 position = Vector2(536, 271)
-player_resource = ExtResource("6_jlsqs")
+player_resource = ExtResource("5_nxtc6")
 
 [node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true

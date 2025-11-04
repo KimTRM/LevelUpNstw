@@ -37,9 +37,8 @@ func _physics_process(delta: float) -> void:
 	if traveled_distance >= max_distance:
 		_disperse()
 
-func cast(from_position: Vector2, target_direction: Vector2) -> void:
-	global_position = from_position
-	direction = target_direction.normalized()
+func cast() -> void:
+	animation_player.play("shooting")
 	is_active = true
 
 	scale = Vector2.ZERO

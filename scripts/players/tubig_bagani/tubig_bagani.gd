@@ -19,6 +19,7 @@ func cast_burst() -> void:
 	var tidal_surge_scene: PackedScene = load("uid://cscw014s2d4d0")
 	var tidal_surge_instance = tidal_surge_scene.instantiate()
 
-	var nearest_enemy = player._find_nearest_enemy()
+	tidal_surge_instance.global_position = player.get_target_location()
+
 	player.get_parent().add_child(tidal_surge_instance)
-	tidal_surge_instance.cast(nearest_enemy.global_position if nearest_enemy else player.get_global_mouse_position())
+	tidal_surge_instance.cast()

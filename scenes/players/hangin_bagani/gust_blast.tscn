@@ -74,7 +74,6 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 &"": SubResource("AnimationLibrary_ma4dw")
 }
-autoplay = "default"
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_mask = 3
