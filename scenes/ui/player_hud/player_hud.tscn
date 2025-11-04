@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ki4bk2as56ye"]
+[gd_scene load_steps=42 format=3 uid="uid://ki4bk2as56ye"]
 
 [ext_resource type="Script" uid="uid://b5ohv10sgywnt" path="res://scripts/ui/player_hud/player_hud.gd" id="1_d3tj2"]
 [ext_resource type="Texture2D" uid="uid://cqifdbei3k6xk" path="res://assets/ui/player_hud/health_bar/health_bar.png" id="1_saegx"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bplfbdx1awawf" path="res://assets/ui/menu_button.png" id="9_q40u4"]
 [ext_resource type="Script" uid="uid://dtqagmk0v7ipj" path="res://scripts/ui/player_hud/pause_menu.gd" id="10_h1x2m"]
 [ext_resource type="PackedScene" uid="uid://cjcafy6ct6ml8" path="res://scenes/ui/player_hud/elemetal_changer_ui.tscn" id="12_x4jlu"]
+[ext_resource type="PackedScene" uid="uid://ylab01rx4nth" path="res://scenes/ui/end_results.tscn" id="13_5si8t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rjvwv"]
 texture = ExtResource("1_saegx")
@@ -111,7 +112,7 @@ texture_margin_top = 22.0
 texture_margin_right = 22.0
 texture_margin_bottom = 22.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q40u4"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x4jlu"]
 load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1nuv2"]
@@ -119,14 +120,14 @@ content_margin_left = 8.0
 content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
-texture = SubResource("CompressedTexture2D_q40u4")
+texture = SubResource("CompressedTexture2D_x4jlu")
 texture_margin_left = 22.0
 texture_margin_top = 22.0
 texture_margin_right = 22.0
 texture_margin_bottom = 22.0
 modulate_color = Color(0.69008243, 0.69008243, 0.69008243, 1)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m752x"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5si8t"]
 load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36ai7"]
@@ -134,7 +135,7 @@ content_margin_left = 8.0
 content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
-texture = SubResource("CompressedTexture2D_m752x")
+texture = SubResource("CompressedTexture2D_5si8t")
 texture_margin_left = 22.0
 texture_margin_top = 22.0
 texture_margin_right = 22.0
@@ -317,7 +318,6 @@ text = "Menu"
 
 [node name="PauseMenu" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -364,6 +364,10 @@ text = "Exit
 "
 
 [node name="ElemetalChangerUi" parent="." instance=ExtResource("12_x4jlu")]
+layout_mode = 2
+
+[node name="EndResults" parent="." instance=ExtResource("13_5si8t")]
+visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
