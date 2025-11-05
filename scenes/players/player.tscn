@@ -138,7 +138,6 @@ script = ExtResource("1_kc87p")
 input = NodePath("InputController")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("2_kc87p")
 offset = Vector2(0, -8)
@@ -166,8 +165,8 @@ metadata/_aseprite_wizard_source_file_hash_ = "6d2306dff5cf1e2ec7a87373e58a0086"
 [node name="Shadow" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.5568628)
 show_behind_parent = true
-position = Vector2(0, 21)
-scale = Vector2(1.265625, 1.140625)
+position = Vector2(0, 20)
+scale = Vector2(1.7382813, 1.4882813)
 texture = ExtResource("3_sguum")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

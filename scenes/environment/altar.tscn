@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbhkrmfmi6adw"]
+[gd_scene load_steps=10 format=3 uid="uid://cbhkrmfmi6adw"]
 
 [ext_resource type="Script" uid="uid://74r2jy2b60bo" path="res://scripts/environment/altar/altar.gd" id="1_uc05o"]
 [ext_resource type="Texture2D" uid="uid://bidry6h4jmebj" path="res://assets/environment/structure/Altar(new).png" id="2_wuh0k"]
 [ext_resource type="Script" uid="uid://cu48dsqtvdwmf" path="res://scripts/components/interaction/interactable_area.gd" id="3_wuh0k"]
+[ext_resource type="Texture2D" uid="uid://b6xxddla1gafe" path="res://assets/sprite_sheets/Shadow.png" id="4_n5p0c"]
 
 [sub_resource type="Animation" id="Animation_uc05o"]
 length = 0.8
@@ -128,6 +129,17 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "8a13cb1659810110c86764d3cff34ba7"
 
+[node name="Shadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.5568628)
+show_behind_parent = true
+position = Vector2(0, 31)
+scale = Vector2(2.09375, 1.28125)
+texture = ExtResource("4_n5p0c")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"slice_section": false
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_2wsor")
@@ -146,4 +158,5 @@ require_hold = true
 metadata/_custom_type_script = "uid://cu48dsqtvdwmf"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+visible = false
 shape = SubResource("CircleShape2D_n5p0c")
