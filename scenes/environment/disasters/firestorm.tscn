@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7g1mpdjhmeoe"]
+
+[ext_resource type="Script" uid="uid://gnmrfqq4ipoj" path="res://scripts/environment/disasters/firestorm_disaster.gd" id="1_firestorm"]
+
+[node name="Firestorm" type="Node2D"]
+script = ExtResource("1_firestorm")

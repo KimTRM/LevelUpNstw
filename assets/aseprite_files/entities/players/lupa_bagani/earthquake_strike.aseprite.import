@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://tlpct4ch5qyv"
+path="res://.godot/imported/earthquake_strike.aseprite-139f422954dcbe89f4ef39516ff07d0d.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/entities/players/lupa_bagani/earthquake_strike.aseprite"
+dest_files=["res://.godot/imported/earthquake_strike.aseprite-139f422954dcbe89f4ef39516ff07d0d.res"]
+
+[params]
+

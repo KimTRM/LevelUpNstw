@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8h2np3kinfpf"]
-
-[ext_resource type="Script" path="res://scripts/disasters/steam_disaster.gd" id="1_steam"]
-
-[node name="Steam" type="Node2D"]
-script = ExtResource("1_steam")

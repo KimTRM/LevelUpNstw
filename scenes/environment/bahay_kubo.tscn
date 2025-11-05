@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ctg27tsk03pfl"]
 
-[ext_resource type="Texture2D" uid="uid://bc401mx72cgxo" path="res://assets/environment/structure/bahay_kubo.png" id="1_ybbfi"]
+[ext_resource type="Texture2D" uid="uid://bc401mx72cgxo" path="res://assets/sprite_sheets/environment/structure/bahay_kubo.png" id="1_ybbfi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ybbfi"]
 resource_name = "BahayKubo"

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=4 uid="uid://c236bjeocyry3"]
 
 [ext_resource type="PackedScene" uid="uid://3rr1ia230r8w" path="res://scenes/environment/tilemap/grass_tile.tscn" id="1_8srws"]
-[ext_resource type="PackedScene" uid="uid://bs1o4uwrouo1b" path="res://scenes/players/lupa_bagani/stone_barrier.tscn" id="2_eybrg"]
-[ext_resource type="PackedScene" uid="uid://ygs67n5rvyjg" path="res://scenes/players/player.tscn" id="3_8ad0n"]
+[ext_resource type="PackedScene" uid="uid://bs1o4uwrouo1b" path="res://scenes/entities/players/lupa_bagani/stone_barrier.tscn" id="2_eybrg"]
+[ext_resource type="PackedScene" uid="uid://ygs67n5rvyjg" path="res://scenes/entities/players/player.tscn" id="3_8ad0n"]
 [ext_resource type="Resource" uid="uid://b35at8uw3aue5" path="res://resources/players/apoy_bagani.tres" id="4_3furs"]
 
 [node name="LowLands" type="Node2D"]

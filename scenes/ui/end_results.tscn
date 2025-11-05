@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://ylab01rx4nth"]
 
-[ext_resource type="Texture2D" uid="uid://bpyy6waagbaxx" path="res://assets/ui/ui_container.png" id="1_2v2aq"]
-[ext_resource type="Texture2D" uid="uid://bjd5ggacmvaxh" path="res://assets/ui/end_results/win.png" id="1_afqrj"]
-[ext_resource type="Texture2D" uid="uid://vjjludamg3np" path="res://assets/ui/end_results/lose.png" id="2_ebeit"]
-[ext_resource type="Texture2D" uid="uid://bplfbdx1awawf" path="res://assets/ui/menu_button.png" id="4_qridp"]
+[ext_resource type="Texture2D" uid="uid://bpyy6waagbaxx" path="res://assets/sprite_sheets/ui/ui_container.png" id="1_2v2aq"]
+[ext_resource type="Texture2D" uid="uid://bjd5ggacmvaxh" path="res://assets/sprite_sheets/ui/end_results/win.png" id="1_afqrj"]
+[ext_resource type="Texture2D" uid="uid://vjjludamg3np" path="res://assets/sprite_sheets/ui/end_results/lose.png" id="2_ebeit"]
+[ext_resource type="Texture2D" uid="uid://bplfbdx1awawf" path="res://assets/sprite_sheets/ui/menu_button.png" id="4_qridp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qridp"]
 bg_color = Color(0, 0, 0, 0.4117647)
@@ -88,6 +88,7 @@ theme_override_constants/separation = 32
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -116,7 +117,6 @@ metadata/_aseprite_wizard_interface_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "7ff01e555e26af35d24a7b1b32650282"
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0

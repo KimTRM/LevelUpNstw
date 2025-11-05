@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dd83lfrr6txhi"]
 
-[ext_resource type="Texture2D" uid="uid://dve3tq8ljkwb6" path="res://assets/environment/tilemaps/low_lands/flowers-grass.png" id="1_gfwux"]
-[ext_resource type="Texture2D" uid="uid://bd6kl3o84tqp0" path="res://assets/environment/tilemaps/low_lands/rocks.png" id="2_17f3w"]
-[ext_resource type="Texture2D" uid="uid://cggnl2omdxhxx" path="res://assets/environment/tilemaps/low_lands/tree.png" id="3_17f3w"]
+[ext_resource type="Texture2D" uid="uid://dve3tq8ljkwb6" path="res://assets/sprite_sheets/environment/tilemaps/low_lands/flowers-grass.png" id="1_gfwux"]
+[ext_resource type="Texture2D" uid="uid://bd6kl3o84tqp0" path="res://assets/sprite_sheets/environment/tilemaps/low_lands/rocks.png" id="2_17f3w"]
+[ext_resource type="Texture2D" uid="uid://cggnl2omdxhxx" path="res://assets/sprite_sheets/environment/tilemaps/low_lands/tree.png" id="3_17f3w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s8t0s"]
 texture = ExtResource("1_gfwux")

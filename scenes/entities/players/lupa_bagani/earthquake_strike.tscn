@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8sbokcx1bndo"]
+
+[ext_resource type="Script" uid="uid://cowxpptxu6uux" path="res://scripts/entities/players/lupa_bagani/earthquake_strike.gd" id="1_e7p4f"]
+[ext_resource type="Texture2D" uid="uid://dc3f6thng7x8y" path="res://assets/sprite_sheets/entities/players/lupa_bagani/earthquake_strike.png" id="2_6ju6j"]
+
+[sub_resource type="Animation" id="Animation_i3dx4"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ctems"]
+_data = {
+&"default": SubResource("Animation_i3dx4")
+}
+
+[node name="EarthquakeStrike" type="Node2D"]
+script = ExtResource("1_e7p4f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_6ju6j")
+hframes = 3
+vframes = 3
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/sprite_sheets/players/lupa_bagani/",
+"o_name": "",
+"only_visible": true,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://assets/aseprite_files/players/lupa_bagani/earthquake_strike.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "0b449c3f7c73aab4c4737f16a40634be"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_ctems")
+}

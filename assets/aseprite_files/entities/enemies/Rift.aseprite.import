@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bxcao6l3x5oyq"
+path="res://.godot/imported/Rift.aseprite-3af0293bb5760c2d851a198fc00b6f1b.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/entities/enemies/Rift.aseprite"
+dest_files=["res://.godot/imported/Rift.aseprite-3af0293bb5760c2d851a198fc00b6f1b.res"]
+
+[params]
+

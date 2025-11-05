@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dmcaagi31ij5x"]
 
-[ext_resource type="Texture2D" uid="uid://hnicgnsc6fht" path="res://assets/ui/rock_button/rock_normal_button.png" id="1_17ooq"]
-[ext_resource type="Texture2D" uid="uid://c0ctc4clkkxix" path="res://assets/ui/rock_button/rock_pressed_button.png" id="2_u38c7"]
-[ext_resource type="Texture2D" uid="uid://c2udmlyybgpik" path="res://assets/ui/rock_button/rock_hovered_button.png" id="3_l0yjp"]
+[ext_resource type="Texture2D" uid="uid://hnicgnsc6fht" path="res://assets/sprite_sheets/ui/rock_button/rock_normal_button.png" id="1_17ooq"]
+[ext_resource type="Texture2D" uid="uid://c0ctc4clkkxix" path="res://assets/sprite_sheets/ui/rock_button/rock_pressed_button.png" id="2_u38c7"]
+[ext_resource type="Texture2D" uid="uid://c2udmlyybgpik" path="res://assets/sprite_sheets/ui/rock_button/rock_hovered_button.png" id="3_l0yjp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1j4ul"]
 content_margin_left = 16.0
