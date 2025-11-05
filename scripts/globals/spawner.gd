@@ -109,7 +109,7 @@ func spawn_enemy(enemy_to_spawn: PackedScene, pos: Vector2) -> void:
 		instance.collision_layer = 0
 		instance.collision_mask = 0
 
-	get_parent().add_child(instance)
+	add_child(instance)
 
 	if can_tween_visual:
 		var canvas := instance as CanvasItem

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctg27tsk03pfl"]
+
+[ext_resource type="Texture2D" uid="uid://bc401mx72cgxo" path="res://assets/environment/structure/bahay_kubo.png" id="1_ybbfi"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ybbfi"]
+resource_name = "BahayKubo"
+texture = ExtResource("1_ybbfi")
+texture_region_size = Vector2i(32, 32)
+0:0/size_in_atlas = Vector2i(6, 6)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 46)
+0:0/0/y_sort_origin = 2
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 40, -64, 40)
+6:0/size_in_atlas = Vector2i(5, 6)
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, 42)
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 60, -64, 60, 8, 0, 8, 0, 44, -64, 44)
+11:0/size_in_atlas = Vector2i(3, 6)
+11:0/0 = 0
+11:0/0/texture_origin = Vector2i(0, 46)
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -76, 32, -76, 32, 40, -32, 40)
+
+[sub_resource type="TileSet" id="TileSet_2icyc"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 32
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_ybbfi")
+
+[node name="BahayKubo" type="TileMapLayer"]
+tile_set = SubResource("TileSet_2icyc")

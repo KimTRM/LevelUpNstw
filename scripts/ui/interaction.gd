@@ -1,6 +1,7 @@
 class_name Interaction extends MarginContainer
 
-@onready var interact_button: Button = %RockButton
+@onready var interact_label: Label = %Label
+@onready var interact_button: Button = %Button
 @onready var progress_bar: ProgressBar = %ProgressBar
 
 var _interactable_area: InteractableArea = null
@@ -87,6 +88,7 @@ func _on_button_pressed() -> void:
 func _on_button_down() -> void:
     # Visual feedback - button pressed
     if interact_button:
+        interact_label.modulate = Color(0.8, 0.8, 0.8) # Darken label
         interact_button.modulate = Color(0.8, 0.8, 0.8) # Darken button
     
     # Start hold for mobile
@@ -104,6 +106,7 @@ func _on_button_down() -> void:
 func _on_button_up() -> void:
     # Visual feedback - button released
     if interact_button:
+        interact_label.modulate = Color.WHITE # Reset to normal
         interact_button.modulate = Color.WHITE # Reset to normal
     
     # Cancel hold if released early
@@ -119,6 +122,7 @@ func _complete_button_hold() -> void:
     
     # Reset button visual
     if interact_button:
+        interact_label.modulate = Color.WHITE # Reset to normal
         interact_button.modulate = Color.WHITE
     
     # Trigger interaction
@@ -143,6 +147,7 @@ func _on_hold_started(_interactor: Node, _area: InteractableArea) -> void:
     
     # Visual feedback - darken button for keyboard input too
     if interact_button:
+        interact_label.modulate = Color(0.8, 0.8, 0.8)
         interact_button.modulate = Color(0.8, 0.8, 0.8)
     
     if progress_bar:

@@ -1,0 +1,176 @@
+[gd_scene load_steps=34 format=3 uid="uid://cjcafy6ct6ml8"]
+
+[ext_resource type="Script" uid="uid://dfmh6dan6i1uc" path="res://scripts/ui/player_hud/elemetal_changer_ui.gd" id="1_l4t2j"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l4t2j"]
+load_path = "res://.godot/imported/fire_icon.png-413e1bf5b9a0d27c4a725b7b3f8b59a1.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v3m50"]
+texture = SubResource("CompressedTexture2D_l4t2j")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v3m50"]
+load_path = "res://.godot/imported/fire_icon.png-413e1bf5b9a0d27c4a725b7b3f8b59a1.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g0qhp"]
+texture = SubResource("CompressedTexture2D_v3m50")
+modulate_color = Color(0.66292787, 0.66292787, 0.66292787, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4lnm8"]
+load_path = "res://.godot/imported/fire_icon.png-413e1bf5b9a0d27c4a725b7b3f8b59a1.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkvr5"]
+texture = SubResource("CompressedTexture2D_4lnm8")
+modulate_color = Color(0.7769773, 0.7769773, 0.7769773, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_l4t2j"]
+device = -1
+pressed = true
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_v3m50"]
+events = [SubResource("InputEventKey_l4t2j")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e7rlh"]
+load_path = "res://.godot/imported/water_icon.png-e56d55a9dc720dae7a448e4c72545a47.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0yq1d"]
+texture = SubResource("CompressedTexture2D_e7rlh")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g0qhp"]
+load_path = "res://.godot/imported/water_icon.png-e56d55a9dc720dae7a448e4c72545a47.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4lnm8"]
+texture = SubResource("CompressedTexture2D_g0qhp")
+modulate_color = Color(0.7009443, 0.7009443, 0.7009443, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mkvr5"]
+load_path = "res://.godot/imported/water_icon.png-e56d55a9dc720dae7a448e4c72545a47.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3362a"]
+texture = SubResource("CompressedTexture2D_mkvr5")
+modulate_color = Color(0.78240824, 0.78240824, 0.78240824, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_g0qhp"]
+device = -1
+pressed = true
+keycode = 50
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_4lnm8"]
+events = [SubResource("InputEventKey_g0qhp")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2hj8q"]
+load_path = "res://.godot/imported/earth_icon.png-a6c18f9507e5ca179d9a148a255de177.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ux3vy"]
+texture = SubResource("CompressedTexture2D_2hj8q")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0yq1d"]
+load_path = "res://.godot/imported/earth_icon.png-a6c18f9507e5ca179d9a148a255de177.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4t2j"]
+texture = SubResource("CompressedTexture2D_0yq1d")
+modulate_color = Color(0.66292787, 0.66292787, 0.66292787, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3362a"]
+load_path = "res://.godot/imported/earth_icon.png-a6c18f9507e5ca179d9a148a255de177.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_42yur"]
+texture = SubResource("CompressedTexture2D_3362a")
+modulate_color = Color(0.8258557, 0.8258557, 0.8258557, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_mkvr5"]
+device = -1
+pressed = true
+keycode = 51
+unicode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_3362a"]
+events = [SubResource("InputEventKey_mkvr5")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kkkxa"]
+load_path = "res://.godot/imported/wind_icon.png-466969e3437fd3a57bd9687c57c76ddf.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_68s4r"]
+texture = SubResource("CompressedTexture2D_kkkxa")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h6xt1"]
+load_path = "res://.godot/imported/wind_icon.png-466969e3437fd3a57bd9687c57c76ddf.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ld65v"]
+texture = SubResource("CompressedTexture2D_h6xt1")
+modulate_color = Color(0.54344743, 0.54344743, 0.54344743, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kep0d"]
+load_path = "res://.godot/imported/wind_icon.png-466969e3437fd3a57bd9687c57c76ddf.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n2tgg"]
+texture = SubResource("CompressedTexture2D_kep0d")
+modulate_color = Color(0.8312866, 0.8312866, 0.8312866, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_42yur"]
+device = -1
+pressed = true
+keycode = 52
+unicode = 52
+
+[sub_resource type="Shortcut" id="Shortcut_kkkxa"]
+events = [SubResource("InputEventKey_42yur")]
+
+[node name="ElementalChangerUi" type="MarginContainer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -70.0
+offset_bottom = 70.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_l4t2j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ApoyButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+theme_override_styles/normal = SubResource("StyleBoxTexture_v3m50")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g0qhp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mkvr5")
+shortcut = SubResource("Shortcut_v3m50")
+
+[node name="TubigButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_0yq1d")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4lnm8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3362a")
+shortcut = SubResource("Shortcut_4lnm8")
+
+[node name="LupaButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ux3vy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l4t2j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_42yur")
+shortcut = SubResource("Shortcut_3362a")
+
+[node name="HanginButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_68s4r")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ld65v")
+theme_override_styles/hover = SubResource("StyleBoxTexture_n2tgg")
+shortcut = SubResource("Shortcut_kkkxa")
+
+[connection signal="pressed" from="VBoxContainer/ApoyButton" to="." method="_on_apoy_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TubigButton" to="." method="_on_tubig_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/LupaButton" to="." method="_on_lupa_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HanginButton" to="." method="_on_hangin_button_pressed"]

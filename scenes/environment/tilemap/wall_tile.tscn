@@ -1,9 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bs1o4uwrouo1b"]
 
-[ext_resource type="Texture2D" uid="uid://dryvtpgving2g" path="res://assets/environment/stone_barrier.png" id="1_1l6g8"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j4ooj"]
+load_path = "res://.godot/imported/wall_lowlands.png-55d9b10a87071bcb31d25ab2e553ed92.ctex"
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m6bvs"]
-texture = ExtResource("1_1l6g8")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1l6g8"]
+texture = SubResource("CompressedTexture2D_j4ooj")
 texture_region_size = Vector2i(32, 32)
 1:2/0 = 0
 1:2/0/terrain_set = 0
@@ -135,14 +136,12 @@ texture_region_size = Vector2i(32, 32)
 8:3/0/terrains_peering_bit/left_side = 0
 8:3/0/terrains_peering_bit/top_left_corner = 0
 8:3/0/terrains_peering_bit/top_side = 0
-8:3/0/terrains_peering_bit/top_right_corner = 0
 9:3/0 = 0
 9:3/0/terrain_set = 0
 9:3/0/terrain = 0
 9:3/0/terrains_peering_bit/bottom_side = 0
 9:3/0/terrains_peering_bit/bottom_left_corner = 0
 9:3/0/terrains_peering_bit/left_side = 0
-9:3/0/terrains_peering_bit/top_left_corner = 0
 9:3/0/terrains_peering_bit/top_side = 0
 11:3/0 = 0
 11:3/0/terrain_set = 0
@@ -336,13 +335,17 @@ texture_region_size = Vector2i(32, 32)
 14:5/0/terrains_peering_bit/top_left_corner = 0
 14:5/0/terrains_peering_bit/top_side = 0
 14:10/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_4jbx5"]
+[sub_resource type="TileSet" id="TileSet_32ba6"]
 tile_size = Vector2i(32, 32)
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_m6bvs")
+sources/0 = SubResource("TileSetAtlasSource_1l6g8")
 
 [node name="WallTile" type="TileMapLayer"]
-tile_set = SubResource("TileSet_4jbx5")
+tile_set = SubResource("TileSet_32ba6")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctut3i5rxtike"]
+[gd_scene load_steps=17 format=3 uid="uid://ctut3i5rxtike"]
 
 [ext_resource type="Script" uid="uid://cxj7ksj4h3vwa" path="res://scripts/enemies/shadow_sprite/shadow_sprite.gd" id="1_466dq"]
 [ext_resource type="Script" uid="uid://7nsq2rbewrws" path="res://scripts/components/health/health_component.gd" id="2_f4qck"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cq0giqel8hq1k" path="res://scenes/components/enemy_combat/AgroAreaComponent.tscn" id="4_5b3pr"]
 [ext_resource type="PackedScene" uid="uid://c0tkiwa7aiiyo" path="res://scenes/components/enemy_combat/AttackAreaComponent.tscn" id="5_eii7y"]
 [ext_resource type="PackedScene" uid="uid://cjsu4tkodakpe" path="res://scenes/ui/health_bar.tscn" id="6_health_bar"]
+[ext_resource type="Texture2D" uid="uid://b6xxddla1gafe" path="res://assets/sprite_sheets/Shadow.png" id="8_5b3pr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_466dq"]
 radius = 6.9999757
@@ -100,6 +101,14 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "8d833b2045f845b86223a456a0311c85"
 
+[node name="Shadow" type="Sprite2D" parent="Visuals/Sprite2D"]
+modulate = Color(0, 0, 0, 0.5568628)
+show_behind_parent = true
+y_sort_enabled = true
+position = Vector2(1.0000002, 26)
+scale = Vector2(1.15625, 1.15625)
+texture = ExtResource("8_5b3pr")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
 unique_name_in_owner = true
 root_node = NodePath("../..")
@@ -119,6 +128,7 @@ metadata/_custom_type_script = "uid://7nsq2rbewrws"
 [node name="HealthBar" parent="." instance=ExtResource("6_health_bar")]
 
 [node name="HurtboxComponent" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 script = ExtResource("2_m5hp6")
 metadata/_custom_type_script = "uid://ckdkjuya1ymc0"
@@ -128,12 +138,14 @@ position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_m5hp6")
 
 [node name="AgroAreaComponent" parent="." groups=["Enemy"] instance=ExtResource("4_5b3pr")]
+visible = false
 collision_mask = 5
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AgroAreaComponent"]
 shape = SubResource("CircleShape2D_f4qck")
 
 [node name="AttackAreaComponent" parent="." instance=ExtResource("5_eii7y")]
+visible = false
 collision_layer = 1
 collision_mask = 5
 

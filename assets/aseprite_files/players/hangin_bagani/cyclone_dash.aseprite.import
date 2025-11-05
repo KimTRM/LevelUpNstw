@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bq404rem686bf"
+path="res://.godot/imported/cyclone_dash.aseprite-6ecd6b747bcb478edee49a65b5811d43.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/players/hangin_bagani/cyclone_dash.aseprite"
+dest_files=["res://.godot/imported/cyclone_dash.aseprite-6ecd6b747bcb478edee49a65b5811d43.res"]
+
+[params]
+

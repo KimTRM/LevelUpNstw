@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bi2c2e8eti7en"
+path="res://.godot/imported/STAMINA.aseprite-5bab2b9ad09a4ebbef9accac7fef2e60.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/ui/player_hud/stamina_ui/STAMINA.aseprite"
+dest_files=["res://.godot/imported/STAMINA.aseprite-5bab2b9ad09a4ebbef9accac7fef2e60.res"]
+
+[params]
+
