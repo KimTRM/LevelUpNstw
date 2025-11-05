@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cbhkrmfmi6adw"]
 
 [ext_resource type="Script" uid="uid://74r2jy2b60bo" path="res://scripts/environment/altar/altar.gd" id="1_uc05o"]
-[ext_resource type="Texture2D" uid="uid://bidry6h4jmebj" path="res://assets/environment/structure/Altar(new).png" id="2_wuh0k"]
+[ext_resource type="Texture2D" uid="uid://bidry6h4jmebj" path="res://assets/sprite_sheets/environment/structure/altar.png" id="2_n5p0c"]
 [ext_resource type="Script" uid="uid://cu48dsqtvdwmf" path="res://scripts/components/interaction/interactable_area.gd" id="3_wuh0k"]
-[ext_resource type="Texture2D" uid="uid://b6xxddla1gafe" path="res://assets/sprite_sheets/Shadow.png" id="4_n5p0c"]
+[ext_resource type="Texture2D" uid="uid://cwboofdk1kllm" path="res://assets/sprite_sheets/Shadow.png" id="4_n5p0c"]
 
 [sub_resource type="Animation" id="Animation_uc05o"]
 length = 0.8
@@ -105,10 +105,10 @@ script = ExtResource("1_uc05o")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -24)
-texture = ExtResource("2_wuh0k")
+texture = ExtResource("2_n5p0c")
 hframes = 4
 vframes = 3
-frame = 11
+frame = 8
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,

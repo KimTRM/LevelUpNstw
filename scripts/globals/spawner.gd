@@ -12,7 +12,7 @@ extends Node
 @export var spawn_appear_duration: float = 0.35
 
 # Use path-based preload to avoid broken UID references after file moves/reimports
-var rift_scene: PackedScene = preload("res://scenes/enemies/rift.tscn")
+var rift_scene: PackedScene = preload("uid://jpay2ha6ca6y")
 
 var _spawned_count: int = 0
 var _timer: Timer

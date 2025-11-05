@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ApoyBagani" load_steps=5 format=3 uid="uid://b35at8uw3aue5"]
 
-[ext_resource type="Script" uid="uid://r8g0behr1ym4" path="res://scripts/players/apoy_bagani/apoy_bagani.gd" id="1_bpu12"]
+[ext_resource type="Script" uid="uid://r8g0behr1ym4" path="res://scripts/entities/players/apoy_bagani/apoy_bagani.gd" id="1_bpu12"]
 [ext_resource type="Texture2D" uid="uid://bo8prncexggb1" path="res://assets/sprite_sheets/Character-Male.png" id="2_bpu12"]
 [ext_resource type="Script" path="res://scripts/components/stats.gd" id="3_ltgu8"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://c34se0ysg86q5"]
 
-[ext_resource type="Texture2D" uid="uid://cunk57oi1m63d" path="res://assets/environment/tilemaps/water_tiles.png" id="1_jjnnh"]
+[ext_resource type="Texture2D" uid="uid://cunk57oi1m63d" path="res://assets/sprite_sheets/environment/tilemaps/water_tiles.png" id="1_jjnnh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lbsgd"]
 vertices = PackedVector2Array(8, 16, -8, 16, -8, -8, 8, -8)

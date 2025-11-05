@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bas63atn22yiw"
+path="res://.godot/imported/Character-Male.aseprite-ceb1920cb3e3414d6a6d0047ff12365c.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/entities/main_character/Character-Male.aseprite"
+dest_files=["res://.godot/imported/Character-Male.aseprite-ceb1920cb3e3414d6a6d0047ff12365c.res"]
+
+[params]
+

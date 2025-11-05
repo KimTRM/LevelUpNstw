@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://6f0locigleod"]
+
+[ext_resource type="Script" uid="uid://b8cqgluxm0k0b" path="res://scripts/environment/disasters/typhoon_disaster.gd" id="1_typhoon"]
+
+[node name="Typhoon" type="Node2D"]
+script = ExtResource("1_typhoon")
+
+[node name="WindParticles" type="CPUParticles2D" parent="."]
+amount = 150
+lifetime = 2.0
+speed_scale = 1.2
+lifetime_randomness = 0.3
+fixed_fps = 60
+emission_shape = 1
+emission_sphere_radius = 300.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 299.43
+orbit_velocity_max = 0.5
+scale_amount_min = 4.0
+scale_amount_max = 12.0
+color = Color(0.85, 0.85, 0.9, 0.6)

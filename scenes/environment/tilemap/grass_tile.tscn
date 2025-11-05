@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://3rr1ia230r8w"]
 
-[ext_resource type="Texture2D" uid="uid://3m6u5hf1tqds" path="res://assets/environment/tilemaps/grass-tiles.png" id="1_lbsgd"]
+[ext_resource type="Texture2D" uid="uid://3m6u5hf1tqds" path="res://assets/sprite_sheets/environment/tilemaps/grass-tiles.png" id="1_lbsgd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lbsgd"]
 vertices = PackedVector2Array(8, 16, -8, 16, -8, -8, 8, -8)
