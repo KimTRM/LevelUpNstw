@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c9rs4n6o8qyd2"]
+
+[ext_resource type="Script" path="res://scripts/disasters/wildfire_disaster.gd" id="1_wildfire"]
+
+[node name="Wildfire" type="Node2D"]
+script = ExtResource("1_wildfire")

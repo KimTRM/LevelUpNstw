@@ -1,0 +1,363 @@
+Bagani: Guardians of the Archipelago - Complete Game Design Document
+Game Overview
+Title: Bantay: Guardians of the Archipelago
+Genre: Action / Co-op PvE (2–4 Players)
+Theme: Filipino Mythology Meets Disaster Response
+Style: Fast-paced top-down action with light tactical co-op
+Platform: PC (Local or LAN Multiplayer)
+Target Rating: T for Teen (Fantasy Violence, Mild Language)
+Core Gameplay Mechanics
+Primary Game Loop: Defend → Purify → Survive
+Each round follows a three-phase structure that escalates in intensity:
+Phase 1: Defend (60 seconds)
+Initial Threat Assessment: Players spawn at designated safe zones across the archipelago map
+Disaster Manifestation: Natural disasters begin affecting different zones (floods, fires, earthquakes, typhoons)
+Corrupted Spawn Points: Dark rifts appear, spawning corrupted elementals at regular intervals
+Zone Control: Players must defend civilian evacuation points while managing environmental hazards
+Phase 2: Purify (45 seconds)
+Altar Activation: Sacred purification altars become accessible in each affected zone
+Cooperative Channeling: Requires 2+ players to stand within altar radius and channel energy simultaneously
+Elemental Synergy Requirement: Specific element combinations needed for successful purification
+Interrupt Mechanics: Corrupted creatures actively attempt to break channeling process
+Phase 3: Survive (30 seconds)
+Chaos Escalation: All remaining corrupted creatures become enraged, gaining speed and damage
+Environmental Collapse: Disaster effects intensify, creating additional hazards
+Final Stand: Players must survive until the archipelago stabilizes
+Bonus Objectives: Optional rescue missions for extra rewards
+Elemental Bantay System
+Each player embodies one of four elemental guardians, each with unique abilities and roles:
+🔥 Apoy (Fire Bantay)
+Core Identity: Aggressive damage dealer and corruption cleanser
+Primary Ability - Flame Strike: Ranged fire projectile that spreads to nearby enemies
+Secondary Ability - Purifying Blaze: Creates fire barriers that damage corrupted creatures but not players
+Environmental Interaction: Can extinguish water-based disasters but amplifies fire disasters
+Corruption Resistance: Takes reduced damage from fire-corrupted enemies
+Weakness: Vulnerable to water-based attacks and flooding zones
+💧 Tubig (Water Bantay)
+Core Identity: Support specialist and crowd controller
+Primary Ability - Healing Rain: Area-of-effect healing that restores HP over time
+Secondary Ability - Tidal Surge: Knockback wave that slows enemies and extinguishes fires
+Environmental Interaction: Can stop fire disasters and create safe passages through flood zones
+Corruption Resistance: Immune to drowning and takes reduced water damage
+Weakness: Vulnerable to earth-based attacks and earthquake zones
+🌪️ Hangin (Wind Bantay)
+Core Identity: Mobility specialist and battlefield controller
+Primary Ability - Gust Blast: Pushes enemies and projectiles away from target area
+Secondary Ability - Cyclone Dash: High-speed movement that damages enemies in path
+Environmental Interaction: Can clear poison gas clouds and redirect debris
+Corruption Resistance: Unaffected by movement-impairing effects
+Weakness: Vulnerable to earth-based attacks and confined spaces
+🌱 Lupa (Earth Bantay)
+Core Identity: Tank and defensive specialist
+Primary Ability - Stone Barrier: Creates temporary walls that block enemy movement and projectiles
+Secondary Ability - Earthquake Strike : Ground pound that stuns nearby enemies
+Environmental Interaction: Can create bridges over chasms and stabilize collapsing structures
+Corruption Resistance: Takes reduced physical damage and immune to knockdown
+Weakness: Vulnerable to wind-based attacks and aerial enemies
+Elemental Synergy Combos
+Players can combine abilities for powerful synergistic effects:
+Fire + Wind = Firestorm
+Activation: Apoy casts Flame Strike while Hangin uses Gust Blast in same area
+Effect: Creates expanding tornado of fire that pulls in enemies and deals massive damage
+Duration: 8 seconds
+Cooldown: 45 seconds
+Water + Earth = Mud Trap
+Activation: Tubig creates puddles while Lupa uses Stone Barrier nearby
+Effect: Ground becomes quicksand, trapping enemies and reducing their attack speed
+Duration: 12 seconds
+Cooldown: 35 seconds
+Fire + Water = Steam Screen
+Activation: Both elements cast abilities in overlapping areas
+Effect: Creates concealing steam cloud that provides stealth and regeneration
+Duration: 10 seconds
+Cooldown: 40 seconds
+Wind + Earth = Sandstorm
+Activation: Hangin creates cyclone while Lupa breaks stone barriers
+Effect: Blinding dust storm that confuses enemies and reflects projectiles
+Duration: 15 seconds
+Cooldown: 50 seconds
+Advanced Synergies (3-4 Players)
+Prismatic Shield: All four elements combine to create ultimate defense
+Elemental Convergence: Massive area damage combining all elemental types
+Nature's Wrath: Environment itself becomes weapon against corruption
+Enemy Types & Corruption System
+Corrupted Elementals
+Shadow Sprites (Basic)
+HP: 50
+Speed: Fast
+Attack: Ranged dark bolts
+Behavior: Swarm tactics, flee when isolated
+Weakness: Any elemental damage
+
+Corrupt Diwata (Elite)
+HP: 200
+Speed: Medium
+Attack: Area corruption aura
+Behavior: Summons shadow sprites, teleports when threatened
+Weakness: Combined elemental attacks
+Possessed Kapre (Boss)
+HP: 800
+Speed: Slow
+Attack: Tree root entanglement, poison smoke
+Behavior: Territorial, becomes enraged below 25% health
+Weakness: Fire + Wind combination
+Aswang Manifestation (Boss)
+HP: 1200
+Speed: Variable (slow/fast phases)
+Attack: Shape-shifting, fear aura
+Behavior: Mimics player abilities, adapts to damage types
+Weakness: Requires all four elements to defeat
+Corruption Mechanics
+Corruption Spread: Defeated corrupted enemies leave corruption pools
+Environmental Corruption: Disasters become more severe with increased corruption
+Player Corruption: Taking damage from corrupted sources slowly corrupts players
+Purification: Standing near altars or other players slowly removes corruption
+
+
+
+Disaster Response System
+Dynamic Disaster Generation
+Each round randomly selects 2-3 disaster types that affect different map zones:
+Flood (Tubig's Domain)
+Visual Effect: Rising water levels, reduced visibility
+Gameplay Impact: Slows non-Tubig players, conducts electricity
+Player Response: Tubig can create safe paths, others must find high ground
+Escalation: Water level rises over time, creating isolated islands
+Wildfire (Apoy's Domain)
+Visual Effect: Spreading flames, smoke effects
+Gameplay Impact: Damages all players except Apoy over time
+Player Response: Apoy can control fire spread, Tubig can extinguish flames
+Escalation: Fire spreads to new areas, creating walls of flame
+Earthquake (Lupa's Domain)
+Visual Effect: Screen shake, falling debris
+Gameplay Impact: Random knockdown, terrain changes
+Player Response: Lupa can stabilize ground, others must avoid fault lines
+Escalation: Chasms open, buildings collapse
+Typhoon (Hangin's Domain)
+Visual Effect: High winds, debris storms
+Gameplay Impact: Pushes players and projectiles randomly
+Player Response: Hangin can navigate freely, others need shelter
+Escalation: Wind speed increases, visibility decreases
+Disaster Interaction Matrix
+Fire + Wind: Creates firestorms that spread rapidly
+Water + Earth: Causes mudslides that block pathways
+Fire + Water: Creates steam that obscures vision
+Wind + Water: Generates waterspouts with knockback effects
+Complete Control Scheme
+Movement Controls (WASD/Arrow Keys)
+W/Up Arrow: Move North
+A/Left Arrow: Move West
+S/Down Arrow: Move South
+D/Right Arrow: Move East
+Diagonal Movement: Supported for 8-directional movement
+Movement Speed: Base speed modified by elemental type and corruption level
+Combat Controls
+Left Mouse Button: Primary elemental ability (direction-based targeting)
+Right Mouse Button: Secondary elemental ability
+Mouse Movement: Aim direction for targeted abilities
+Mouse Wheel: Cycle between ability targets (enemies/environment/allies)
+Interaction Controls
+E Key: Interact with altars, rescue civilians, collect items
+F Key: Channel/hold action for purification altars
+Tab Key: Target nearest enemy or interactive object
+Shift (Hold): Walk slowly for precise positioning
+Communication Controls
+Enter: Open text chat
+V (Hold): Push-to-talk voice chat
+1-4 Keys: Quick communication commands (Help, Ready, Danger, Rally)
+Alt + Click: Ping location on map for team coordination
+Interface Controls
+Escape: Pause menu / Settings
+M: Toggle map overlay
+I: Open inventory/upgrade screen
+L: Toggle player list and scores
+F11: Toggle fullscreen mode
+Advanced Controls
+Space Bar: Dash/dodge ability (universal for all Bantay)
+Ctrl (Hold): Modifier for precision targeting
+Z: Use consumable item (healing, energy restoration)
+F: Ready/unready status for starting next round
+Map Design & Zones
+Core Map Structure
+Each map represents a different island in the Filipino archipelago with 4-6 distinct zones:
+Zone Types
+Barangay (Village Center): Civilian evacuation point, safe respawn area
+Kagubatan (Forest): Dense terrain with limited visibility, Kapre spawn areas
+Dalampasigan (Coastline): Vulnerable to floods and typhoons, fast travel routes
+Bundok (Mountain): High elevation, earthquake-prone, strategic vantage points
+Sakahan (Farmland): Open areas with limited cover, optimal for large battles
+Templo (Temple Ruins): Contains purification altars, ancient Bantay shrines
+Dynamic Environment Features
+Destructible Terrain: Walls and barriers can be destroyed by abilities or disasters
+Interactive Elements: Bridges that can be raised/lowered, gates that require teamwork
+Environmental Weapons: Rockslides, falling trees, collapsing structures
+Weather Effects: Rain affects fire abilities, wind affects projectile accuracy
+Maps by Difficulty
+Beginner: Luzon Lowlands
+Size: Small (5 zones)
+Disasters: Single type per round
+Enemy Density: Low
+Special Features: Tutorial markers, extended timer
+Intermediate: Visayas Archipelago
+Size: Medium (6 zones)
+Disasters: Two types per round
+Enemy Density: Medium
+Special Features: Moving platforms between islands
+Advanced: Mindanao Highlands
+Size: Large (8 zones)
+Disasters: Three types per round
+Enemy Density: High
+Special Features: Vertical terrain, multi-level altars
+Expert: Palawan Caverns
+Size: Complex (10 zones)
+Disasters: All types possible, extreme intensity
+Enemy Density: Maximum
+Special Features: Underground passages, light-dependent gameplay
+Progression & Upgrade System
+Bantay Mastery Levels
+Each elemental guardian has 50 mastery levels, unlocking new abilities and improvements:
+Levels 1-10: Foundation
+Ability Power: +2% per level
+Ability Cooldown: -1% per level
+New Unlocks: Basic combo tutorials
+Levels 11-25: Specialization
+Elemental Synergy Bonus: +3% per level
+Corruption Resistance: +2% per level
+New Unlocks: Advanced combos, utility abilities
+Levels 26-40: Mastery
+Ultimate Ability: Unlock powerful single-use per round ability
+Environmental Control: Enhanced interaction with disaster zones
+New Unlocks: Leadership abilities that boost team performance
+Levels 41-50: Transcendence
+Mythic Power: Can channel abilities of other elements at reduced effectiveness
+Disaster Immunity: Complete immunity to matching elemental disasters
+New Unlocks: Legendary synergy combos, transformation abilities
+Equipment System
+Anting-Anting (Amulets)
+Collectible charms that provide passive bonuses:
+Coral Anting-Anting: +15% water resistance
+Obsidian Anting-Anting: +15% fire damage
+Bamboo Anting-Anting: +10% movement spee
+Gold Anting-Anting: +20% experience gain
+Weapons (Cosmetic + Minor Stats)
+Kampilan (Sword): +5% melee damage
+Sibat (Spear): +10% range for targeted abilities
+Panabas (Axe): +15% damage to environmental objects
+Bolo (Machete): +20% movement speed in forest zones
+Unlockable Cosmetics
+Traditional Clothing: Barong, Maria Clara, tribal wear
+Mythological Skins: Transform into various Filipino mythological creatures
+Regional Variants: Different elemental manifestations based on regional folklore
+Victory Dances: Traditional Filipino dances for victory celebrations
+Game Features for Development
+Core Technical Features
+Networking Architecture
+Local Multiplayer: Split-screen support for 2-4 players
+LAN Multiplayer: Server-client architecture for up to 4 players
+Drop-in/Drop-out: Players can join or leave mid-game
+AI Takeover: Computer controls disconnected players' characters
+Performance Optimization
+Scalable Graphics: Multiple quality settings for different hardware
+Dynamic Loading: Stream map sections to reduce memory usage
+Particle System: Efficient elemental effects and disaster visualization
+Audio System: 3D positional audio with traditional Filipino instruments
+Accessibility Features
+Colorblind Support: Alternative visual indicators for elemental types
+Subtitle System: Full text for all audio cues and voice acting
+Customizable Controls: Full key remapping and sensitivity settings
+Visual Assistance: High contrast modes, larger UI elements
+Content Management System
+Level Editor
+Drag-and-Drop Interface: Easy placement of zones, altars, and spawn points
+Disaster Scripting: Visual scripting for custom disaster sequences
+Enemy Placement: Customizable spawn patterns and enemy types
+Community Sharing: Workshop integration for user-generated content
+Modding Support
+Asset Replacement: Custom textures, models, and audio
+Scripting API: Lua scripting for custom game modes
+Translation Tools: Community localization support
+Steam Workshop: Integrated mod distribution
+Analytics & Balancing
+Player Data Collection
+Performance Metrics: Track success rates for different team compositions
+Difficulty Scaling: Automatic adjustment based on player skill
+Popular Combinations: Monitor most-used elemental synergies
+Session Length: Optimize round timing based on player engagement
+Balance System
+Real-time Tuning: Server-side ability adjustments without patches
+A/B Testing: Test different balance changes with player subsets
+Community Feedback: In-game rating system for balance satisfaction
+Professional Analysis: Regular consultation with competitive players
+Social Features
+Team Formation
+Friend System: Add friends and invite to private matches
+Skill-based Matching: Group players of similar experience levels
+Role Preferences: Players can indicate preferred elemental roles
+Language Matching: Connect players who speak the same language
+Community Features
+Leaderboards: Track team and individual performance statistics
+Achievement System: Unlock titles and rewards for specific accomplishments
+Screenshot System: Capture and share epic moments
+Replay System: Record and review gameplay sessions
+Monetization Strategy (Post-Launch)
+Cosmetic DLC
+Regional Expansion Packs: New maps based on specific Philippine regions
+Mythology Packs: Costumes and abilities based on lesser-known Filipino myths
+Seasonal Events: Limited-time content celebrating Filipino holidays
+Premium Amulets: Cosmetic variants of existing gameplay items
+Content Expansions
+New Bantay Types: Additional elemental guardians (Metal, Light, Shadow)
+Story Campaign: Single-player narrative exploring the mythology
+PvP Modes: Competitive modes pitting Bantay teams against each other
+Endless Mode: Survival challenges with increasing difficulty
+Gameplay Instructions & Tutorial Flow
+New Player Onboarding
+Tutorial 1: Basic Movement & Combat (5 minutes)
+Movement Tutorial: Practice WASD movement in safe environment
+Camera Control: Learn mouse-look and targeting basics
+Basic Attacks: Use primary abilities against practice targets
+Elemental Introduction: Choose first Bantay and learn their identity
+Tutorial 2: Elemental Synergies (7 minutes)
+Partner Introduction: AI or second player demonstrates complementary element
+Simple Combos: Practice Fire + Wind and Water + Earth combinations
+Timing Practice: Learn coordination timing for successful synergies
+Environmental Effects: See how elements interact with map features
+Tutorial 3: Disaster Response (10 minutes)
+Disaster Recognition: Identify visual and audio cues for each disaster type
+Role Specialization: Learn how your element handles specific disasters
+Teamwork Basics: Practice coordinated response to multiple threats
+Altar Purification: Complete first successful purification ritual
+Tutorial 4: Full Round Simulation (15 minutes)
+Complete Experience: Play simplified version of full defend-purify-survive cycle
+AI Teammates: Computer-controlled allies demonstrate optimal play
+Mistake Recovery: Learn how to adapt when plans go wrong
+Victory Conditions: Understand what constitutes success vs. failure
+Advanced Gameplay Tips
+Team Composition Strategies
+Balanced Composition: One of each element for maximum synergy options
+Specialist Focus: Multiple of same element for overwhelming single-threat response
+Support Heavy: Multiple Tubig players for healing-focused survival strategy
+Aggressive Rush: Multiple Apoy players for fast corruption clearing
+Optimal Round Strategies
+Pre-Round Planning: Assign zones and responsibilities before disasters manifest
+Information Sharing: Constantly communicate disaster locations and intensity
+Resource Management: Balance ability cooldowns with threat priorities
+Adaptive Response: Switch strategies based on random disaster combinations
+Mastery Techniques
+Animation Canceling: Interrupt ability animations for faster response
+Predictive Positioning: Anticipate disaster spread patterns
+Combo Chaining: Link multiple synergies for extended battlefield control
+Emergency Protocols: Develop backup plans for worst-case scenarios
+Difficulty Scaling & Accessibility
+Difficulty Modifiers
+Apprentice Mode: Extended timers, reduced enemy spawns, visual ability guides
+Standard Mode: Balanced experience for casual cooperative play
+Veteran Mode: Faster pace, more disasters, stronger enemies
+Legendary Mode: Maximum chaos, limited UI, expert-level coordination required
+Accessibility Options
+Motor Assistance: Hold-to-activate alternatives for tap controls
+Cognitive Support: Visual guides showing optimal ability combinations
+Communication Aids: Quick-chat alternatives to voice communication
+Pause Options: Allow pausing in single-player practice modes
+This comprehensive design document provides the foundation for developing "Bantay: Guardians of the Archipelago" as a unique Filipino mythology-inspired cooperative action game that emphasizes teamwork, cultural education, and exciting gameplay mechanics.
+
