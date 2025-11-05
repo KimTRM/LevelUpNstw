@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c76lidcc8m50q"]
+[gd_scene load_steps=13 format=3 uid="uid://c76lidcc8m50q"]
 
 [ext_resource type="Script" uid="uid://r6dtewsxd0xx" path="res://scripts/npc/npc.gd" id="1_npc"]
 [ext_resource type="Texture2D" uid="uid://brr4digfpqmwe" path="res://assets/sprite_sheets/entities/npc/npc.png" id="2_pcwmf"]
 [ext_resource type="Texture2D" uid="uid://b81t7p04wv83m" path="res://assets/sprite_sheets/entities/npc/clothes.png" id="3_dpyoa"]
+[ext_resource type="Texture2D" uid="uid://b6xxddla1gafe" path="res://assets/sprite_sheets/Shadow.png" id="3_r4bp4"]
 
 [sub_resource type="Animation" id="Animation_dpyoa"]
 length = 0.75
@@ -132,11 +133,10 @@ _data = {
 size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detection"]
-radius = 36.878178
+radius = 56.008926
 
 [node name="NPC" type="CharacterBody2D" groups=["NPC"]]
 y_sort_enabled = true
-collision_layer = 128
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_npc")
@@ -145,11 +145,11 @@ script = ExtResource("1_npc")
 
 [node name="BaseSprite2D" type="Sprite2D" parent="Base"]
 modulate = Color(0.9453361, 0.70681196, 0.47764164, 1)
-y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("2_pcwmf")
 hframes = 4
 vframes = 3
+frame = 4
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -170,6 +170,13 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "a6a556d11874daed33b32e2cd50e1bf9"
 
+[node name="Shadow" type="Sprite2D" parent="Base/BaseSprite2D"]
+modulate = Color(0, 0, 0, 0.5568628)
+show_behind_parent = true
+position = Vector2(-1.1920929e-07, 29)
+scale = Vector2(1.5625, 1.203125)
+texture = ExtResource("3_r4bp4")
+
 [node name="BaseAnimationPlayer" type="AnimationPlayer" parent="Base"]
 root_node = NodePath("../..")
 libraries = {
@@ -183,6 +190,7 @@ texture_filter = 1
 texture = ExtResource("3_dpyoa")
 hframes = 3
 vframes = 3
+frame = 2
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
@@ -191,7 +199,7 @@ metadata/_aseprite_wizard_config_ = {
 "o_folder": "res://assets/sprite_sheets/entities/npc/",
 "o_name": "clothes",
 "only_visible": true,
-"player": "cloths/AnimationPlayer",
+"player": "Clothes/ClothesAnimationPlayer",
 "slice": "",
 "source": "res://assets/aseprite_files/entities/npc/npc.aseprite"
 }
@@ -199,7 +207,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": false,
 "output_section": true
 }
-metadata/_aseprite_wizard_source_file_hash_ = "28ccab9e15d035250d92a75502d1d618"
+metadata/_aseprite_wizard_source_file_hash_ = "72046f0d541813335162886fa58b129b"
 
 [node name="ClothesAnimationPlayer" type="AnimationPlayer" parent="Clothes"]
 libraries = {
@@ -214,16 +222,6 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_detection")
-
-[node name="Dialogue" type="Label" parent="."]
-visible = false
-offset_left = 10.0
-offset_top = -30.0
-offset_right = 71.0
-offset_bottom = -14.0
-text = "Thank you!"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="DialogueTimer" type="Timer" parent="."]
 wait_time = 2.0
