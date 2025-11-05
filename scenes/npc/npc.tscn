@@ -1,13 +1,138 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnpc_follower_system"]
+[gd_scene load_steps=12 format=3 uid="uid://c76lidcc8m50q"]
 
-[ext_resource type="Script" path="res://scripts/npc/npc.gd" id="1_npc"]
-[ext_resource type="Texture2D" uid="uid://b2dddjsfx2c1f" path="res://assets/icon.svg" id="2_icon"]
+[ext_resource type="Script" uid="uid://r6dtewsxd0xx" path="res://scripts/npc/npc.gd" id="1_npc"]
+[ext_resource type="Texture2D" uid="uid://brr4digfpqmwe" path="res://assets/sprite_sheets/entities/npc/npc.png" id="2_pcwmf"]
+[ext_resource type="Texture2D" uid="uid://b81t7p04wv83m" path="res://assets/sprite_sheets/entities/npc/clothes.png" id="3_dpyoa"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_detection"]
-radius = 10.0
+[sub_resource type="Animation" id="Animation_dpyoa"]
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base/BaseSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base/BaseSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0]
+}
+
+[sub_resource type="Animation" id="Animation_r4bp4"]
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Base/BaseSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Base/BaseSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_woxlu"]
+_data = {
+&"Idle": SubResource("Animation_dpyoa"),
+&"walk": SubResource("Animation_r4bp4")
+}
+
+[sub_resource type="Animation" id="Animation_woxlu"]
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ClothesSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClothesSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_ay68w"]
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ClothesSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClothesSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_evswx"]
+_data = {
+&"Idle": SubResource("Animation_woxlu"),
+&"walk": SubResource("Animation_ay68w")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_collision"]
 size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_detection"]
+radius = 36.878178
 
 [node name="NPC" type="CharacterBody2D" groups=["NPC"]]
 y_sort_enabled = true
@@ -15,36 +140,91 @@ collision_layer = 128
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_npc")
-follow_distance = 150.0
-follow_speed = 120.0
-separation_distance = 40.0
-separation_force = 200.0
-stop_distance = 30.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Base" type="Node2D" parent="."]
+
+[node name="BaseSprite2D" type="Sprite2D" parent="Base"]
+modulate = Color(0.9453361, 0.70681196, 0.47764164, 1)
 y_sort_enabled = true
-texture_filter = 2
-texture = ExtResource("2_icon")
-scale = Vector2(0.35, 0.35)
+texture_filter = 1
+texture = ExtResource("2_pcwmf")
+hframes = 4
+vframes = 3
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/sprite_sheets/entities/npc/",
+"o_name": "",
+"only_visible": true,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://assets/aseprite_files/entities/npc/npc.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": true,
+"output_section": true,
+"slice_section": false
+}
+metadata/_aseprite_wizard_source_file_hash_ = "a6a556d11874daed33b32e2cd50e1bf9"
+
+[node name="BaseAnimationPlayer" type="AnimationPlayer" parent="Base"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_woxlu")
+}
+
+[node name="Clothes" type="Node2D" parent="."]
+
+[node name="ClothesSprite2D" type="Sprite2D" parent="Clothes"]
+texture_filter = 1
+texture = ExtResource("3_dpyoa")
+hframes = 3
+vframes = 3
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/sprite_sheets/entities/npc/",
+"o_name": "clothes",
+"only_visible": true,
+"player": "cloths/AnimationPlayer",
+"slice": "",
+"source": "res://assets/aseprite_files/entities/npc/npc.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "28ccab9e15d035250d92a75502d1d618"
+
+[node name="ClothesAnimationPlayer" type="AnimationPlayer" parent="Clothes"]
+libraries = {
+&"": SubResource("AnimationLibrary_evswx")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_collision")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_detection")
 
 [node name="Dialogue" type="Label" parent="."]
+visible = false
+offset_left = 10.0
+offset_top = -30.0
+offset_right = 71.0
+offset_bottom = -14.0
 text = "Thank you!"
 horizontal_alignment = 1
 vertical_alignment = 1
-position = Vector2(0, -22)
-visible = false
 
 [node name="DialogueTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-

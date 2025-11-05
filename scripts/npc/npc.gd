@@ -2,23 +2,27 @@ class_name NPC extends CharacterBody2D
 
 # pasensya na kim magulo code ko , inayos as far possible 
 
+@onready var base_sprite_2d: Sprite2D = $Base/BaseSprite2D
+@onready var base_animation_player: AnimationPlayer = $Base/BaseAnimationPlayer
 
+@onready var clothes_sprite_2d: Sprite2D = $Clothes/ClothesSprite2D
+@onready var clothes_animation_player: AnimationPlayer = $Clothes/ClothesAnimationPlayer
+
+@export var skin_color: Color = Color.WHITE
 @export var follow_distance: float = 150.0
 @export var follow_speed: float = 120.0
 @export var separation_distance: float = 40.0
 @export var separation_force: float = 200.0
 @export var stop_distance: float = 30.0
 
-@onready var sprite: Sprite2D = $Sprite2D
 @onready var detection_area: Area2D = $DetectionArea
 @onready var detection_shape: CollisionShape2D = $DetectionArea/CollisionShape2D
 @onready var dialogue_label: Label = $Dialogue
 @onready var dialogue_timer: Timer = $DialogueTimer
 
-var player: Node2D = null
+var player: Player = null
 var is_following: bool = false
 var velocity_component: VelocityComponent
-var idle_tween: Tween = null
 var last_player_direction: Vector2 = Vector2.DOWN
 
 func _ready() -> void:
@@ -43,14 +47,6 @@ func _ready() -> void:
 
 	add_to_group("NPC")
 
-	var color_variations = [
-		Color(1.0, 1.0, 1.0),      # White
-		Color(0.9, 1.0, 0.9),      # Light green
-		Color(1.0, 0.9, 0.9),      # Light red
-	]
-	var random_index = randi() % color_variations.size()
-	sprite.modulate = color_variations[random_index]
-	
 	_start_idle_animation()
 
 func _physics_process(delta: float) -> void:
@@ -65,14 +61,21 @@ func _physics_process(delta: float) -> void:
 	var separation_velocity = calculate_separation()
 	desired_velocity += separation_velocity
 	
-	# Update velocity component
+	
+	if desired_velocity == Vector2.ZERO:
+		_start_idle_animation()
+
+		velocity = velocity_component.velocity
+		velocity_component.move(self)
+		return
+
+	base_animation_player.play("walk")
+	clothes_animation_player.play("walk")
+	
 	velocity_component.accelerate_to_velocity(desired_velocity, delta)
 	velocity = velocity_component.velocity
 	velocity_component.move(self)
 
-	if velocity.length() > 10.0:
-		var angle = velocity.angle()
-		sprite.rotation = lerp_angle(sprite.rotation, angle, delta * 5.0)
 
 func calculate_desired_velocity() -> Vector2:
 	if not is_instance_valid(player):
@@ -88,7 +91,11 @@ func calculate_desired_velocity() -> Vector2:
 
 	var direction = (target_position - global_position).normalized()
 	var distance = global_position.distance_to(target_position)
-	
+
+	if abs(direction.x) > abs(direction.y):
+		clothes_sprite_2d.flip_h = direction.x < 0
+		base_sprite_2d.flip_h = direction.x < 0
+
 	# Stop if too close to player
 	if distance < stop_distance:
 		return Vector2.ZERO
@@ -125,10 +132,7 @@ func _on_player_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		player = body
 		is_following = true
-		# Stop idle npc 
-		if idle_tween:
-			idle_tween.kill()
-			idle_tween = null
+		
 		# Optional dialogue npc
 		if is_instance_valid(dialogue_label):
 			dialogue_label.visible = true
@@ -145,12 +149,5 @@ func _on_player_exited(body: Node) -> void:
 		pass
 
 func _start_idle_animation() -> void:
-
-	if idle_tween:
-		idle_tween.kill()
-
-	sprite.modulate.a = 1.0
-
-	idle_tween = create_tween().set_loops()
-	idle_tween.tween_property(sprite, "modulate:a", 0.85, 1.5)
-	idle_tween.tween_property(sprite, "modulate:a", 1.0, 1.5)
+	base_animation_player.play("Idle")
+	clothes_animation_player.play("Idle")
