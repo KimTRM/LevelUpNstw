@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnpc_follower_system"]
+
+[ext_resource type="Script" path="res://scripts/npc/npc.gd" id="1_npc"]
+[ext_resource type="Texture2D" uid="uid://b2dddjsfx2c1f" path="res://assets/icon.svg" id="2_icon"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_detection"]
+radius = 150.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_collision"]
+size = Vector2(16, 16)
+
+[node name="NPC" type="CharacterBody2D" groups=["NPC"]]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_npc")
+follow_distance = 150.0
+follow_speed = 120.0
+separation_distance = 40.0
+separation_force = 200.0
+stop_distance = 30.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 2
+texture = ExtResource("2_icon")
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_collision")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_detection")
+

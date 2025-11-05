@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ygs67n5rvyjg" path="res://scenes/players/player.tscn" id="3_c01mt"]
 [ext_resource type="PackedScene" uid="uid://3rr1ia230r8w" path="res://scenes/environment/tilemap/grass_tile.tscn" id="3_rarhs"]
 [ext_resource type="PackedScene" uid="uid://cbhkrmfmi6adw" path="res://scenes/environment/altar.tscn" id="3_vcsgt"]
+[ext_resource type="PackedScene" uid="uid://bnpc_follower_system" path="res://scenes/npc/npc.tscn" id="3_npc"]
 [ext_resource type="Script" path="res://scripts/components/enemy_spwan_point.gd" id="4_rarhs"]
 [ext_resource type="PackedScene" uid="uid://dd83lfrr6txhi" path="res://scenes/environment/nature_props.tscn" id="4_wp0k4"]
 [ext_resource type="Script" uid="uid://r8g0behr1ym4" path="res://scripts/players/apoy_bagani/apoy_bagani.gd" id="5_lhr70"]
@@ -59,6 +60,13 @@ player_resource = SubResource("Resource_bjd11")
 
 [node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="Altar" parent="Entities" instance=ExtResource("3_vcsgt")]
+position = Vector2(642, 335)
+
+[node name="Player" parent="Entities" instance=ExtResource("3_c01mt")]
+position = Vector2(488, 292)
+player_resource = SubResource("Resource_lhr70")
 
 [node name="SpwanPoints" type="Node" parent="."]
 
