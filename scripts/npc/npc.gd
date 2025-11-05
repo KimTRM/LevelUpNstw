@@ -1,5 +1,8 @@
 class_name NPC extends CharacterBody2D
 
+# pasensya na kim magulo code ko , inayos as far possible 
+
+
 @export var follow_distance: float = 150.0
 @export var follow_speed: float = 120.0
 @export var separation_distance: float = 40.0
@@ -9,11 +12,14 @@ class_name NPC extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var detection_area: Area2D = $DetectionArea
 @onready var detection_shape: CollisionShape2D = $DetectionArea/CollisionShape2D
+@onready var dialogue_label: Label = $Dialogue
+@onready var dialogue_timer: Timer = $DialogueTimer
 
 var player: Node2D = null
 var is_following: bool = false
 var velocity_component: VelocityComponent
 var idle_tween: Tween = null
+var last_player_direction: Vector2 = Vector2.DOWN
 
 func _ready() -> void:
 	# Create velocity component for smooth movement
@@ -28,23 +34,23 @@ func _ready() -> void:
 		circle_shape.radius = follow_distance
 		detection_shape.shape = circle_shape
 	
-	# Connect signals
+	# detection kapag nasa area na 
 	detection_area.body_entered.connect(_on_player_entered)
 	detection_area.body_exited.connect(_on_player_exited)
-	
-	# Add to NPC group
+	dialogue_timer.timeout.connect(func():
+		if is_instance_valid(dialogue_label):
+			dialogue_label.visible = false)
+
 	add_to_group("NPC")
-	
-	# Add slight color variation for visual distinction
+
 	var color_variations = [
-		Color(1.0, 1.0, 1.0),      # White (default)
+		Color(1.0, 1.0, 1.0),      # White
 		Color(0.9, 1.0, 0.9),      # Light green
 		Color(1.0, 0.9, 0.9),      # Light red
 	]
 	var random_index = randi() % color_variations.size()
 	sprite.modulate = color_variations[random_index]
 	
-	# Add subtle pulsing animation
 	_start_idle_animation()
 
 func _physics_process(delta: float) -> void:
@@ -62,32 +68,31 @@ func _physics_process(delta: float) -> void:
 	# Update velocity component
 	velocity_component.accelerate_to_velocity(desired_velocity, delta)
 	velocity = velocity_component.velocity
-	
-	# Move the NPC
 	velocity_component.move(self)
-	
-	# Face the direction of movement for visual polish
+
 	if velocity.length() > 10.0:
 		var angle = velocity.angle()
 		sprite.rotation = lerp_angle(sprite.rotation, angle, delta * 5.0)
-		# Scale up slightly when moving
-		sprite.scale = sprite.scale.lerp(Vector2(1.05, 1.05), delta * 3.0)
-	else:
-		# Return to normal scale when idle
-		sprite.scale = sprite.scale.lerp(Vector2(1.0, 1.0), delta * 3.0)
 
 func calculate_desired_velocity() -> Vector2:
 	if not is_instance_valid(player):
 		return Vector2.ZERO
-	
-	var direction = (player.global_position - global_position).normalized()
-	var distance = global_position.distance_to(player.global_position)
+
+	# Follow slightly behind the Chacter behind the palyerssf
+	var target_position: Vector2 = player.global_position
+	if player is CharacterBody2D:
+		var pv: Vector2 = (player as CharacterBody2D).velocity
+		if pv.length() > 0.1:
+			last_player_direction = pv.normalized()
+		target_position = player.global_position - last_player_direction * 20.0
+
+	var direction = (target_position - global_position).normalized()
+	var distance = global_position.distance_to(target_position)
 	
 	# Stop if too close to player
 	if distance < stop_distance:
 		return Vector2.ZERO
 	
-	# Slow down when approaching
 	var speed_multiplier = 1.0
 	if distance < stop_distance * 2.0:
 		speed_multiplier = (distance - stop_distance) / stop_distance
@@ -120,31 +125,32 @@ func _on_player_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		player = body
 		is_following = true
-		# Stop idle animation
+		# Stop idle npc 
 		if idle_tween:
 			idle_tween.kill()
 			idle_tween = null
-		# Visual feedback - slightly scale up
-		var tween = create_tween()
-		tween.tween_property(sprite, "scale", Vector2(1.1, 1.1), 0.2)
+		# Optional dialogue npc
+		if is_instance_valid(dialogue_label):
+			dialogue_label.visible = true
+			dialogue_label.text = "Thank you!"
+			dialogue_timer.start()
+		# Show brief dialogue
+		if is_instance_valid(dialogue_label):
+			dialogue_label.visible = true
+			dialogue_label.text = "Thank you!"
+			dialogue_timer.start()
 
 func _on_player_exited(body: Node) -> void:
 	if body.is_in_group("Player"):
-		is_following = false
-		player = null
-		# Visual feedback - scale back and return to idle
-		var tween = create_tween()
-		tween.tween_property(sprite, "scale", Vector2(1.0, 1.0), 0.2)
-		_start_idle_animation()
+		pass
 
 func _start_idle_animation() -> void:
-	# Stop any existing idle animation
+
 	if idle_tween:
 		idle_tween.kill()
-	# Reset alpha to full
+
 	sprite.modulate.a = 1.0
-	# Subtle pulsing when idle
+
 	idle_tween = create_tween().set_loops()
 	idle_tween.tween_property(sprite, "modulate:a", 0.85, 1.5)
 	idle_tween.tween_property(sprite, "modulate:a", 1.0, 1.5)
-

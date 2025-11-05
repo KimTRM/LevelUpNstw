@@ -4,37 +4,54 @@ extends Node
 @export var auto_start: bool = true
 @export var spawn_points: Array[EnemySpawnPoint] = []
 
+# Wave-based controls
+@export var respawn_delay_seconds: float = 5.0
+@export var total_spawn_duration_seconds: float = 60.0
+
 @export var indicator_duration: float = 1.5
 @export var spawn_appear_duration: float = 0.35
 
-var rift_scene: PackedScene = preload("uid://jpay2ha6ca6y")
+# Use path-based preload to avoid broken UID references after file moves/reimports
+var rift_scene: PackedScene = preload("res://scenes/enemies/rift.tscn")
 
 var _spawned_count: int = 0
 var _timer: Timer
 var _is_wave_running: bool = false
+var _stopped: bool = false
+var _stop_spawning_at_ms: int = 0
+var _current_wave_enemies: Array[Node] = []
 
 func _ready() -> void:
 	_timer = Timer.new()
 	_timer.wait_time = spawn_interval
-	_timer.one_shot = false
-	_timer.autostart = auto_start
+	_timer.one_shot = true
+	_timer.autostart = false
 	add_child(_timer)
-	_timer.timeout.connect(_on_timer_timeout)
+	_timer.timeout.connect(func(): await _spawn_next_wave_if_allowed())
+
+	_stop_spawning_at_ms = Time.get_ticks_msec() + int(total_spawn_duration_seconds * 1000.0)
+
 	if auto_start:
-		_timer.start()
+		await _start_when_spawn_points_ready()
 
-func _on_timer_timeout() -> void:
-	# Stop if any spawn point reached its max
-	var should_stop := false
-	for spawn_point in spawn_points:
-		if spawn_point.max_spawns > 0 and _spawned_count >= spawn_point.max_spawns:
-			should_stop = true
-			break
-	if should_stop:
-		_timer.stop()
+func _start_when_spawn_points_ready() -> void:
+	# In autoloads, this can run before the main scene and spawn points are ready
+	var wait_ms_deadline := Time.get_ticks_msec() + 2000
+	while spawn_points.is_empty() and Time.get_ticks_msec() < wait_ms_deadline:
+		await get_tree().process_frame
+	# If still empty, try one more small delay to allow registration
+	if spawn_points.is_empty():
+		await get_tree().create_timer(0.1).timeout
+	# Spawn initial wave if still within allowed time
+	if Time.get_ticks_msec() < _stop_spawning_at_ms and not spawn_points.is_empty():
+		await spawn_wave()
+
+func _spawn_next_wave_if_allowed() -> void:
+	if _stopped:
 		return
-
-	# Prevent overlapping waves while awaiting
+	if Time.get_ticks_msec() >= _stop_spawning_at_ms:
+		_stopped = true
+		return
 	if _is_wave_running:
 		return
 	_is_wave_running = true
@@ -43,6 +60,8 @@ func _on_timer_timeout() -> void:
 	_spawned_count += 1
 
 func spawn_wave() -> void:
+	# Reset current wave tracking
+	_current_wave_enemies.clear()
 	var spawn_positions: Array[Vector2] = []
 	var enemy_scenes: Array[PackedScene] = []
 	
@@ -112,6 +131,10 @@ func spawn_enemy(enemy_to_spawn: PackedScene, pos: Vector2) -> void:
 	else:
 		current_scene.add_child(instance)
 
+	# Track this enemy for wave completion using tree exit (covers all death paths)
+	_current_wave_enemies.append(instance)
+	instance.tree_exited.connect(_on_enemy_tree_exited)
+
 	# Find the Visuals node for the spawn animation (after adding to tree so it's ready)
 	var visuals_node = instance.get_node_or_null("Visuals") as Node2D
 	var can_tween_visual := visuals_node != null
@@ -148,3 +171,19 @@ func spawn_enemy(enemy_to_spawn: PackedScene, pos: Vector2) -> void:
 		if had_collision and is_instance_valid(instance):
 			instance.collision_layer = original_layer
 			instance.collision_mask = original_mask
+
+func _on_enemy_tree_exited() -> void:
+	# Clean up any freed references
+	for i in range(_current_wave_enemies.size() - 1, -1, -1):
+		if not is_instance_valid(_current_wave_enemies[i]) or _current_wave_enemies[i].get_parent() == null:
+			_current_wave_enemies.remove_at(i)
+	# If all enemies are gone, schedule the next wave after delay, unless stopped/time's up
+	if _current_wave_enemies.is_empty():
+		if _stopped:
+			return
+		if Time.get_ticks_msec() >= _stop_spawning_at_ms:
+			_stopped = true
+			return
+		# Wait respawn delay then spawn next wave if still allowed
+		await get_tree().create_timer(respawn_delay_seconds).timeout
+		await _spawn_next_wave_if_allowed()

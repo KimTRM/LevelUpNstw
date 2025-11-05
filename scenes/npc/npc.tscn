@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://b2dddjsfx2c1f" path="res://assets/icon.svg" id="2_icon"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detection"]
-radius = 150.0
+radius = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_collision"]
 size = Vector2(16, 16)
 
 [node name="NPC" type="CharacterBody2D" groups=["NPC"]]
 y_sort_enabled = true
-collision_layer = 2
+collision_layer = 128
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_npc")
@@ -25,15 +25,26 @@ stop_distance = 30.0
 y_sort_enabled = true
 texture_filter = 2
 texture = ExtResource("2_icon")
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.35, 0.35)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_collision")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_detection")
+
+[node name="Dialogue" type="Label" parent="."]
+text = "Thank you!"
+horizontal_alignment = 1
+vertical_alignment = 1
+position = Vector2(0, -22)
+visible = false
+
+[node name="DialogueTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
