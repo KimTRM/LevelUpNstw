@@ -13,8 +13,8 @@ class_name FloodDisaster
 # Escalation variables
 var escalation_timer: float = 0.0
 var escalation_progress: float = 0.0  # 0.0 to 1.0
-var initial_particle_amount: int = 200
-var max_particle_amount: int = 400
+var initial_particle_amount: int = 600
+var max_particle_amount: int = 1200
 
 # Visual overlay for reduced visibility
 var visibility_overlay: ColorRect
@@ -25,44 +25,42 @@ func _setup_disaster() -> void:
 	disaster_radius = 250.0
 	damage_per_second = 0.0  # Flood doesn't deal direct damage
 
-	# Setup particles for water effect
+	# Primary particles: Water clouds (based on Steam template)
 	particles = GPUParticles2D.new()
-	particles.amount = 200
-	particles.lifetime = 2.0
-	particles.explosiveness = 0.0
-	particles.randomness = 0.5
+	particles.amount = initial_particle_amount
+	particles.lifetime = 3.0
+	particles.explosiveness = 0.1
+	particles.randomness = 0.8
 	particles.visibility_rect = Rect2(-disaster_radius, -disaster_radius, disaster_radius * 2, disaster_radius * 2)
 
-	# Create particle process material for water droplets
-	var material = ParticleProcessMaterial.new()
+	var water_material = ParticleProcessMaterial.new()
+	water_material.particle_flag_disable_z = true
+	water_material.direction = Vector3(0, -0.5, 0)  # Slowly rise
+	water_material.spread = 180.0
+	water_material.initial_velocity_min = 30.0
+	water_material.initial_velocity_max = 70.0
+	water_material.gravity = Vector3(0, -20, 0)  # Slight upward drift
 
-	# Water particle settings - blue color
-	material.particle_flag_disable_z = true
-	material.direction = Vector3(0, 1, 0)  # Fall downward
-	material.spread = 180.0
-	material.initial_velocity_min = 20.0
-	material.initial_velocity_max = 50.0
-	material.gravity = Vector3(0, 98, 0)
+	# Water color gradient - blues with white highlights
+	var water_gradient = Gradient.new()
+	water_gradient.add_point(0.0, Color(0.7, 0.9, 1.0, 0.9))   # Light blue with white
+	water_gradient.add_point(0.4, Color(0.3, 0.6, 1.0, 0.8))   # Medium blue
+	water_gradient.add_point(0.8, Color(0.1, 0.4, 0.8, 0.6))   # Deep blue
+	water_gradient.add_point(1.0, Color(0.0, 0.2, 0.5, 0.0))   # Dark blue, transparent
 
-	# Color gradient for water - shades of blue
-	var gradient = Gradient.new()
-	gradient.set_color(0, Color(0.2, 0.5, 1.0, 0.8))  # Light blue
-	gradient.set_color(1, Color(0.0, 0.3, 0.7, 0.3))  # Darker blue, more transparent
+	var water_gradient_texture = GradientTexture1D.new()
+	water_gradient_texture.gradient = water_gradient
+	water_material.color_ramp = water_gradient_texture
 
-	var gradient_texture = GradientTexture1D.new()
-	gradient_texture.gradient = gradient
-	material.color_ramp = gradient_texture
+	water_material.scale_min = 10.0  # Large water clouds
+	water_material.scale_max = 25.0
 
-	# Scale variation
-	material.scale_min = 2.0
-	material.scale_max = 5.0
+	# EMISSION SHAPE: Sphere shape similar to combo disasters
+	water_material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_SPHERE
+	water_material.emission_sphere_radius = disaster_radius
 
-	particles.process_material = material
-
-	# Emission shape - circle
-	material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_SPHERE
-	material.emission_sphere_radius = disaster_radius
-
+	particles.process_material = water_material
+	# Add particles directly as child for smooth rendering
 	add_child(particles)
 
 	# Setup collision area for flood zone
@@ -100,10 +98,16 @@ func _process(delta: float) -> void:
 	escalation_timer += delta
 	escalation_progress = clamp(escalation_timer / max_escalation_time, 0.0, 1.0)
 
-	# Escalate water level (increase particle count)
+	# Escalate water density (particle count)
 	if particles:
 		var new_amount = int(lerp(initial_particle_amount, max_particle_amount, escalation_progress))
 		particles.amount = new_amount
+
+		var water_material = particles.process_material as ParticleProcessMaterial
+		if water_material:
+			# Increase emission radius
+			disaster_radius = lerp(250.0, 400.0, escalation_progress)
+			water_material.emission_sphere_radius = disaster_radius
 
 	# Escalate visibility reduction
 	if visibility_overlay:
@@ -127,3 +131,5 @@ func _on_body_exit_zone(body: Node2D) -> void:
 	# Remove slow effect when exiting
 	if body.has_method("remove_slow_effect"):
 		body.remove_slow_effect()
+
+

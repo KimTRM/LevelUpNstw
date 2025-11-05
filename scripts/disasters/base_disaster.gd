@@ -13,6 +13,7 @@ class_name BaseDisaster
 var particles: GPUParticles2D
 var collision_area: Area2D
 var collision_shape: CollisionShape2D
+var particle_canvas_layer: CanvasLayer  # For screen-space particle rendering
 
 # Bodies currently in the disaster zone
 var bodies_in_zone: Array[Node2D] = []

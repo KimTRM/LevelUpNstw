@@ -14,8 +14,8 @@ var escalation_timer: float = 0.0
 var escalation_progress: float = 0.0  # 0.0 to 1.0
 var initial_radius: float = 220.0
 var max_radius: float = 350.0
-var initial_particle_amount: int = 300
-var max_particle_amount: int = 600
+var initial_particle_amount: int = 500
+var max_particle_amount: int = 1000
 
 # Visual overlay for smoke
 var smoke_overlay: ColorRect
@@ -26,47 +26,45 @@ func _setup_disaster() -> void:
 	disaster_radius = initial_radius
 	damage_per_second = fire_damage_per_second
 
-	# Setup particles for fire effect
+	# Primary particles: Fire (based on Firestorm template)
 	particles = GPUParticles2D.new()
-	particles.amount = 300
-	particles.lifetime = 1.5
-	particles.explosiveness = 0.1
-	particles.randomness = 0.6
+	particles.amount = initial_particle_amount
+	particles.lifetime = 2.0
+	particles.explosiveness = 0.3
+	particles.randomness = 0.7
 	particles.visibility_rect = Rect2(-disaster_radius, -disaster_radius, disaster_radius * 2, disaster_radius * 2)
 
-	# Create particle process material for flames
-	var material = ParticleProcessMaterial.new()
+	var fire_material = ParticleProcessMaterial.new()
+	fire_material.particle_flag_disable_z = true
+	fire_material.direction = Vector3(0, -1, 0)  # Rise upward
+	fire_material.spread = 180.0
+	fire_material.initial_velocity_min = 80.0
+	fire_material.initial_velocity_max = 150.0
+	fire_material.gravity = Vector3(0, -60, 0)
 
-	# Fire particle settings - orange/red/yellow
-	material.particle_flag_disable_z = true
-	material.direction = Vector3(0, -1, 0)  # Rise upward
-	material.spread = 45.0
-	material.initial_velocity_min = 50.0
-	material.initial_velocity_max = 100.0
-	material.gravity = Vector3(0, -80, 0)  # Negative gravity for flames rising
+	# Fire color gradient
+	var fire_gradient = Gradient.new()
+	fire_gradient.add_point(0.0, Color(1.0, 1.0, 0.5, 1.0))   # Bright yellow
+	fire_gradient.add_point(0.4, Color(1.0, 0.4, 0.0, 1.0))   # Orange
+	fire_gradient.add_point(0.8, Color(0.9, 0.0, 0.0, 0.8))   # Red
+	fire_gradient.add_point(1.0, Color(0.3, 0.0, 0.0, 0.0))   # Dark, transparent
 
-	# Color gradient for fire - orange to red to dark
-	var gradient = Gradient.new()
-	gradient.add_point(0.0, Color(1.0, 1.0, 0.3, 1.0))   # Bright yellow
-	gradient.add_point(0.3, Color(1.0, 0.5, 0.0, 1.0))   # Orange
-	gradient.add_point(0.7, Color(0.8, 0.1, 0.0, 0.8))   # Red
-	gradient.add_point(1.0, Color(0.2, 0.0, 0.0, 0.0))   # Dark red, transparent
+	var fire_gradient_texture = GradientTexture1D.new()
+	fire_gradient_texture.gradient = fire_gradient
+	fire_material.color_ramp = fire_gradient_texture
 
-	var gradient_texture = GradientTexture1D.new()
-	gradient_texture.gradient = gradient
-	material.color_ramp = gradient_texture
+	fire_material.scale_min = 4.0
+	fire_material.scale_max = 10.0
 
-	# Scale variation - flames grow as they rise
-	material.scale_min = 3.0
-	material.scale_max = 8.0
-	material.scale_curve = _create_scale_curve()
+	# EMISSION SHAPE: Ring shape similar to combo disasters
+	fire_material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_RING
+	fire_material.emission_ring_axis = Vector3(0, 0, 1)
+	fire_material.emission_ring_height = 50.0
+	fire_material.emission_ring_radius = disaster_radius * 0.8
+	fire_material.emission_ring_inner_radius = disaster_radius * 0.3
 
-	particles.process_material = material
-
-	# Emission shape - circle
-	material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_SPHERE
-	material.emission_sphere_radius = disaster_radius
-
+	particles.process_material = fire_material
+	# Add particles directly as child for smooth rendering
 	add_child(particles)
 
 	# Setup collision area for fire zone
@@ -106,14 +104,15 @@ func _process(delta: float) -> void:
 	# Escalate fire spread (increase radius and particle count)
 	disaster_radius = lerp(initial_radius, max_radius, escalation_progress)
 
+	# Update fire particles
 	if particles:
 		var new_amount = int(lerp(initial_particle_amount, max_particle_amount, escalation_progress))
 		particles.amount = new_amount
 
-		# Update emission radius
-		var material = particles.process_material as ParticleProcessMaterial
-		if material:
-			material.emission_sphere_radius = disaster_radius
+		var fire_material = particles.process_material as ParticleProcessMaterial
+		if fire_material:
+			fire_material.emission_ring_radius = disaster_radius * 0.8
+			fire_material.emission_ring_inner_radius = disaster_radius * 0.3
 
 	# Update collision area radius
 	if collision_shape and collision_shape.shape is CircleShape2D:
@@ -123,15 +122,6 @@ func _process(delta: float) -> void:
 	if smoke_overlay:
 		var max_alpha = 0.4  # Maximum 40% opacity for thick smoke
 		smoke_overlay.color.a = lerp(0.0, max_alpha, escalation_progress)
-
-
-func _create_scale_curve() -> Curve:
-	"""Create a curve for flames that grow as they rise"""
-	var curve = Curve.new()
-	curve.add_point(Vector2(0, 0.3))
-	curve.add_point(Vector2(0.5, 1.0))
-	curve.add_point(Vector2(1, 0.5))
-	return curve
 
 
 func _apply_disaster_effects(delta: float) -> void:

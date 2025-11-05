@@ -135,16 +135,17 @@ func _spawn_disaster(disaster_type: DisasterType) -> void:
 	var disaster_scene = disaster_scenes[disaster_type]
 	var disaster = disaster_scene.instantiate()
 
-	# Parent to camera if available, otherwise use world position
+	# FIXED APPROACH: Parent to camera so emission follows player
+	# Particles use top_level=true to prevent jitter
 	if camera:
 		camera.add_child(disaster)
 		disaster.position = camera_relative_offset
-		# Pass camera reference to disaster for screen shake
+		# Pass camera reference to disaster for screen shake effects
 		if disaster.has_method("set_camera"):
 			disaster.set_camera(camera)
 	else:
 		add_child(disaster)
-		disaster.position = get_viewport_rect().size / 2  # Center of screen
+		disaster.position = get_viewport_rect().size / 2
 
 	current_disasters.append(disaster)
 	current_disaster_type = disaster_type
@@ -169,7 +170,8 @@ func _spawn_combo_disaster() -> void:
 	var combo_scene = combo_disaster_scenes[random_combo]
 	var combo_disaster = combo_scene.instantiate()
 
-	# Parent to camera if available
+	# FIXED APPROACH: Parent to camera so emission follows player
+	# Particles use top_level=true to prevent jitter
 	if camera:
 		camera.add_child(combo_disaster)
 		combo_disaster.position = camera_relative_offset
