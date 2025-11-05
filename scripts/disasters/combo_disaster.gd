@@ -23,10 +23,25 @@ var escalation_timer: float = 0.0
 var escalation_progress: float = 0.0
 @export var max_escalation_time: float = 10.0
 
+# Camera reference for positioning
+var camera_ref: Camera2D = null
+
 
 func _ready() -> void:
 	super._ready()
 	print("Combo disaster initialized: ", combo_name)
+
+
+func set_camera(cam: Camera2D) -> void:
+	"""Set the camera reference for positioning particles and effects"""
+	camera_ref = cam
+	print("ComboDisaster (", combo_name, "): Camera set for positioning")
+
+
+func _physics_process(_delta: float) -> void:
+	# Update position to follow camera in physics process for smooth interpolation
+	if camera_ref:
+		global_position = camera_ref.get_screen_center_position()
 
 
 func _process(delta: float) -> void:

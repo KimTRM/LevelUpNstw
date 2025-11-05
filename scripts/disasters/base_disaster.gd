@@ -10,7 +10,7 @@ class_name BaseDisaster
 @export var damage_per_second: float = 5.0
 
 # References to child nodes
-var particles: GPUParticles2D
+var particles  # Can be GPUParticles2D or CPUParticles2D
 var collision_area: Area2D
 var collision_shape: CollisionShape2D
 var particle_canvas_layer: CanvasLayer  # For screen-space particle rendering

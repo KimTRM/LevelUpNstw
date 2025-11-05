@@ -14,8 +14,6 @@ class_name EarthquakeDisaster
 # Escalation variables
 var escalation_timer: float = 0.0
 var escalation_progress: float = 0.0  # 0.0 to 1.0
-var initial_debris_density: int = 400
-var max_debris_density: int = 800
 var shake_intensity: float = 5.0
 
 var shake_time: float = 0.0  # Accumulated time for smooth sine wave
@@ -26,48 +24,19 @@ var base_shake_offset: Vector2 = Vector2.ZERO
 # Camera reference for screen shake
 var camera_ref: Camera2D = null
 
+# Get particle references from scene
+@onready var particle_container: Node2D = $ParticleContainer
+@onready var debris_particles: CPUParticles2D = $ParticleContainer/EarthquakeDebris
+@onready var fog_particles: CPUParticles2D = $ParticleContainer/EarthquakeDebrisFog
+
 
 func _setup_disaster() -> void:
 	disaster_name = "Earthquake"
 	disaster_radius = 280.0
 	damage_per_second = 5.0  # Minor damage from falling debris
 
-	# Particles: Falling debris (based on Steam's water droplets template)
-	particles = GPUParticles2D.new()
-	particles.amount = initial_debris_density
-	particles.lifetime = 1.5
-	particles.explosiveness = 0.2
-	particles.randomness = 0.6
-	particles.visibility_rect = Rect2(-disaster_radius, -disaster_radius, disaster_radius * 2, disaster_radius * 2)
-
-	var debris_material = ParticleProcessMaterial.new()
-	debris_material.particle_flag_disable_z = true
-	debris_material.direction = Vector3(0, 1, 0)  # Fall down
-	debris_material.spread = 60.0
-	debris_material.initial_velocity_min = 50.0
-	debris_material.initial_velocity_max = 100.0
-	debris_material.gravity = Vector3(0, 150, 0)
-
-	# Debris color gradient - browns, greys, dust colors
-	var debris_gradient = Gradient.new()
-	debris_gradient.add_point(0.0, Color(0.7, 0.6, 0.5, 1.0))   # Light sandy brown
-	debris_gradient.add_point(0.3, Color(0.5, 0.4, 0.3, 1.0))   # Brown
-	debris_gradient.add_point(0.6, Color(0.4, 0.4, 0.4, 0.9))   # Grey stone
-	debris_gradient.add_point(1.0, Color(0.3, 0.25, 0.2, 0.0))  # Dark, fading
-
-	var debris_gradient_texture = GradientTexture1D.new()
-	debris_gradient_texture.gradient = debris_gradient
-	debris_material.color_ramp = debris_gradient_texture
-
-	debris_material.scale_min = 2.0
-	debris_material.scale_max = 6.0
-
-	debris_material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_SPHERE
-	debris_material.emission_sphere_radius = disaster_radius * 0.7
-
-	particles.process_material = debris_material
-	# Add particles directly as child for smooth rendering
-	add_child(particles)
+	# Set main particles reference for BaseDisaster
+	particles = debris_particles
 
 	# Setup collision area for earthquake zone
 	collision_area = Area2D.new()
@@ -89,8 +58,15 @@ func _setup_disaster() -> void:
 
 
 func set_camera(cam: Camera2D) -> void:
-	"""Set the camera reference for screen shake"""
+	"""Set the camera reference for screen shake and particle positioning"""
 	camera_ref = cam
+	print("Earthquake: Camera set for screen shake")
+
+
+func _physics_process(_delta: float) -> void:
+	# Update particle container position to follow camera in physics process for smooth interpolation
+	if camera_ref and particle_container:
+		particle_container.global_position = camera_ref.get_screen_center_position()
 
 
 func _process(delta: float) -> void:
@@ -102,15 +78,6 @@ func _process(delta: float) -> void:
 
 	# Escalate shake intensity
 	shake_intensity = lerp(initial_shake_intensity, max_shake_intensity, escalation_progress)
-
-	# Escalate debris amount
-	if particles:
-		var new_amount = int(lerp(initial_debris_density, max_debris_density, escalation_progress))
-		particles.amount = new_amount
-
-		var debris_material = particles.process_material as ParticleProcessMaterial
-		if debris_material:
-			debris_material.emission_sphere_radius = disaster_radius * 0.7
 
 	# Update shake time for smooth oscillation
 	shake_time += delta
@@ -132,13 +99,6 @@ func _apply_smooth_screen_shake() -> void:
 	if camera_ref:
 		# Apply smooth shake to camera offset
 		camera_ref.offset = base_shake_offset
-	else:
-		# Fallback: shake disaster visuals if no camera
-		if particles:
-			particles.position = base_shake_offset
-
-		if collision_area:
-			collision_area.position = base_shake_offset
 
 
 func _apply_disaster_effects(delta: float) -> void:
@@ -154,9 +114,36 @@ func _apply_disaster_effects(delta: float) -> void:
 			body.take_damage(damage_per_second * delta, "physical")
 
 
+func activate() -> void:
+	"""Activate the disaster (start particles, enable collision)"""
+	super.activate()
+	if fog_particles:
+		fog_particles.emitting = true
+
+
+func deactivate() -> void:
+	"""Deactivate the disaster (stop particles, disable collision)"""
+	super.deactivate()
+	if fog_particles:
+		fog_particles.emitting = false
+
+
 func _on_body_enter_zone(body: Node2D) -> void:
 	print(body.name, " entered Earthquake zone - random knockdown and debris damage")
 
 
 func _on_body_exit_zone(body: Node2D) -> void:
 	print(body.name, " exited Earthquake zone")
+
+
+func _exit_tree() -> void:
+	"""Clean up when disaster ends"""
+	# Stop emitting particles
+	if debris_particles:
+		debris_particles.emitting = false
+	if fog_particles:
+		fog_particles.emitting = false
+
+	# Reset camera shake
+	if camera_ref:
+		camera_ref.offset = Vector2.ZERO

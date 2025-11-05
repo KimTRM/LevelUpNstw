@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnhutqnywq11c"]
+
+[ext_resource type="Script" path="res://scripts/enemies/base_enemy.gd" id="1_xyabd"]
+[ext_resource type="Texture2D" uid="uid://b2dddjsfx2c1f" path="res://assets/icon.svg" id="2_ob6f1"]
+[ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_ob6f1"]
+[ext_resource type="PackedScene" uid="uid://vuumy6nqncca" path="res://scenes/components/AgroAreaComponent.tscn" id="4_gimt1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyabd"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kmloy"]
+radius = 155.59563
+
+[node name="BaseEnemy" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_xyabd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.24999994, 0.24999994)
+texture = ExtResource("2_ob6f1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xyabd")
+debug_color = Color(0, 0.70196074, 0.17876008, 0.41960785)
+
+[node name="VelocityComponent" type="Node" parent="."]
+script = ExtResource("3_ob6f1")
+metadata/_custom_type_script = "uid://c68gohftincf6"
+
+[node name="DetectionAreaComponent" parent="." instance=ExtResource("4_gimt1")]
+script = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionAreaComponent"]
+shape = SubResource("CircleShape2D_kmloy")
+debug_color = Color(0.70196074, 0.1912629, 0, 0.41960785)
+
+[connection signal="body_entered" from="DetectionAreaComponent" to="." method="_on_detection_area_component_body_entered"]
+[connection signal="body_exited" from="DetectionAreaComponent" to="." method="_on_detection_area_component_body_exited"]

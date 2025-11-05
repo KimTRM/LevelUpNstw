@@ -127,6 +127,11 @@ toggle_auto_target={
 common/physics_interpolation=true
 2d/physics_ticks_per_second=60
 
+[physics]
+
+common/physics_interpolation=true
+2d/physics_ticks_per_second=60
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

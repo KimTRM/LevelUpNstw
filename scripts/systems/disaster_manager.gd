@@ -31,7 +31,7 @@ var combo_disaster_scenes: Dictionary = {}
 
 # Current active disasters (can be 1 or 2 for combos)
 var current_disasters: Array[Node2D] = []
-var current_disaster_type: DisasterType = -1
+var current_disaster_type: int = -1  # -1 means no disaster active
 var current_combo_type: int = -1
 var is_combo_active: bool = false
 
@@ -135,17 +135,12 @@ func _spawn_disaster(disaster_type: DisasterType) -> void:
 	var disaster_scene = disaster_scenes[disaster_type]
 	var disaster = disaster_scene.instantiate()
 
-	# FIXED APPROACH: Parent to camera so emission follows player
-	# Particles use top_level=true to prevent jitter
-	if camera:
-		camera.add_child(disaster)
-		disaster.position = camera_relative_offset
-		# Pass camera reference to disaster for screen shake effects
-		if disaster.has_method("set_camera"):
-			disaster.set_camera(camera)
-	else:
-		add_child(disaster)
-		disaster.position = get_viewport_rect().size / 2
+	# Add disaster to scene (not parented to camera to prevent jitter)
+	add_child(disaster)
+
+	# Pass camera reference to disaster for screen shake effects
+	if camera and disaster.has_method("set_camera"):
+		disaster.set_camera(camera)
 
 	current_disasters.append(disaster)
 	current_disaster_type = disaster_type
@@ -170,17 +165,12 @@ func _spawn_combo_disaster() -> void:
 	var combo_scene = combo_disaster_scenes[random_combo]
 	var combo_disaster = combo_scene.instantiate()
 
-	# FIXED APPROACH: Parent to camera so emission follows player
-	# Particles use top_level=true to prevent jitter
-	if camera:
-		camera.add_child(combo_disaster)
-		combo_disaster.position = camera_relative_offset
-		# Pass camera reference for effects
-		if combo_disaster.has_method("set_camera"):
-			combo_disaster.set_camera(camera)
-	else:
-		add_child(combo_disaster)
-		combo_disaster.position = get_viewport_rect().size / 2
+	# Add disaster to scene (not parented to camera to prevent jitter)
+	add_child(combo_disaster)
+
+	# Pass camera reference for effects
+	if camera and combo_disaster.has_method("set_camera"):
+		combo_disaster.set_camera(camera)
 
 	current_disasters.append(combo_disaster)
 	current_combo_type = random_combo

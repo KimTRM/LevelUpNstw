@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://c9rs4n6o8qyd2"]
+[gd_scene load_steps=2 format=3 uid="uid://dars4n6o8qyd2"]
 
-[ext_resource type="Script" path="res://scripts/disasters/wildfire_disaster.gd" id="1_wildfire"]
+[ext_resource type="Script" uid="uid://5vpeaas22pmf" path="res://scripts/disasters/wildfire_disaster.gd" id="1_wildfire"]
 
 [node name="Wildfire" type="Node2D"]
 script = ExtResource("1_wildfire")
+
+[node name="FireParticles" type="CPUParticles2D" parent="."]
+amount = 120
+lifetime = 2.0
+explosiveness = 0.2
+randomness = 0.6
+lifetime_randomness = 0.3
+fixed_fps = 60
+emission_shape = 1
+emission_sphere_radius = 220.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, -80)
+orbit_velocity_max = 0.2
+scale_amount_min = 4.0
+scale_amount_max = 12.0
+color = Color(1, 0.6, 0.1, 0.9)
