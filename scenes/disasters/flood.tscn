@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8qr3m5n7pxc1"]
 
-[ext_resource type="Script" uid="uid://bxc70i751tkm8" path="res://scripts/disasters/flood_disaster.gd" id="1_flood"]
+[ext_resource type="Script" uid="uid://durej003svndm" path="res://scripts/disasters/flood_disaster.gd" id="1_flood"]
 
 [node name="Flood" type="Node2D"]
 script = ExtResource("1_flood")
@@ -20,5 +20,5 @@ direction = Vector2(0, -1)
 gravity = Vector2(0, 1200)
 initial_velocity_max = 100.0
 scale_amount_min = 0.0
-scale_amount_max = 20.34
+scale_amount_max = 6.0
 color = Color(0.00065881375, 0.24173543, 0.8106087, 0.7019608)

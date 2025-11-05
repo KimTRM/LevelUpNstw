@@ -96,3 +96,6 @@ position = Vector2(299, 487)
 script = ExtResource("4_rarhs")
 enemy_to_spawn = ExtResource("3_0bbpv")
 count_per_wave = 2
+
+[node name="DisasterManager" type="Node2D" parent="."]
+script = ExtResource("1_disaster")
