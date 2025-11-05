@@ -68,7 +68,13 @@ func show_spawn_indicator(pos: Vector2) -> void:
 	var indicator := rift_scene.instantiate()
 	indicator.global_position = pos
 	
-	get_parent().add_child(indicator)
+	# Get the current scene and find the Entities node
+	var current_scene = get_tree().current_scene
+	var entities_node = current_scene.get_node_or_null("Entities")
+	if entities_node:
+		entities_node.add_child(indicator)
+	else:
+		current_scene.add_child(indicator)
 
 	var indicator_animation_player := indicator.get_node_or_null("AnimationPlayer") as AnimationPlayer
 	indicator_animation_player.speed_scale = 1.5
@@ -88,17 +94,6 @@ func spawn_enemy(enemy_to_spawn: PackedScene, pos: Vector2) -> void:
 	var instance = enemy_to_spawn.instantiate()
 	instance.global_position = pos
 
-	# Prepare visual tween (if the root is a CanvasItem, which CharacterBody2D is)
-	var original_scale := Vector2.ONE
-	var original_alpha := 1.0
-	var can_tween_visual := instance is CanvasItem
-	if can_tween_visual:
-		var canvas := instance as CanvasItem
-		original_scale = canvas.scale
-		original_alpha = canvas.modulate.a
-		canvas.scale = Vector2.ZERO
-		canvas.modulate.a = 0.0
-
 	# Temporarily disable collisions during the appear animation
 	var had_collision := instance is CollisionObject2D
 	var original_layer := 0
@@ -109,14 +104,47 @@ func spawn_enemy(enemy_to_spawn: PackedScene, pos: Vector2) -> void:
 		instance.collision_layer = 0
 		instance.collision_mask = 0
 
-	add_child(instance)
+	# Get the current scene and find the Entities node
+	var current_scene = get_tree().current_scene
+	var entities_node = current_scene.get_node_or_null("Entities")
+	if entities_node:
+		entities_node.add_child(instance)
+	else:
+		current_scene.add_child(instance)
+
+	# Find the Visuals node for the spawn animation (after adding to tree so it's ready)
+	var visuals_node = instance.get_node_or_null("Visuals") as Node2D
+	var can_tween_visual := visuals_node != null
+	
+	var original_scale := Vector2.ONE
+	var original_alpha := 1.0
+	if can_tween_visual:
+		original_scale = visuals_node.scale
+		original_alpha = visuals_node.modulate.a
+		visuals_node.scale = Vector2.ZERO
+		visuals_node.modulate.a = 0.0
+	else:
+		# Fallback: try to tween the root if Visuals doesn't exist
+		if instance is CanvasItem:
+			var canvas := instance as CanvasItem
+			original_scale = canvas.scale
+			original_alpha = canvas.modulate.a
+			canvas.scale = Vector2.ZERO
+			canvas.modulate.a = 0.0
+			can_tween_visual = true
 
 	if can_tween_visual:
-		var canvas := instance as CanvasItem
-		var tween := canvas.create_tween().set_parallel(true)
-		tween.tween_property(canvas, "scale", original_scale, spawn_appear_duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-		tween.tween_property(canvas, "modulate:a", original_alpha, spawn_appear_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-		tween.finished.connect(func():
-			if had_collision and is_instance_valid(instance):
-				instance.collision_layer = original_layer
-				instance.collision_mask = original_mask)
+		var target_node: Node2D = visuals_node if visuals_node else instance as Node2D
+		if is_instance_valid(target_node):
+			var tween := target_node.create_tween().set_parallel(true)
+			tween.tween_property(target_node, "scale", original_scale, spawn_appear_duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+			tween.tween_property(target_node, "modulate:a", original_alpha, spawn_appear_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			tween.finished.connect(func():
+				if had_collision and is_instance_valid(instance):
+					instance.collision_layer = original_layer
+					instance.collision_mask = original_mask)
+	else:
+		# If no tween, just restore collisions immediately
+		if had_collision and is_instance_valid(instance):
+			instance.collision_layer = original_layer
+			instance.collision_mask = original_mask
