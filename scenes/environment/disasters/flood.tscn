@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qr3m5n7pxc1"]
+
+[ext_resource type="Script" uid="uid://durej003svndm" path="res://scripts/environment/disasters/flood_disaster.gd" id="1_flood"]
+
+[node name="Flood" type="Node2D"]
+script = ExtResource("1_flood")
+
+[node name="WaterParticles" type="CPUParticles2D" parent="."]
+amount = 100
+lifetime = 3.0
+speed_scale = 3.86
+explosiveness = 0.1
+randomness = 0.6
+lifetime_randomness = 0.3
+fixed_fps = 60
+fract_delta = false
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 1200)
+initial_velocity_max = 100.0
+scale_amount_min = 0.0
+scale_amount_max = 6.0
+color = Color(0.00065881375, 0.24173543, 0.8106087, 0.7019608)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://vuumy6nqncca"]
+
+[ext_resource type="Script" uid="uid://cwrqk85c16mvd" path="res://scripts/components/enemy_combat/agro_area_component.gd" id="1_55pud"]
+
+[node name="AgroAreaComponent" type="Area2D"]
+modulate = Color(1, 0.9290631, 0, 0.29411766)
+collision_layer = 0
+script = ExtResource("1_55pud")

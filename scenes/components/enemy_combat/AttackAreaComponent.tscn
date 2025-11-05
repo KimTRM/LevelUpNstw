@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0tkiwa7aiiyo"]
+
+[ext_resource type="Script" uid="uid://dr3dsc2qkg8k6" path="res://scripts/components/enemy_combat/attack_area_component.gd" id="1_mkbu2"]
+
+[node name="AttackAreaComponent" type="Area2D"]
+modulate = Color(1, 0, 0, 0.3137255)
+collision_layer = 0
+script = ExtResource("1_mkbu2")

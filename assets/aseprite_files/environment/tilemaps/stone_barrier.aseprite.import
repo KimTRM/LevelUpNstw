@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://o8osu6s5taqj"
+path="res://.godot/imported/stone_barrier.aseprite-56c9b55bf7e045928e9d72e185457d66.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/environment/tilemaps/stone_barrier.aseprite"
+dest_files=["res://.godot/imported/stone_barrier.aseprite-56c9b55bf7e045928e9d72e185457d66.res"]
+
+[params]
+

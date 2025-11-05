@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c5rn77iblwrus"
+path="res://.godot/imported/water_icon.aseprite-5a94edd88cb509894463c0371fbd917a.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/ui/elements/water_icon.aseprite"
+dest_files=["res://.godot/imported/water_icon.aseprite-5a94edd88cb509894463c0371fbd917a.res"]
+
+[params]
+

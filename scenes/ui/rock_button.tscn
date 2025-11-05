@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmcaagi31ij5x"]
+
+[ext_resource type="Texture2D" uid="uid://hnicgnsc6fht" path="res://assets/sprite_sheets/ui/rock_button/rock_normal_button.png" id="1_17ooq"]
+[ext_resource type="Texture2D" uid="uid://c0ctc4clkkxix" path="res://assets/sprite_sheets/ui/rock_button/rock_pressed_button.png" id="2_u38c7"]
+[ext_resource type="Texture2D" uid="uid://c2udmlyybgpik" path="res://assets/sprite_sheets/ui/rock_button/rock_hovered_button.png" id="3_l0yjp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1j4ul"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+texture = ExtResource("1_17ooq")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m2lik"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+texture = ExtResource("2_u38c7")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l33ms"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+texture = ExtResource("3_l0yjp")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[node name="RockButton" type="Button"]
+custom_minimum_size = Vector2(84, 50)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_right = 84.0
+offset_bottom = 25.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_1j4ul")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_m2lik")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l33ms")
+text = "Press F"

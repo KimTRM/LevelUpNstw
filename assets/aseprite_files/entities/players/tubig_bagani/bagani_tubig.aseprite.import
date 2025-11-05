@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cdrrr6xykii47"
+path="res://.godot/imported/bagani_tubig.aseprite-f99f30fe2d3649f910f0017b09a971b6.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/entities/players/tubig_bagani/bagani_tubig.aseprite"
+dest_files=["res://.godot/imported/bagani_tubig.aseprite-f99f30fe2d3649f910f0017b09a971b6.res"]
+
+[params]
+

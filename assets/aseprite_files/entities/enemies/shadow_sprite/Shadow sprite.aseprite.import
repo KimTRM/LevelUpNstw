@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dsjgplyjlbaso"
+path="res://.godot/imported/Shadow sprite.aseprite-ab8f685e4604d3ab9b0325e7fd2007b2.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/entities/enemies/shadow_sprite/Shadow sprite.aseprite"
+dest_files=["res://.godot/imported/Shadow sprite.aseprite-ab8f685e4604d3ab9b0325e7fd2007b2.res"]
+
+[params]
+

@@ -1,0 +1,161 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbhkrmfmi6adw"]
+
+[ext_resource type="Script" uid="uid://74r2jy2b60bo" path="res://scripts/environment/altar/altar.gd" id="1_uc05o"]
+[ext_resource type="Texture2D" uid="uid://bidry6h4jmebj" path="res://assets/sprite_sheets/environment/structure/altar.png" id="2_n5p0c"]
+[ext_resource type="Script" uid="uid://cu48dsqtvdwmf" path="res://scripts/components/interaction/interactable_area.gd" id="3_wuh0k"]
+[ext_resource type="Texture2D" uid="uid://cwboofdk1kllm" path="res://assets/sprite_sheets/Shadow.png" id="4_n5p0c"]
+
+[sub_resource type="Animation" id="Animation_uc05o"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_wuh0k"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_n5p0c"]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2wsor"]
+_data = {
+&"Idle": SubResource("Animation_uc05o"),
+&"Interacted idle": SubResource("Animation_wuh0k"),
+&"interacted": SubResource("Animation_n5p0c")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5p0c"]
+radius = 38.209946
+
+[node name="Altar" type="StaticBody2D" groups=["Altar"]]
+collision_layer = 4
+script = ExtResource("1_uc05o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -24)
+texture = ExtResource("2_n5p0c")
+hframes = 4
+vframes = 3
+frame = 8
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/environment",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://assets/aseprite_files/environment/structure/Altar(new).aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": true,
+"slice_section": false
+}
+metadata/_aseprite_wizard_source_file_hash_ = "8a13cb1659810110c86764d3cff34ba7"
+
+[node name="Shadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.5568628)
+show_behind_parent = true
+position = Vector2(0, 31)
+scale = Vector2(2.09375, 1.28125)
+texture = ExtResource("4_n5p0c")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"slice_section": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2wsor")
+}
+autoplay = "Idle"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, -17.988796, -9, 4.0112047, -24, 6.0112047, -24, 9.011205, 24, 9.011205, 24, 6.0112047, 9, 4.0112047, 8, -17.988796)
+
+[node name="InteractableArea" type="Area2D" parent="."]
+script = ExtResource("3_wuh0k")
+prompt_text = "Press to interact"
+hold_prompt_text = "Hold to interact"
+single_use = true
+require_hold = true
+metadata/_custom_type_script = "uid://cu48dsqtvdwmf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+shape = SubResource("CircleShape2D_n5p0c")

@@ -1,0 +1,203 @@
+[gd_scene load_steps=12 format=3 uid="uid://ygs67n5rvyjg"]
+
+[ext_resource type="Script" uid="uid://bqw5xni4swlac" path="res://scripts/entities/players/player.gd" id="1_kc87p"]
+[ext_resource type="Texture2D" uid="uid://cblhepy8rdwp2" path="res://assets/sprite_sheets/bagani_apoy.png" id="2_kc87p"]
+[ext_resource type="Script" uid="uid://bsiiwmlcn0xu8" path="res://scripts/components/input_controller.gd" id="3_edvpf"]
+[ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_olb2f"]
+[ext_resource type="Texture2D" uid="uid://cwboofdk1kllm" path="res://assets/sprite_sheets/Shadow.png" id="3_sguum"]
+
+[sub_resource type="Animation" id="Animation_kc87p"]
+length = 1.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_olb2f"]
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_sguum"]
+length = 1.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_edvpf"]
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sguum"]
+_data = {
+&"Idle": SubResource("Animation_kc87p"),
+&"Run": SubResource("Animation_olb2f"),
+&"idle": SubResource("Animation_sguum"),
+&"walk": SubResource("Animation_edvpf")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmlin"]
+radius = 7.0
+height = 24.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input") groups=["Player"]]
+y_sort_enabled = true
+collision_mask = 38
+motion_mode = 1
+script = ExtResource("1_kc87p")
+input = NodePath("InputController")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_kc87p")
+offset = Vector2(0, -8)
+hframes = 5
+vframes = 4
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": true,
+"output_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/sprite_sheets",
+"o_name": "",
+"only_visible": true,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://assets/aseprite_files/players/apoy_bagani/bagani_apoy.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "6d2306dff5cf1e2ec7a87373e58a0086"
+
+[node name="Shadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.5568628)
+show_behind_parent = true
+position = Vector2(0, 20)
+scale = Vector2(1.7382813, 1.4882813)
+texture = ExtResource("3_sguum")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sguum")
+}
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("CapsuleShape2D_gmlin")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="InputController" type="Node" parent="."]
+script = ExtResource("3_edvpf")
+metadata/_custom_type_script = "uid://bsiiwmlcn0xu8"
+
+[node name="VelocityComponent" type="Node" parent="."]
+script = ExtResource("3_olb2f")
+max_speed = 200.0
+metadata/_custom_type_script = "uid://c68gohftincf6"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -12)
+limit_enabled = false
+position_smoothing_speed = 0.8
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 0.8
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.02
+drag_top_margin = 0.02
+drag_right_margin = 0.02
+drag_bottom_margin = 0.02

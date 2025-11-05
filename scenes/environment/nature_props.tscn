@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://dd83lfrr6txhi"]
+
+[ext_resource type="Texture2D" uid="uid://dve3tq8ljkwb6" path="res://assets/sprite_sheets/environment/tilemaps/low_lands/flowers-grass.png" id="1_gfwux"]
+[ext_resource type="Texture2D" uid="uid://bd6kl3o84tqp0" path="res://assets/sprite_sheets/environment/tilemaps/low_lands/rocks.png" id="2_17f3w"]
+[ext_resource type="Texture2D" uid="uid://cggnl2omdxhxx" path="res://assets/sprite_sheets/environment/tilemaps/low_lands/tree.png" id="3_17f3w"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s8t0s"]
+texture = ExtResource("1_gfwux")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/y_sort_origin = -8
+1:0/0 = 0
+1:0/0/y_sort_origin = -8
+2:0/0 = 0
+2:0/0/y_sort_origin = -8
+3:0/0 = 0
+3:0/0/y_sort_origin = -8
+0:1/0 = 0
+0:1/0/y_sort_origin = -8
+1:1/0 = 0
+1:1/0/y_sort_origin = -8
+2:1/0 = 0
+2:1/0/y_sort_origin = -8
+3:1/0 = 0
+3:1/0/y_sort_origin = -8
+0:2/0 = 0
+0:2/0/y_sort_origin = -8
+1:2/0 = 0
+1:2/0/y_sort_origin = -8
+2:2/0 = 0
+2:2/0/y_sort_origin = -8
+3:2/0 = 0
+3:2/0/y_sort_origin = -8
+0:3/0 = 0
+0:3/0/y_sort_origin = -8
+1:3/0 = 0
+1:3/0/y_sort_origin = -8
+2:3/0 = 0
+2:3/0/y_sort_origin = -8
+3:3/0 = 0
+3:3/0/y_sort_origin = -8
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ju8jt"]
+texture = ExtResource("2_17f3w")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/y_sort_origin = -4
+1:0/0 = 0
+1:0/0/y_sort_origin = -4
+2:0/0 = 0
+2:0/0/y_sort_origin = -4
+3:0/0 = 0
+3:0/0/y_sort_origin = -4
+0:1/0 = 0
+0:1/0/y_sort_origin = -4
+1:1/0 = 0
+1:1/0/y_sort_origin = -4
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l5p0l"]
+texture = ExtResource("3_17f3w")
+texture_region_size = Vector2i(32, 32)
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/0 = 0
+0:0/0/y_sort_origin = 32
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, 12, 20, 12, 20, 44, 28, 56, 12, 64, -12, 64, -28, 56, -20, 44)
+
+[sub_resource type="TileSet" id="TileSet_pnt87"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 32
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_s8t0s")
+sources/1 = SubResource("TileSetAtlasSource_ju8jt")
+sources/2 = SubResource("TileSetAtlasSource_l5p0l")
+
+[node name="nature_props" type="TileMapLayer"]
+tile_set = SubResource("TileSet_pnt87")

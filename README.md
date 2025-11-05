@@ -1,4 +1,4 @@
-# Bantay: Guardians of the Archipelago
+# Bagani: Guardians of the Archipelago
 
 When natural disasters strike the islands, ancient spirits known as “Bantay” awaken to protect the people — but corrupted creatures born from chaos threaten to destroy everything.
 

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://nrwj40ml1mop"
+path="res://.godot/imported/Altar(new).aseprite-0c5242e3b2f3d09ffd866300a963631b.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/environment/structure/Altar(new).aseprite"
+dest_files=["res://.godot/imported/Altar(new).aseprite-0c5242e3b2f3d09ffd866300a963631b.res"]
+
+[params]
+

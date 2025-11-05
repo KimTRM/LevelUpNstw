@@ -1,0 +1,189 @@
+[gd_scene load_steps=14 format=3 uid="uid://ylab01rx4nth"]
+
+[ext_resource type="Texture2D" uid="uid://bpyy6waagbaxx" path="res://assets/sprite_sheets/ui/ui_container.png" id="1_2v2aq"]
+[ext_resource type="Texture2D" uid="uid://bjd5ggacmvaxh" path="res://assets/sprite_sheets/ui/end_results/win.png" id="1_afqrj"]
+[ext_resource type="Texture2D" uid="uid://vjjludamg3np" path="res://assets/sprite_sheets/ui/end_results/lose.png" id="2_ebeit"]
+[ext_resource type="Texture2D" uid="uid://bplfbdx1awawf" path="res://assets/sprite_sheets/ui/menu_button.png" id="4_qridp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qridp"]
+bg_color = Color(0, 0, 0, 0.4117647)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qridp"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+texture = ExtResource("1_2v2aq")
+texture_margin_left = 50.0
+texture_margin_top = 50.0
+texture_margin_right = 50.0
+texture_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jrj11"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("4_qridp")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q40u4"]
+load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_81e5n"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_q40u4")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.69008243, 0.69008243, 0.69008243, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m752x"]
+load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ixh8"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_m752x")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.880165, 0.880165, 0.880165, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_h1x2m"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_btvb7"]
+events = [SubResource("InputEventKey_h1x2m")]
+
+[node name="EndResults" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qridp")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(350, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_qridp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Win" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+texture = ExtResource("1_afqrj")
+expand_mode = 1
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/ui/end_results/",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://assets/aseprite_files/ui/end_results/win.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "7ff01e555e26af35d24a7b1b32650282"
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Lose" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+texture = ExtResource("2_ebeit")
+expand_mode = 1
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/ui/end_results/",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://assets/aseprite_files/ui/end_results/lose.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "3b355b10179978c544039a8415799217"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_jrj11")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_81e5n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2ixh8")
+shortcut = SubResource("Shortcut_btvb7")
+text = "Exit"
+
+[node name="ResumeButton2" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_jrj11")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_81e5n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2ixh8")
+shortcut = SubResource("Shortcut_btvb7")
+text = "Restart"
+
+[node name="ResumeButton3" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_jrj11")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_81e5n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2ixh8")
+shortcut = SubResource("Shortcut_btvb7")
+text = "Continue"
