@@ -7,11 +7,23 @@ class_name WildfireDisaster
 ## Escalation: Fire spreads to new areas, creating walls of flame
 
 @export var fire_damage_per_second: float = 10.0
+@export var max_escalation_time: float = 10.0  # Time to reach max escalation
+
+# Escalation variables
+var escalation_timer: float = 0.0
+var escalation_progress: float = 0.0  # 0.0 to 1.0
+var initial_radius: float = 220.0
+var max_radius: float = 350.0
+var initial_particle_amount: int = 300
+var max_particle_amount: int = 600
+
+# Visual overlay for smoke
+var smoke_overlay: ColorRect
 
 
 func _setup_disaster() -> void:
 	disaster_name = "Wildfire"
-	disaster_radius = 220.0
+	disaster_radius = initial_radius
 	damage_per_second = fire_damage_per_second
 
 	# Setup particles for fire effect
@@ -72,8 +84,45 @@ func _setup_disaster() -> void:
 	collision_area.body_entered.connect(_on_area_entered)
 	collision_area.body_exited.connect(_on_area_exited)
 
+	# Create smoke overlay (dark grey/brown for smoke)
+	smoke_overlay = ColorRect.new()
+	smoke_overlay.color = Color(0.3, 0.2, 0.2, 0.0)  # Start transparent
+	smoke_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	smoke_overlay.z_index = 100
+	smoke_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(smoke_overlay)
+
 	# Activate immediately
 	activate()
+
+
+func _process(delta: float) -> void:
+	super._process(delta)
+
+	# Update escalation
+	escalation_timer += delta
+	escalation_progress = clamp(escalation_timer / max_escalation_time, 0.0, 1.0)
+
+	# Escalate fire spread (increase radius and particle count)
+	disaster_radius = lerp(initial_radius, max_radius, escalation_progress)
+
+	if particles:
+		var new_amount = int(lerp(initial_particle_amount, max_particle_amount, escalation_progress))
+		particles.amount = new_amount
+
+		# Update emission radius
+		var material = particles.process_material as ParticleProcessMaterial
+		if material:
+			material.emission_sphere_radius = disaster_radius
+
+	# Update collision area radius
+	if collision_shape and collision_shape.shape is CircleShape2D:
+		(collision_shape.shape as CircleShape2D).radius = disaster_radius
+
+	# Escalate smoke visibility reduction
+	if smoke_overlay:
+		var max_alpha = 0.4  # Maximum 40% opacity for thick smoke
+		smoke_overlay.color.a = lerp(0.0, max_alpha, escalation_progress)
 
 
 func _create_scale_curve() -> Curve:

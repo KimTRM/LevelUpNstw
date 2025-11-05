@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(where cursor)",
+      "Bash(dir \"%APPDATA%\\Godot\" /s /b)",
+      "Bash(findstr editor_settings)",
+      "Bash(ls \"$APPDATA/Godot\")",
+      "Bash(echo \"$APPDATA/Godot/editor_settings-4.5.tres\")",
+      "Read(//c/Users/johnd/AppData/Roaming/Godot/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -6,11 +6,23 @@ class_name TyphoonDisaster
 ## Gameplay: Pushes players and projectiles randomly
 ## Escalation: Wind speed increases, visibility decreases
 
-@export var wind_force: float = 200.0
+@export var initial_wind_force: float = 100.0
+@export var max_wind_force: float = 400.0
 @export var wind_change_interval: float = 0.5  # Change direction every 0.5 seconds
+@export var max_escalation_time: float = 10.0  # Time to reach max escalation
+
+# Escalation variables
+var escalation_timer: float = 0.0
+var escalation_progress: float = 0.0  # 0.0 to 1.0
+var wind_force: float = 100.0
+var initial_particle_amount: int = 400
+var max_particle_amount: int = 800
 
 var current_wind_direction: Vector2 = Vector2.ZERO
 var wind_timer: float = 0.0
+
+# Visual overlay for debris/reduced visibility
+var debris_overlay: ColorRect
 
 
 func _setup_disaster() -> void:
@@ -23,7 +35,7 @@ func _setup_disaster() -> void:
 
 	# Setup particles for wind and debris
 	particles = GPUParticles2D.new()
-	particles.amount = 400
+	particles.amount = initial_particle_amount
 	particles.lifetime = 1.5
 	particles.explosiveness = 0.0
 	particles.randomness = 0.8
@@ -81,12 +93,44 @@ func _setup_disaster() -> void:
 	collision_area.body_entered.connect(_on_area_entered)
 	collision_area.body_exited.connect(_on_area_exited)
 
+	# Create debris overlay (grey for obscured visibility)
+	debris_overlay = ColorRect.new()
+	debris_overlay.color = Color(0.5, 0.5, 0.5, 0.0)  # Start transparent
+	debris_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	debris_overlay.z_index = 100
+	debris_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(debris_overlay)
+
 	# Activate immediately
 	activate()
 
 
 func _process(delta: float) -> void:
 	super._process(delta)
+
+	# Update escalation
+	escalation_timer += delta
+	escalation_progress = clamp(escalation_timer / max_escalation_time, 0.0, 1.0)
+
+	# Escalate wind force
+	wind_force = lerp(initial_wind_force, max_wind_force, escalation_progress)
+
+	# Escalate particle count (more debris)
+	if particles:
+		var new_amount = int(lerp(initial_particle_amount, max_particle_amount, escalation_progress))
+		particles.amount = new_amount
+
+		# Increase particle speed
+		var material = particles.process_material as ParticleProcessMaterial
+		if material:
+			var speed_multiplier = 1.0 + escalation_progress
+			material.initial_velocity_min = 150.0 * speed_multiplier
+			material.initial_velocity_max = 300.0 * speed_multiplier
+
+	# Escalate visibility reduction
+	if debris_overlay:
+		var max_alpha = 0.35  # Maximum 35% opacity
+		debris_overlay.color.a = lerp(0.0, max_alpha, escalation_progress)
 
 	# Update wind direction periodically
 	wind_timer += delta

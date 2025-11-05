@@ -6,12 +6,23 @@ class_name EarthquakeDisaster
 ## Gameplay: Random knockdown, terrain changes
 ## Escalation: Chasms open, buildings collapse
 
-@export var shake_intensity: float = 10.0
+@export var initial_shake_intensity: float = 5.0
+@export var max_shake_intensity: float = 20.0
 @export var knockdown_chance: float = 0.3  # 30% chance per second
-@export var debris_density: int = 150
+@export var max_escalation_time: float = 10.0  # Time to reach max escalation
+
+# Escalation variables
+var escalation_timer: float = 0.0
+var escalation_progress: float = 0.0  # 0.0 to 1.0
+var initial_debris_density: int = 150
+var max_debris_density: int = 400
+var shake_intensity: float = 5.0
 
 var shake_timer: float = 0.0
 var shake_frequency: float = 0.1  # Shake every 0.1 seconds
+
+# Camera reference for screen shake
+var camera_ref: Camera2D = null
 
 
 func _setup_disaster() -> void:
@@ -21,7 +32,7 @@ func _setup_disaster() -> void:
 
 	# Setup particles for falling debris
 	particles = GPUParticles2D.new()
-	particles.amount = debris_density
+	particles.amount = initial_debris_density
 	particles.lifetime = 2.0
 	particles.explosiveness = 0.2
 	particles.randomness = 0.7
@@ -83,8 +94,25 @@ func _setup_disaster() -> void:
 	activate()
 
 
+func set_camera(cam: Camera2D) -> void:
+	"""Set the camera reference for screen shake"""
+	camera_ref = cam
+
+
 func _process(delta: float) -> void:
 	super._process(delta)
+
+	# Update escalation
+	escalation_timer += delta
+	escalation_progress = clamp(escalation_timer / max_escalation_time, 0.0, 1.0)
+
+	# Escalate shake intensity
+	shake_intensity = lerp(initial_shake_intensity, max_shake_intensity, escalation_progress)
+
+	# Escalate debris amount
+	if particles:
+		var new_amount = int(lerp(initial_debris_density, max_debris_density, escalation_progress))
+		particles.amount = new_amount
 
 	# Update shake timer
 	shake_timer += delta
@@ -94,19 +122,26 @@ func _process(delta: float) -> void:
 
 
 func _apply_screen_shake() -> void:
-	"""Apply screen shake effect by offsetting the disaster position slightly"""
-	# Random offset for shake effect
-	var shake_offset = Vector2(
-		randf_range(-shake_intensity, shake_intensity),
-		randf_range(-shake_intensity, shake_intensity)
-	)
+	"""Apply screen shake effect to the camera"""
+	if camera_ref:
+		# Apply shake to camera offset
+		var shake_offset = Vector2(
+			randf_range(-shake_intensity, shake_intensity),
+			randf_range(-shake_intensity, shake_intensity)
+		)
+		camera_ref.offset = shake_offset
+	else:
+		# Fallback: shake disaster particles if no camera
+		var shake_offset = Vector2(
+			randf_range(-shake_intensity, shake_intensity),
+			randf_range(-shake_intensity, shake_intensity)
+		)
 
-	# Apply shake to particles and collision area
-	if particles:
-		particles.position = shake_offset
+		if particles:
+			particles.position = shake_offset
 
-	if collision_area:
-		collision_area.position = shake_offset
+		if collision_area:
+			collision_area.position = shake_offset
 
 
 func _apply_disaster_effects(delta: float) -> void:

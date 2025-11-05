@@ -8,6 +8,16 @@ class_name FloodDisaster
 
 @export var slow_multiplier: float = 0.6  # Slows movement to 60% speed
 @export var water_rise_speed: float = 10.0  # How fast water level rises
+@export var max_escalation_time: float = 10.0  # Time to reach max escalation
+
+# Escalation variables
+var escalation_timer: float = 0.0
+var escalation_progress: float = 0.0  # 0.0 to 1.0
+var initial_particle_amount: int = 200
+var max_particle_amount: int = 400
+
+# Visual overlay for reduced visibility
+var visibility_overlay: ColorRect
 
 
 func _setup_disaster() -> void:
@@ -70,8 +80,35 @@ func _setup_disaster() -> void:
 	collision_area.body_entered.connect(_on_area_entered)
 	collision_area.body_exited.connect(_on_area_exited)
 
+	# Create visibility overlay (blue tint for underwater effect)
+	visibility_overlay = ColorRect.new()
+	visibility_overlay.color = Color(0.2, 0.4, 0.8, 0.0)  # Start transparent
+	visibility_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	visibility_overlay.z_index = 100
+	# Make it cover the entire viewport
+	visibility_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(visibility_overlay)
+
 	# Activate immediately
 	activate()
+
+
+func _process(delta: float) -> void:
+	super._process(delta)
+
+	# Update escalation
+	escalation_timer += delta
+	escalation_progress = clamp(escalation_timer / max_escalation_time, 0.0, 1.0)
+
+	# Escalate water level (increase particle count)
+	if particles:
+		var new_amount = int(lerp(initial_particle_amount, max_particle_amount, escalation_progress))
+		particles.amount = new_amount
+
+	# Escalate visibility reduction
+	if visibility_overlay:
+		var max_alpha = 0.3  # Maximum 30% opacity
+		visibility_overlay.color.a = lerp(0.0, max_alpha, escalation_progress)
 
 
 func _apply_disaster_effects(delta: float) -> void:
