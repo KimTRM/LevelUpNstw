@@ -1,6 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://ctut3i5rxtike"]
 
 [ext_resource type="Script" uid="uid://cxj7ksj4h3vwa" path="res://scripts/enemies/shadow_sprite/shadow_sprite.gd" id="1_466dq"]
+[ext_resource type="Texture2D" path="res://assets/sprite_sheets/enemies/shadow_sprite/Shadow sprite.png" id="7_shadow_png"]
 [ext_resource type="Script" uid="uid://7nsq2rbewrws" path="res://scripts/components/health/health_component.gd" id="2_f4qck"]
 [ext_resource type="Script" uid="uid://ckdkjuya1ymc0" path="res://scripts/components/damage/hurtbox_component.gd" id="2_m5hp6"]
 [ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="3_m5hp6"]
@@ -13,8 +14,7 @@
 radius = 6.9999757
 height = 17.999937
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_466dq"]
-load_path = "res://.godot/imported/Shadow sprite.png-b410e733278d675834b944020d79f7c9.ctex"
+; replaced broken imported texture with direct texture resource
 
 [sub_resource type="Animation" id="Animation_kmloy"]
 length = 0.75
@@ -62,7 +62,7 @@ radius = 247.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_atops"]
 radius = 154.26276
 
-[node name="ShadowSprite" type="CharacterBody2D"]
+[node name="ShadowSprite" type="CharacterBody2D" groups=["Enemy"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 3
@@ -79,7 +79,7 @@ shape = SubResource("CapsuleShape2D_466dq")
 unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(-1, -3)
-texture = SubResource("CompressedTexture2D_466dq")
+texture = ExtResource("7_shadow_png")
 hframes = 3
 vframes = 2
 metadata/_aseprite_wizard_config_ = {

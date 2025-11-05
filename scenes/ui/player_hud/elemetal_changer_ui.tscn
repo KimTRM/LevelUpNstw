@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cjcafy6ct6ml8"]
+[gd_scene load_steps=38 format=3 uid="uid://cjcafy6ct6ml8"]
 
 [ext_resource type="Script" uid="uid://dfmh6dan6i1uc" path="res://scripts/ui/player_hud/elemetal_changer_ui.gd" id="1_l4t2j"]
 
@@ -28,8 +28,12 @@ pressed = true
 keycode = 49
 unicode = 49
 
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_2hj8q"]
+button_index = 11
+pressed = true
+
 [sub_resource type="Shortcut" id="Shortcut_v3m50"]
-events = [SubResource("InputEventKey_l4t2j")]
+events = [SubResource("InputEventKey_l4t2j"), SubResource("InputEventJoypadButton_2hj8q")]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e7rlh"]
 load_path = "res://.godot/imported/water_icon.png-e56d55a9dc720dae7a448e4c72545a47.ctex"
@@ -57,8 +61,12 @@ pressed = true
 keycode = 50
 unicode = 50
 
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_ux3vy"]
+button_index = 13
+pressed = true
+
 [sub_resource type="Shortcut" id="Shortcut_4lnm8"]
-events = [SubResource("InputEventKey_g0qhp")]
+events = [SubResource("InputEventKey_g0qhp"), SubResource("InputEventJoypadButton_ux3vy")]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2hj8q"]
 load_path = "res://.godot/imported/earth_icon.png-a6c18f9507e5ca179d9a148a255de177.ctex"
@@ -86,8 +94,12 @@ pressed = true
 keycode = 51
 unicode = 51
 
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_e7rlh"]
+button_index = 14
+pressed = true
+
 [sub_resource type="Shortcut" id="Shortcut_3362a"]
-events = [SubResource("InputEventKey_mkvr5")]
+events = [SubResource("InputEventKey_mkvr5"), SubResource("InputEventJoypadButton_e7rlh")]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kkkxa"]
 load_path = "res://.godot/imported/wind_icon.png-466969e3437fd3a57bd9687c57c76ddf.ctex"
@@ -115,8 +127,12 @@ pressed = true
 keycode = 52
 unicode = 52
 
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_0yq1d"]
+button_index = 12
+pressed = true
+
 [sub_resource type="Shortcut" id="Shortcut_kkkxa"]
-events = [SubResource("InputEventKey_42yur")]
+events = [SubResource("InputEventKey_42yur"), SubResource("InputEventJoypadButton_0yq1d")]
 
 [node name="ElementalChangerUi" type="MarginContainer"]
 anchors_preset = 6
