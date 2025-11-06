@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c76lidcc8m50q"]
+[gd_scene load_steps=15 format=3 uid="uid://c76lidcc8m50q"]
 
 [ext_resource type="Script" uid="uid://r6dtewsxd0xx" path="res://scripts/entities/npc/npc.gd" id="1_npc"]
 [ext_resource type="Texture2D" uid="uid://brr4digfpqmwe" path="res://assets/sprite_sheets/entities/npc/npc.png" id="2_pcwmf"]
 [ext_resource type="Texture2D" uid="uid://b81t7p04wv83m" path="res://assets/sprite_sheets/entities/npc/clothes.png" id="3_dpyoa"]
 [ext_resource type="Texture2D" uid="uid://cwboofdk1kllm" path="res://assets/sprite_sheets/Shadow.png" id="3_r4bp4"]
+[ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="5_dp77t"]
+[ext_resource type="Script" uid="uid://cu48dsqtvdwmf" path="res://scripts/components/interaction/interactable_area.gd" id="6_fgogi"]
 
 [sub_resource type="Animation" id="Animation_dpyoa"]
 length = 0.75
@@ -133,19 +135,19 @@ _data = {
 size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detection"]
-radius = 56.008926
+radius = 33.0
 
 [node name="NPC" type="CharacterBody2D" groups=["NPC"]]
 y_sort_enabled = true
-collision_layer = 0
-collision_mask = 4
+collision_layer = 64
+collision_mask = 35
 motion_mode = 1
 script = ExtResource("1_npc")
 
 [node name="Base" type="Node2D" parent="."]
 
 [node name="BaseSprite2D" type="Sprite2D" parent="Base"]
-modulate = Color(0.9453361, 0.70681196, 0.47764164, 1)
+modulate = Color(0.94509804, 0.7058824, 0.47843137, 1)
 texture_filter = 1
 texture = ExtResource("2_pcwmf")
 hframes = 4
@@ -165,7 +167,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
-"layer_section": true,
+"layer_section": false,
 "output_section": true,
 "slice_section": false
 }
@@ -215,15 +217,17 @@ libraries = {
 &"": SubResource("AnimationLibrary_evswx")
 }
 
+[node name="VelocityComponent" type="Node" parent="."]
+script = ExtResource("5_dp77t")
+metadata/_custom_type_script = "uid://c68gohftincf6"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_collision")
 
-[node name="DetectionArea" type="Area2D" parent="."]
-collision_layer = 0
+[node name="InteractableArea" type="Area2D" parent="."]
+script = ExtResource("6_fgogi")
+metadata/_custom_type_script = "uid://cu48dsqtvdwmf"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_detection")
-
-[node name="DialogueTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true

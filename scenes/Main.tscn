@@ -68,6 +68,7 @@ position = Vector2(107, 110)
 
 [node name="NPC2" parent="Map/Node2D" instance=ExtResource("3_npc")]
 position = Vector2(1165, 112)
+skin_color = Color(0.69008243, 0.46854624, 0.25790516, 1)
 
 [node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true
