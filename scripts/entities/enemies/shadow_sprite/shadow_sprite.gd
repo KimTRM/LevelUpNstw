@@ -16,7 +16,6 @@ var _direction: Vector2 = Vector2.ZERO
 var lightning_attack_scene: PackedScene = preload("uid://b78gi0kqledx4")
 
 var state_machine: CallableStateMachine = CallableStateMachine.new()
-var _delta: float = 0.0
 
 func _ready():
 	if health_component and health_bar:
@@ -42,21 +41,20 @@ func _ready():
 	add_child(timer)
 
 func _process(delta: float) -> void:
-	_delta = delta
-	state_machine.update()
+	state_machine.update(delta)
 
 
 # region States
-func normal_state() -> void:
+func normal_state(_delta: float) -> void:
 	_target = get_tree().get_first_node_in_group("Altar")
 	_direction = (_target.global_position - global_position).normalized()
-	_move(_direction)
+	_move(_direction, _delta)
 
 
-func chase_state() -> void:
+func chase_state(_delta: float) -> void:
 	_target = get_tree().get_first_node_in_group("Player")
 	_direction = (_target.global_position - global_position).normalized()
-	_move(_direction)
+	_move(_direction, _delta)
 
 
 func _enter_attack_state() -> void:
@@ -70,9 +68,9 @@ func _enter_attack_state() -> void:
 			_target = body
 	timer.start()
 
-func attack_state() -> void:
+func attack_state(_delta: float) -> void:
 	_direction = Vector2.ZERO
-	_move(_direction)
+	_move(_direction, _delta)
 
 func _exit_attack_state() -> void:
 	timer.stop()
@@ -110,7 +108,7 @@ func _attack() -> void:
 	lightning_attack_instance.global_position = _target.global_position
 	get_parent().add_child(lightning_attack_instance)
 
-func _move(direction: Vector2) -> void:
+func _move(direction: Vector2, _delta: float) -> void:
 	velocity = velocity_component.get_velocity(direction)
 	velocity_component.accelerate_to_velocity(velocity, _delta)
 	velocity_component.move(self)

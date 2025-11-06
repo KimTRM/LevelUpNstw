@@ -1,135 +1,145 @@
 class_name NPC extends CharacterBody2D
 
-# pasensya na kim magulo code ko , inayos as far possible 
-
 @onready var base_sprite_2d: Sprite2D = $Base/BaseSprite2D
-@onready var base_animation_player: AnimationPlayer = $Base/BaseAnimationPlayer
-
 @onready var clothes_sprite_2d: Sprite2D = $Clothes/ClothesSprite2D
+@onready var base_animation_player: AnimationPlayer = $Base/BaseAnimationPlayer
 @onready var clothes_animation_player: AnimationPlayer = $Clothes/ClothesAnimationPlayer
+@onready var velocity_component: VelocityComponent = $VelocityComponent
+@onready var interactable_area: InteractableArea = $InteractableArea
 
-@export var skin_color: Color = Color.WHITE
+@export var skin_color: Color = Color(0.945, 0.706, 0.478)
 @export var follow_distance: float = 150.0
 @export var follow_speed: float = 120.0
 @export var separation_distance: float = 40.0
 @export var separation_force: float = 200.0
 @export var stop_distance: float = 30.0
 
-@onready var detection_area: Area2D = $DetectionArea
-@onready var detection_shape: CollisionShape2D = $DetectionArea/CollisionShape2D
-@onready var dialogue_timer: Timer = $DialogueTimer
-
+var state_machine: CallableStateMachine = CallableStateMachine.new()
 var player: Player = null
-var is_following: bool = false
-var velocity_component: VelocityComponent
 var last_player_direction: Vector2 = Vector2.DOWN
+var is_following: bool = false
+
+# ===== INITIALIZATION =====
 
 func _ready() -> void:
-	# Create velocity component for smooth movement
-	velocity_component = VelocityComponent.new()
+	base_sprite_2d.modulate = skin_color
 	velocity_component.max_speed = follow_speed
-	velocity_component.acceleration = 15.0
-	add_child(velocity_component)
+	interactable_area.interacted.connect(_on_interacted)
 	
-	# Set up detection area
-	if detection_shape.shape == null:
-		var circle_shape = CircleShape2D.new()
-		circle_shape.radius = follow_distance
-		detection_shape.shape = circle_shape
-	
-	add_to_group("NPC")
+	_setup_state_machine()
 
-	_start_idle_animation()
+func _setup_state_machine() -> void:
+	state_machine.add_states(idle_state)
+	state_machine.add_states(follow_state)
+	state_machine.set_initial_state(idle_state)
+
+# ===== UPDATE =====
 
 func _physics_process(delta: float) -> void:
-	if not is_following or not is_instance_valid(player):
-		velocity = Vector2.ZERO
-		move_and_slide()
-		return
-	
-	var desired_velocity = calculate_desired_velocity()
-	
-	# Apply separation from other NPCs
-	var separation_velocity = calculate_separation()
-	desired_velocity += separation_velocity
-	
-	
-	if desired_velocity == Vector2.ZERO:
-		_start_idle_animation()
+	state_machine.update(delta)
 
-		velocity = velocity_component.velocity
-		velocity_component.move(self)
-		return
+# ===== STATES =====
 
-	base_animation_player.play("walk")
-	clothes_animation_player.play("walk")
+func idle_state(_delta: float) -> void:
+	_play_animation("Idle")
+	velocity = Vector2.ZERO
+	move_and_slide()
+
+func follow_state(delta: float) -> void:
+	_play_animation("walk")
 	
-	velocity_component.accelerate_to_velocity(desired_velocity, delta)
+	var movement = _calculate_follow_velocity() + _calculate_separation_velocity()
+	
+	if movement == Vector2.ZERO:
+		_play_animation("Idle")
+	
+	velocity_component.accelerate_to_velocity(movement, delta)
 	velocity = velocity_component.velocity
-	velocity_component.move(self)
+	move_and_slide()
 
+# ===== MOVEMENT CALCULATION =====
 
-func calculate_desired_velocity() -> Vector2:
+func _calculate_follow_velocity() -> Vector2:
 	if not is_instance_valid(player):
 		return Vector2.ZERO
-
-	# Follow slightly behind the Chacter behind the palyerssf
-	var target_position: Vector2 = player.global_position
-	if player is CharacterBody2D:
-		var pv: Vector2 = (player as CharacterBody2D).velocity
-		if pv.length() > 0.1:
-			last_player_direction = pv.normalized()
-		target_position = player.global_position - last_player_direction * 20.0
-
-	var direction = (target_position - global_position).normalized()
-	var distance = global_position.distance_to(target_position)
-
-	if abs(direction.x) > abs(direction.y):
-		clothes_sprite_2d.flip_h = direction.x < 0
-		base_sprite_2d.flip_h = direction.x < 0
-
-	# Stop if too close to player
+	
+	var target = _get_follow_target()
+	var direction = (target - global_position).normalized()
+	var distance = global_position.distance_to(target)
+	
+	_update_sprite_flip(direction)
+	
 	if distance < stop_distance:
 		return Vector2.ZERO
 	
-	var speed_multiplier = 1.0
-	if distance < stop_distance * 2.0:
-		speed_multiplier = (distance - stop_distance) / stop_distance
-	
-	return direction * follow_speed * speed_multiplier
+	var speed = _calculate_speed(distance)
+	return direction * speed
 
-func calculate_separation() -> Vector2:
-	var separation = Vector2.ZERO
+func _get_follow_target() -> Vector2:
+	var target = player.global_position
+	
+	if player.velocity.length() > 0.1:
+		last_player_direction = player.velocity.normalized()
+	
+	return target - last_player_direction * 50.0
+
+func _calculate_speed(distance: float) -> float:
+	if distance < stop_distance * 2.0:
+		return follow_speed * (distance - stop_distance) / stop_distance
+	return follow_speed
+
+func _calculate_separation_velocity() -> Vector2:
 	var nearby_npcs = get_tree().get_nodes_in_group("NPC")
+	var separation = Vector2.ZERO
 	var count = 0
 	
 	for npc in nearby_npcs:
-		if npc == self or not is_instance_valid(npc):
+		if not _should_separate_from(npc):
 			continue
 		
 		var distance = global_position.distance_to(npc.global_position)
-		if distance < separation_distance and distance > 0:
-			var direction = (global_position - npc.global_position).normalized()
-			var force = (separation_distance - distance) / separation_distance
-			separation += direction * force
-			count += 1
-	
-	if count > 0:
-		separation /= count
-		separation = separation.normalized() * separation_force
-	
-	return separation
-
-func _on_player_entered(body: Node) -> void:
-	if body.is_in_group("Player"):
-		player = body
-		is_following = true
+		var direction = (global_position - npc.global_position).normalized()
+		var force = (separation_distance - distance) / separation_distance
 		
+		separation += direction * force
+		count += 1
+	
+	if count == 0:
+		return Vector2.ZERO
+	
+	return (separation / count).normalized() * separation_force
 
-func _on_player_exited(body: Node) -> void:
-	if body.is_in_group("Player"):
-		pass
+func _should_separate_from(npc: Node) -> bool:
+	if npc == self or not is_instance_valid(npc):
+		return false
+	
+	var distance = global_position.distance_to(npc.global_position)
+	return distance < separation_distance and distance > 0
 
-func _start_idle_animation() -> void:
-	base_animation_player.play("Idle")
-	clothes_animation_player.play("Idle")
+# ===== VISUALS =====
+
+func _play_animation(anim_name: String) -> void:
+	base_animation_player.play(anim_name)
+	clothes_animation_player.play(anim_name)
+
+func _update_sprite_flip(direction: Vector2) -> void:
+	if abs(direction.x) > abs(direction.y):
+		var flip = direction.x < 0
+		clothes_sprite_2d.flip_h = flip
+		base_sprite_2d.flip_h = flip
+
+func _update_interaction_prompt() -> void:
+	if is_following:
+		interactable_area.set_prompt("Stop Following")
+	else:
+		interactable_area.set_prompt("Follow Me")
+
+# ===== SIGNALS =====
+
+func _on_interacted(_interactor: Node, _area: InteractableArea) -> void:
+	if _interactor is Player:
+		player = _interactor
+		is_following = !is_following
+
+		state_machine.change_state(follow_state if is_following else idle_state)
+		_update_interaction_prompt()
