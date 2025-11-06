@@ -33,11 +33,19 @@ func _ready() -> void:
 
 func set_prompt(new_prompt: String) -> void:
 	prompt_text = new_prompt
-	_show_prompt(true)
+
+	if is_inside:
+		_show_prompt(true)
+	else:
+		_show_prompt(false)
 
 func set_hold_prompt(new_prompt: String) -> void:
 	hold_prompt_text = new_prompt
-	_show_prompt(true)
+	
+	if is_inside:
+		_show_prompt(true)
+	else:
+		_show_prompt(false)
 
 func _on_body_entered(body: Node) -> void:
 	if used and single_use:
@@ -137,11 +145,13 @@ func _show_prompt(_show: bool) -> void:
 		
 		UiManager.show_ui(key)
 	else:
-		# Unbind when hiding
-		var interaction: Interaction = UiManager.ui_screens.get(key) as Interaction
-		if interaction:
-			interaction.unbind_from_interactable()
-		UiManager.hide_ui(key)
+		# Only hide if UI exists
+		if UiManager.has_ui(key):
+			# Unbind when hiding
+			var interaction: Interaction = UiManager.ui_screens.get(key) as Interaction
+			if interaction:
+				interaction.unbind_from_interactable()
+			UiManager.hide_ui(key)
 
 
 func _draw() -> void:

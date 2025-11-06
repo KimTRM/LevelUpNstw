@@ -27,7 +27,6 @@ func _ready() -> void:
 	interactable_area.interacted.connect(_on_interacted)
 	
 	_setup_state_machine()
-	_update_interaction_prompt()
 
 func _setup_state_machine() -> void:
 	state_machine.add_states(idle_state)
@@ -142,6 +141,5 @@ func _on_interacted(_interactor: Node, _area: InteractableArea) -> void:
 		player = _interactor
 		is_following = !is_following
 
-		_update_interaction_prompt()
-		
 		state_machine.change_state(follow_state if is_following else idle_state)
+		_update_interaction_prompt()
