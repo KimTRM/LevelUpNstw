@@ -31,6 +31,13 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
+func set_prompt(new_prompt: String) -> void:
+	prompt_text = new_prompt
+	_show_prompt(true)
+
+func set_hold_prompt(new_prompt: String) -> void:
+	hold_prompt_text = new_prompt
+	_show_prompt(true)
 
 func _on_body_entered(body: Node) -> void:
 	if used and single_use:

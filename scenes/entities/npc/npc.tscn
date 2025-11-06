@@ -131,8 +131,8 @@ _data = {
 &"walk": SubResource("Animation_ay68w")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_collision"]
-size = Vector2(16, 16)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dp77t"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detection"]
 radius = 33.0
@@ -222,7 +222,8 @@ script = ExtResource("5_dp77t")
 metadata/_custom_type_script = "uid://c68gohftincf6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_collision")
+position = Vector2(0, 16)
+shape = SubResource("CapsuleShape2D_dp77t")
 
 [node name="InteractableArea" type="Area2D" parent="."]
 script = ExtResource("6_fgogi")

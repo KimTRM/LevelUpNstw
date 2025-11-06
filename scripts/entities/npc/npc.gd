@@ -27,6 +27,7 @@ func _ready() -> void:
 	interactable_area.interacted.connect(_on_interacted)
 	
 	_setup_state_machine()
+	_update_interaction_prompt()
 
 func _setup_state_machine() -> void:
 	state_machine.add_states(idle_state)
@@ -81,7 +82,7 @@ func _get_follow_target() -> Vector2:
 	if player.velocity.length() > 0.1:
 		last_player_direction = player.velocity.normalized()
 	
-	return target - last_player_direction * 20.0
+	return target - last_player_direction * 50.0
 
 func _calculate_speed(distance: float) -> float:
 	if distance < stop_distance * 2.0:
@@ -128,11 +129,19 @@ func _update_sprite_flip(direction: Vector2) -> void:
 		clothes_sprite_2d.flip_h = flip
 		base_sprite_2d.flip_h = flip
 
+func _update_interaction_prompt() -> void:
+	if is_following:
+		interactable_area.set_prompt("Stop Following")
+	else:
+		interactable_area.set_prompt("Follow Me")
+
 # ===== SIGNALS =====
 
 func _on_interacted(_interactor: Node, _area: InteractableArea) -> void:
-	print("NPC interacted with by %s" % _interactor.name)
 	if _interactor is Player:
 		player = _interactor
 		is_following = !is_following
+
+		_update_interaction_prompt()
+		
 		state_machine.change_state(follow_state if is_following else idle_state)
