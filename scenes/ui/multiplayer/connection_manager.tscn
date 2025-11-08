@@ -1,0 +1,247 @@
+[gd_scene load_steps=25 format=3 uid="uid://bs8hkrnxs6ora"]
+
+[ext_resource type="Script" uid="uid://dxxy7en7sv3wt" path="res://scripts/ui/multiplayer/connection_manager.gd" id="1_486s4"]
+[ext_resource type="Script" uid="uid://m0qift7nugca" path="res://scripts/ui/multiplayer/e_net_connection_manager.gd" id="1_kaa80"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n10h7"]
+load_path = "res://.godot/imported/ui_container.png-c9955f3a5e59b854f8c7cd1e1d98dc4f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kaa80"]
+content_margin_left = 24.0
+content_margin_top = 16.0
+content_margin_right = 24.0
+content_margin_bottom = 16.0
+texture = SubResource("CompressedTexture2D_n10h7")
+texture_margin_left = 50.0
+texture_margin_top = 50.0
+texture_margin_right = 50.0
+texture_margin_bottom = 50.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_486s4"]
+load_path = "res://.godot/imported/menu_button.png-656dd67a64115554104020a5bd458678.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4x4vd"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_486s4")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vq04f"]
+load_path = "res://.godot/imported/menu_button.png-656dd67a64115554104020a5bd458678.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q6m2y"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_vq04f")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.8638722, 0.8638722, 0.8638722, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qgivq"]
+load_path = "res://.godot/imported/menu_button.png-656dd67a64115554104020a5bd458678.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4b2lh"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_qgivq")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s7f5i"]
+load_path = "res://.godot/imported/menu_button.png-656dd67a64115554104020a5bd458678.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sjnah"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_s7f5i")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.8638722, 0.8638722, 0.8638722, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4teea"]
+load_path = "res://.godot/imported/menu_button.png-656dd67a64115554104020a5bd458678.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ktwan"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_4teea")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dlurq"]
+load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eptlv"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_dlurq")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.69008243, 0.69008243, 0.69008243, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k2u08"]
+load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qeo45"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_k2u08")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.880165, 0.880165, 0.880165, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3xjdc"]
+load_path = "res://.godot/imported/menu_button.png-656dd67a64115554104020a5bd458678.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5k5ry"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_3xjdc")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2bw61"]
+load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v6n6k"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_2bw61")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.69008243, 0.69008243, 0.69008243, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wdxl1"]
+load_path = "res://.godot/imported/menu_button.png-52f6d44214399ad22f5069c113bc42b3.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lawko"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = SubResource("CompressedTexture2D_wdxl1")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+modulate_color = Color(0.880165, 0.880165, 0.880165, 1)
+
+[node name="ConnectionManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_486s4")
+
+[node name="TitleContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.5
+offset_top = -80.0
+offset_right = 134.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConnectionMethods" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ENetConnectionManager" type="PanelContainer" parent="MarginContainer/ConnectionMethods"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kaa80")
+script = ExtResource("1_kaa80")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ConnectionMethods/ENetConnectionManager"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/ConnectionMethods/ENetConnectionManager/VBoxContainer"]
+layout_mode = 2
+text = "Connect via ENet"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ConnectionMethods/ENetConnectionManager/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="HostIp" type="LineEdit" parent="MarginContainer/ConnectionMethods/ENetConnectionManager/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_4x4vd")
+theme_override_styles/read_only = SubResource("StyleBoxTexture_q6m2y")
+text = "127.0.0.1"
+
+[node name="HostPort" type="LineEdit" parent="MarginContainer/ConnectionMethods/ENetConnectionManager/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_4b2lh")
+theme_override_styles/read_only = SubResource("StyleBoxTexture_sjnah")
+text = "25565"
+
+[node name="JoinButton" type="Button" parent="MarginContainer/ConnectionMethods/ENetConnectionManager/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ktwan")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_eptlv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qeo45")
+text = "Join"
+
+[node name="HostENetButton" type="Button" parent="MarginContainer/ConnectionMethods/ENetConnectionManager/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_5k5ry")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v6n6k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lawko")
+text = "Host via ENet"

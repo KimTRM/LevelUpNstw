@@ -1,4 +1,4 @@
-class_name CallableStateMachine
+class_name CallableStateMachine extends Node
 
 var state_dictionary = {}
 var current_state: String

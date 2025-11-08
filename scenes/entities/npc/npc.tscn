@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c76lidcc8m50q"]
+[gd_scene load_steps=16 format=3 uid="uid://c76lidcc8m50q"]
 
 [ext_resource type="Script" uid="uid://r6dtewsxd0xx" path="res://scripts/entities/npc/npc.gd" id="1_npc"]
 [ext_resource type="Texture2D" uid="uid://brr4digfpqmwe" path="res://assets/sprite_sheets/entities/npc/npc.png" id="2_pcwmf"]
@@ -6,6 +6,23 @@
 [ext_resource type="Texture2D" uid="uid://cwboofdk1kllm" path="res://assets/sprite_sheets/Shadow.png" id="3_r4bp4"]
 [ext_resource type="Script" uid="uid://c68gohftincf6" path="res://scripts/components/movement/velocity_component.gd" id="5_dp77t"]
 [ext_resource type="Script" uid="uid://cu48dsqtvdwmf" path="res://scripts/components/interaction/interactable_area.gd" id="6_fgogi"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dp77t"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Base/BaseSprite2D:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Base/BaseAnimationPlayer:current_animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Clothes/ClothesSprite2D:flip_h")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Clothes/ClothesAnimationPlayer:current_animation")
+properties/4/spawn = true
+properties/4/replication_mode = 1
 
 [sub_resource type="Animation" id="Animation_dpyoa"]
 length = 0.75
@@ -143,6 +160,9 @@ collision_layer = 64
 collision_mask = 35
 motion_mode = 1
 script = ExtResource("1_npc")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_dp77t")
 
 [node name="Base" type="Node2D" parent="."]
 

@@ -46,12 +46,12 @@ func idle_state(_delta: float) -> void:
 	move_and_slide()
 
 func follow_state(delta: float) -> void:
-	_play_animation("walk")
-	
 	var movement = _calculate_follow_velocity() + _calculate_separation_velocity()
 	
 	if movement == Vector2.ZERO:
 		_play_animation("Idle")
+	else:
+		_play_animation("walk")
 	
 	velocity_component.accelerate_to_velocity(movement, delta)
 	velocity = velocity_component.velocity
