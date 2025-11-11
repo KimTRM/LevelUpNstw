@@ -1,12 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs1o4uwrouo1b"]
+[gd_scene load_steps=5 format=3 uid="uid://dyt0vusulpe8v"]
 
 [ext_resource type="Script" uid="uid://b6jeis7g5iksw" path="res://scripts/entities/players/lupa_bagani/stone_barrier.gd" id="2_uc7gb"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5xkgg"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tehkb"]
 load_path = "res://.godot/imported/stone_barrier.png-ccaf76c1125c9f70bcd7c81854517de4.ctex"
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2e43e"]
-texture = SubResource("CompressedTexture2D_5xkgg")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5xkgg"]
+texture = SubResource("CompressedTexture2D_tehkb")
 texture_region_size = Vector2i(32, 32)
 1:2/0 = 0
 1:2/0/terrain_set = 0
@@ -338,13 +338,13 @@ texture_region_size = Vector2i(32, 32)
 14:5/0/terrains_peering_bit/top_side = 0
 14:10/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_q4udk"]
+[sub_resource type="TileSet" id="TileSet_2e43e"]
 tile_size = Vector2i(32, 32)
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_2e43e")
+sources/0 = SubResource("TileSetAtlasSource_5xkgg")
 
 [node name="StoneBarrier" type="TileMapLayer"]
-tile_set = SubResource("TileSet_q4udk")
+tile_set = SubResource("TileSet_2e43e")
 script = ExtResource("2_uc7gb")

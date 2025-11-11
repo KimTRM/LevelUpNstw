@@ -13,7 +13,7 @@ func _spawn_player(authority_player_id: int) -> void:
 
 func _multiplayer_player(authority_player_id: int) -> Player:
 	var player: Player = multiplayer_player_scene.instantiate() as Player
-	player.player_resource = load("uid://b35at8uw3aue5") as PlayerResource
+	player.player_resource = load("uid://ddsf0h48t34dj") as PlayerResource
 	player.name = str(authority_player_id)
 
 	return player

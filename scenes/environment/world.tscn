@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bfqqcc18dwy3h"]
+[gd_scene load_steps=11 format=4 uid="uid://bfqqcc18dwy3h"]
 
 [ext_resource type="PackedScene" uid="uid://c34se0ysg86q5" path="res://scenes/environment/tilemap/water_tile.tscn" id="1_53ua2"]
 [ext_resource type="Script" uid="uid://d8k2jw0cd8bj" path="res://scripts/environment/world.gd" id="1_78xtq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ctg27tsk03pfl" path="res://scenes/environment/structures/bahay_kubo.tscn" id="3_hdqu4"]
 [ext_resource type="PackedScene" uid="uid://dd83lfrr6txhi" path="res://scenes/environment/tilemap/nature_props.tscn" id="4_raef5"]
 [ext_resource type="PackedScene" uid="uid://cbhkrmfmi6adw" path="res://scenes/environment/structures/altar.tscn" id="5_yxtit"]
+[ext_resource type="PackedScene" uid="uid://c8yyyb5og3u4m" path="res://scenes/entities/players/lupa_bagani/terra_shield.tscn" id="8_hfr0h"]
 [ext_resource type="PackedScene" uid="uid://c76lidcc8m50q" path="res://scenes/entities/npc/npc.tscn" id="10_xgj6d"]
 [ext_resource type="Script" path="res://scripts/components/enemy_spwan_point.gd" id="11_kbuws"]
 [ext_resource type="PackedScene" uid="uid://ctut3i5rxtike" path="res://scenes/entities/enemies/shadow_sprite/shadow_sprite.tscn" id="12_joasb"]
@@ -46,6 +47,9 @@ position = Vector2(107, 110)
 [node name="NPC2" parent="Map/Node2D" instance=ExtResource("10_xgj6d")]
 position = Vector2(1165, 112)
 skin_color = Color(0.69008243, 0.46854624, 0.25790516, 1)
+
+[node name="TerraShield" parent="Map/Node2D" instance=ExtResource("8_hfr0h")]
+position = Vector2(164, 266)
 
 [node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true

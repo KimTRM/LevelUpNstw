@@ -23,6 +23,9 @@ properties/3/replication_mode = 1
 properties/4/path = NodePath("Clothes/ClothesAnimationPlayer:current_animation")
 properties/4/spawn = true
 properties/4/replication_mode = 1
+properties/5/path = NodePath(".:is_following")
+properties/5/spawn = true
+properties/5/replication_mode = 1
 
 [sub_resource type="Animation" id="Animation_dpyoa"]
 length = 0.75

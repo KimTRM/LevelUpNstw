@@ -5,7 +5,7 @@ func cast_basic_attack() -> void:
 	pass
 
 func cast_skill() -> void:
-	var stone_barrier_scene: PackedScene = load("uid://bs1o4uwrouo1b")
+	var stone_barrier_scene: PackedScene = load("uid://dyt0vusulpe8v")
 	var barrier = stone_barrier_scene.instantiate()
 
 	barrier.global_position = player.global_position

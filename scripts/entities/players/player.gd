@@ -1,4 +1,5 @@
-class_name Player extends CharacterBody2D
+# class_name Player
+extends CharacterBody2D
 
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -38,7 +39,7 @@ func initialize_player() -> void:
 
 	if player_resource:
 		stats = player_resource.stats
-		player_resource.player = self
+		# player_resource.player = self
 		velocity_component.max_speed = stats.base_movement_speed
 
 		if input.basic_attack_pressed.is_connected(player_resource.cast_basic_attack):

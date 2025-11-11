@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ud75hbo7rbl8"
+path="res://.godot/imported/terra_shield.aseprite-07fc4bd6f379b1635b3cb180e377f2d0.res"
+
+[deps]
+
+source_file="res://assets/aseprite_files/entities/players/lupa_bagani/terra_shield.aseprite"
+dest_files=["res://.godot/imported/terra_shield.aseprite-07fc4bd6f379b1635b3cb180e377f2d0.res"]
+
+[params]
+

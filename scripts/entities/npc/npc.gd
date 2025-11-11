@@ -13,11 +13,11 @@ class_name NPC extends CharacterBody2D
 @export var separation_distance: float = 40.0
 @export var separation_force: float = 200.0
 @export var stop_distance: float = 30.0
+@export var is_following: bool = false
 
 var state_machine: CallableStateMachine = CallableStateMachine.new()
 var player: Player = null
 var last_player_direction: Vector2 = Vector2.DOWN
-var is_following: bool = false
 
 # ===== INITIALIZATION =====
 
