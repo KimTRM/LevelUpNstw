@@ -11,9 +11,14 @@
 [ext_resource type="Script" path="res://scripts/components/enemy_spwan_point.gd" id="11_kbuws"]
 [ext_resource type="PackedScene" uid="uid://ctut3i5rxtike" path="res://scenes/entities/enemies/shadow_sprite/shadow_sprite.tscn" id="12_joasb"]
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("player_spawner")]
+[node name="World" type="Node2D"]
 script = ExtResource("1_78xtq")
-player_spawner = NodePath("Node/MultiplayerPlayerSpawner")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="MultiplayerPlayerSpawner" type="MultiplayerSpawner" parent="Node"]
+spawn_path = NodePath("../../Map/Node2D")
+spawn_limit = 4
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -80,9 +85,3 @@ position = Vector2(299, 487)
 script = ExtResource("11_kbuws")
 enemy_to_spawn = ExtResource("12_joasb")
 count_per_wave = 2
-
-[node name="Node" type="Node" parent="."]
-
-[node name="MultiplayerPlayerSpawner" type="MultiplayerSpawner" parent="Node"]
-spawn_path = NodePath("../../Map/Node2D")
-spawn_limit = 4

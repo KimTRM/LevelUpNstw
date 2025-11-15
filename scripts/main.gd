@@ -5,8 +5,9 @@ extends Node
 @onready var world: World = %World
 
 func _ready() -> void:
-	connection_manager.hosting.connect(_on_connection_manager_hosting)
-	connection_manager.joining.connect(_on_connection_manager_joining)
+	NetworkManager.player_connected.connect(_on_connection_manager_hosting)
+	# connection_manager.hosting.connect(_on_connection_manager_hosting)
+	# connection_manager.joining.connect(_on_connection_manager_joining)
 
 
 	# if disaster_manager:
@@ -16,13 +17,9 @@ func _ready() -> void:
 	# 	print("Disasters will cycle every ", disaster_manager.disaster_duration, " seconds")
 
 
-func _on_connection_manager_hosting() -> void:
-	world._spawn_player(1)
-	
-	multiplayer.peer_connected.connect(
-		func(peer_id: int) -> void:
-			world._spawn_player(peer_id)
-	)
+func _on_connection_manager_hosting(peer_id: int, _player_info: Dictionary) -> void:
+	# world._spawn_player(1)
+	world.spawn_player(peer_id)
 	
 	print("ConnectionManager signaled hosting.")
 

@@ -206,6 +206,7 @@ theme_override_constants/separation = 8
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/ConnectionMethods/ENetConnectionManager/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Connect via ENet"
 
