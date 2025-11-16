@@ -1,7 +1,7 @@
 class_name ENetConnectionManager extends PanelContainer
 
-# signal server_created
-# signal server_joined
+signal server_created
+signal server_joined(ip_address: String)
 
 @onready var host_ip: LineEdit = %HostIp
 @onready var host_port: LineEdit = %HostPort
@@ -16,28 +16,23 @@ func _ready() -> void:
 	host_e_net_button.pressed.connect(_on_host_enet_button_pressed)
 
 func _on_host_enet_button_pressed() -> void:
-	NetworkManager.create_game()
-
+	# NetworkManager.create_game()
 	# peer.create_server(int(host_port.text), 32)
 	# multiplayer.multiplayer_peer = peer
-
 	# multiplayer.peer_connected.connect(func(id: int) -> void:
 	# 	print("Peer connected with ID: %d" % id)
 	# )
-
-	# server_created.emit()
+	server_created.emit()
 
 	# print("Hosting ENet server on port %d" % int(host_port.text))
 	hide()
 
 
 func _on_join_button_pressed() -> void:
-	NetworkManager.join_game(host_ip.text)
-
+	# NetworkManager.join_game(host_ip.text)
 	# peer.create_client(host_ip.text, int(host_port.text))
 	# multiplayer.multiplayer_peer = peer
-
-	# server_joined.emit()
+	server_joined.emit(host_ip.text)
 
 	# print("Joining ENet server at %s:%d" % [host_ip.text, int(host_port.text)])
 	hide()

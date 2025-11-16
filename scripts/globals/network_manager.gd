@@ -34,7 +34,7 @@ var local_player_info: Dictionary = {
 #  STORES ALL PLAYERS
 #  players[id] = Dictionary
 # ──────────────────────────────────────────────
-var players: Dictionary[int, Dictionary] = {}
+var players: Dictionary = {}
 var players_loaded: int = 0
 
 
@@ -64,6 +64,8 @@ func create_game() -> Error:
     # Server ALWAYS becomes ID 1
     players[1] = local_player_info.duplicate(true)
     player_connected.emit(1, players[1])
+    
+    print("[NetworkManager] Server created. Host player ID: 1")
 
     return OK
 
@@ -82,10 +84,13 @@ func join_game(address: String = "") -> Error:
         return err
 
     multiplayer.multiplayer_peer = peer
+    print("[NetworkManager] Connecting to %s:%d" % [address, PORT])
     return OK
 
 
 func remove_multiplayer_peer() -> void:
+    if multiplayer.multiplayer_peer:
+        multiplayer.multiplayer_peer.close()
     multiplayer.multiplayer_peer = null
     players.clear()
 
@@ -93,7 +98,7 @@ func remove_multiplayer_peer() -> void:
 # ──────────────────────────────────────────────
 #  LOAD GAME SCENE
 # ──────────────────────────────────────────────
-@rpc("call_local", "reliable")
+@rpc("authority", "call_local", "reliable")
 func load_game(scene_path: String) -> void:
     get_tree().change_scene_to_file(scene_path)
 
@@ -116,49 +121,78 @@ func player_loaded() -> void:
 #  PLAYER REGISTRATION
 # ──────────────────────────────────────────────
 func _on_player_connected(id: int) -> void:
-    # Tell the new peer OUR info
+    print("[NetworkManager] Peer %d connected (called on peer %d)" % [id, multiplayer.get_unique_id()])
+    
+    # Only server handles registration
+    if not multiplayer.is_server():
+        return
+    
+    # Send the new peer our player info
     _register_player.rpc_id(id, local_player_info)
-
-    # Ask the new peer for THEIR info
-    request_player_info.rpc_id(id)
-
-
-# Request the player's info
-@rpc("any_peer", "reliable")
-func request_player_info() -> void:
-    var sender_id: int = multiplayer.get_remote_sender_id()
-    _register_player.rpc_id(sender_id, local_player_info)
 
 
 # Store the player's info
 @rpc("any_peer", "reliable")
 func _register_player(info: Dictionary) -> void:
-    var sender: int = multiplayer.get_remote_sender_id()
+    var sender_id: int = multiplayer.get_remote_sender_id()
+    
+    # Don't register if already registered
+    if sender_id in players:
+        print("[NetworkManager] Player %d already registered, skipping" % sender_id)
+        return
 
-    players[sender] = info.duplicate(true)
-    player_connected.emit(sender, players[sender])
+    players[sender_id] = info.duplicate(true)
+    print("[NetworkManager] Registered player %d: %s" % [sender_id, info])
+    player_connected.emit(sender_id, players[sender_id])
 
 
 # ──────────────────────────────────────────────
 #  DISCONNECT EVENTS
 # ──────────────────────────────────────────────
 func _on_player_disconnected(id: int) -> void:
+    print("[NetworkManager] Player %d disconnected" % id)
     players.erase(id)
     player_disconnected.emit(id)
 
 
 func _on_connected_ok() -> void:
     var id: int = multiplayer.get_unique_id()
+    print("[NetworkManager] Successfully connected to server. My ID: %d" % id)
 
     players[id] = local_player_info.duplicate(true)
+    
+    # Send our info to the server
+    _register_player.rpc_id(1, local_player_info)
+    
+    # Emit locally (client sees themselves connect)
     player_connected.emit(id, players[id])
 
 
 func _on_connected_fail() -> void:
+    print("[NetworkManager] Failed to connect to server")
     multiplayer.multiplayer_peer = null
 
 
 func _on_server_disconnected() -> void:
+    print("[NetworkManager] Disconnected from server")
     multiplayer.multiplayer_peer = null
     players.clear()
     server_disconnected.emit()
+
+
+# ──────────────────────────────────────────────
+#  HELPER FUNCTIONS
+# ──────────────────────────────────────────────
+func get_player_count() -> int:
+    return players.size()
+
+func is_host() -> bool:
+    return multiplayer.is_server()
+
+func get_local_peer_id() -> int:
+    return multiplayer.get_unique_id()
+
+func get_player_name(peer_id: int) -> String:
+    if peer_id in players:
+        return players[peer_id].get("name", "Player %d" % peer_id)
+    return "Unknown"

@@ -1,9 +1,9 @@
 class_name InteractableArea extends Area2D
 
-signal interacted(interactor, area) # Fired when interaction completes (tap or hold)
-signal hold_started(interactor, area) # Optional: when hold begins
-signal hold_progress(interactor, area, progress) # Optional: 0..1 progress while holding
-signal hold_canceled(interactor, area) # Optional: when hold is released before completion
+signal interacted(interactor: Node, area: InteractableArea) # Fired when interaction completes (tap or hold)
+signal hold_started(interactor: Node, area: InteractableArea) # Optional: when hold begins
+signal hold_progress(interactor: Node, area: InteractableArea, progress: float) # Optional: 0..1 progress while holding
+signal hold_canceled(interactor: Node, area: InteractableArea) # Optional: when hold is released before completion
 
 
 @export var prompt_text: String = "Press F to interact"
@@ -34,39 +34,45 @@ func _ready() -> void:
 func set_prompt(new_prompt: String) -> void:
 	prompt_text = new_prompt
 
-	if is_inside:
+	if is_inside and _is_local_interactor():
 		_show_prompt(true)
-	else:
-		_show_prompt(false)
 
 func set_hold_prompt(new_prompt: String) -> void:
 	hold_prompt_text = new_prompt
 	
-	if is_inside:
+	if is_inside and _is_local_interactor():
 		_show_prompt(true)
-	else:
-		_show_prompt(false)
 
 func _on_body_entered(body: Node) -> void:
 	if used and single_use:
 		return
+		
 	if _is_valid_interactor(body):
-		current_interactor = body
-		is_inside = true
-		_show_prompt(true)
+		# Only set current_interactor if this is the local player
+		if body.is_multiplayer_authority():
+			current_interactor = body
+			is_inside = true
+			_show_prompt(true)
 
 
 func _on_body_exited(body: Node) -> void:
 	if current_interactor == body:
-		_cancel_hold_if_any()
-		current_interactor = null
-		is_inside = false
-		_show_prompt(false)
+		# Only process exit if this is the local player
+		if body.is_multiplayer_authority():
+			_cancel_hold_if_any()
+			current_interactor = null
+			is_inside = false
+			_show_prompt(false)
 
 
 func _physics_process(delta: float) -> void:
+	# Only process input for the local player's interactor
+	if not _is_local_interactor():
+		return
+		
 	if used and single_use:
 		return
+		
 	if not is_inside or current_interactor == null:
 		return
 
@@ -91,6 +97,12 @@ func _physics_process(delta: float) -> void:
 			_cancel_hold_if_any()
 
 
+func _is_local_interactor() -> bool:
+	if current_interactor == null:
+		return false
+	return current_interactor.is_multiplayer_authority()
+
+
 func _start_hold() -> void:
 	_is_holding = true
 	_hold_elapsed = 0.0
@@ -111,11 +123,25 @@ func _cancel_hold_if_any() -> void:
 
 
 func _perform_interaction(interactor: Node) -> void:
+	# Call RPC to sync interaction across all clients
+	_perform_interaction_rpc.rpc(interactor.get_path())
+
+
+@rpc("any_peer", "call_local", "reliable")
+func _perform_interaction_rpc(interactor_path: NodePath) -> void:
+	var interactor: Node = get_node_or_null(interactor_path)
+	if interactor == null:
+		return
+	
 	interacted.emit(interactor, self)
 
 	if single_use:
 		used = true
-		_show_prompt(false)
+		
+		# Only hide prompt for the local player
+		if _is_local_interactor():
+			_show_prompt(false)
+		
 		monitoring = false
 
 
@@ -128,6 +154,10 @@ func _is_valid_interactor(body: Node) -> bool:
 
 
 func _show_prompt(_show: bool) -> void:
+	# Only show UI for the local player
+	if not _is_local_interactor() and _show:
+		return
+		
 	var key := "interaction_prompt"
 	if _show:
 		var _text := hold_prompt_text if require_hold else prompt_text
@@ -156,5 +186,5 @@ func _show_prompt(_show: bool) -> void:
 
 func _draw() -> void:
 	if show_debug_area:
-		var size = Vector2(32, 32)
+		var size := Vector2(32, 32)
 		draw_rect(Rect2(-size / 2, size), Color(1, 1, 1, 0.5), false)
