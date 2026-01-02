@@ -1,6 +1,6 @@
 # Bagani: Guardians of the Archipelago
 
-When natural disasters strike the islands, ancient spirits known as “Bantay” awaken to protect the people — but corrupted creatures born from chaos threaten to destroy everything.
+When natural disasters strike the islands, ancient spirits known as “Bagani” awaken to protect the people — but corrupted creatures born from chaos threaten to destroy everything.
 
 Players become the Bantay — each representing an element of nature (Fire, Water, Wind, Earth) — and must cooperate to seal rifts and defeat corrupted elementals before time runs out.
 
